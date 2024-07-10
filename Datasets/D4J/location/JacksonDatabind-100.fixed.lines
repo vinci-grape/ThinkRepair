@@ -1,0 +1,3 @@
+com/fasterxml/jackson/databind/node/TreeTraversingParser.java#363#            if (n instanceof TextNode) {
+com/fasterxml/jackson/databind/node/TreeTraversingParser.java#364#                return ((TextNode) n).getBinaryValue(b64variant);
+com/fasterxml/jackson/databind/node/TreeTraversingParser.java#366#            return n.binaryValue();

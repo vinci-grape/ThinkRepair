@@ -1,0 +1,33 @@
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#42#    private ArArchiveEntry currentEntry = null;
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#47#    private long entryOffset = -1;
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#62#        if (currentEntry != null) {
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#63#            final long entryEnd = entryOffset + currentEntry.getLength();
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#64#            while (offset < entryEnd) {
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#65#                int x = read();
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#66#                if (x == -1) {
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#69#                    return null;
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#70#                }
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#71#            }
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#72#            currentEntry = null;
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#73#        }
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#89#        if (offset % 2 != 0) {
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#90#            if (read() < 0) {
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#92#                return null;
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#93#            }
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#94#        }
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#128#        entryOffset = offset;
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#129#        currentEntry = new ArArchiveEntry(new String(name).trim(),
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#132#        return currentEntry;
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#145#        currentEntry = null;
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#149#        byte[] single = new byte[1];
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#150#        int num = read(single, 0, 1);
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#151#        return num == -1 ? -1 : single[0] & 0xff;
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#160#        if (currentEntry != null) {
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#161#            final long entryEnd = entryOffset + currentEntry.getLength();
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#162#            if (len > 0 && entryEnd > offset) {
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#163#                toRead = (int) Math.min(len, entryEnd - offset);
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#164#            } else {
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#165#                return -1;
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#166#            }
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#167#        }
+org/apache/commons/compress/archivers/ar/ArArchiveInputStream.java#100#FIX_OF_OMISSION

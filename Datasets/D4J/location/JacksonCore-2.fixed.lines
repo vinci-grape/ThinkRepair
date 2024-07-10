@@ -1,0 +1,50 @@
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#952#            if (_parsingContext.inRoot()) {
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#953#                _verifyRootSpace(ch);
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#954#            }
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1084#            if (_parsingContext.inRoot()) {
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1085#                _verifyRootSpace(c);
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1086#            }
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1168#    private final void _verifyRootSpace(int ch) throws IOException
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1169#    {
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1171#        ++_inputPtr;
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1172#        switch (ch) {
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1173#        case ' ':
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1174#        case '\t':
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1175#            return;
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1176#        case '\r':
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1177#            _skipCR();
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1178#            return;
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1179#        case '\n':
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1180#            ++_currInputRow;
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1181#            _currInputRowStart = _inputPtr;
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1182#            return;
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1183#        }
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1184#        _reportMissingRootWS(ch);
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1185#    }
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1244#        if (_parsingContext.inRoot()) {
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1245#            _verifyRootSpace(c);
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1246#        }
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1283#        if (_parsingContext.inRoot()) {
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1284#            _verifyRootSpace(_inputBuffer[_inputPtr++] & 0xFF);
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1285#        }
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1413#            if (_parsingContext.inRoot()) {
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1414#                _verifyRootSpace(c);
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1415#            }
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1430#    private final void _verifyRootSpace(int ch) throws IOException
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1431#    {
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1433#        ++_inputPtr;
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1435#        switch (ch) {
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1436#        case ' ':
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1437#        case '\t':
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1438#            return;
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1439#        case '\r':
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1440#            _skipCR();
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1441#            return;
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1442#        case '\n':
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1443#            ++_currInputRow;
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1444#            _currInputRowStart = _inputPtr;
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1445#            return;
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1446#        }
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1447#        _reportMissingRootWS(ch);
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1448#    }
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#2601#FIX_OF_OMISSION

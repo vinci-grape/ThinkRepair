@@ -1,0 +1,9 @@
+org/apache/commons/cli/PosixParser.java#114#                int pos = token.indexOf('=');
+org/apache/commons/cli/PosixParser.java#115#                String opt = pos == -1 ? token : token.substring(0, pos); // --foo
+org/apache/commons/cli/PosixParser.java#116#
+org/apache/commons/cli/PosixParser.java#117#                if (!options.hasOption(opt) && stopAtNonOption)
+org/apache/commons/cli/PosixParser.java#119#                    process(token);
+org/apache/commons/cli/PosixParser.java#123#                    tokens.add(opt);
+org/apache/commons/cli/PosixParser.java#124#                    if (pos != -1) {
+org/apache/commons/cli/PosixParser.java#125#                        tokens.add(token.substring(pos + 1));
+org/apache/commons/cli/PosixParser.java#126#                    }

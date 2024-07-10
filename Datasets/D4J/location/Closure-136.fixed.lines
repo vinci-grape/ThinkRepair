@@ -1,0 +1,10 @@
+com/google/javascript/jscomp/MethodCompilerPass.java#105#    } else {
+com/google/javascript/jscomp/RenameVars.java#203#        if (local) {
+com/google/javascript/jscomp/RenameVars.java#205#          String newName =
+com/google/javascript/jscomp/RenameVars.java#206#            MakeDeclaredNamesUnique.ContextualRenameInverter.getOrginalName(
+com/google/javascript/jscomp/RenameVars.java#207#                name);
+com/google/javascript/jscomp/RenameVars.java#208#          if (!newName.equals(name)) {
+com/google/javascript/jscomp/RenameVars.java#209#            n.setString(newName);
+com/google/javascript/jscomp/RenameVars.java#210#          }
+com/google/javascript/jscomp/RenameVars.java#211#        }
+com/google/javascript/jscomp/MethodCompilerPass.java#102#FIX_OF_OMISSION

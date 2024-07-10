@@ -1,0 +1,29 @@
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#142#    @Override
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#143#    public long skip(long n) throws IOException {
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#144#        if (n < 0) {
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#145#            throw new IllegalArgumentException("Negative skip length");
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#146#        }
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#149#        final byte[] b = new byte[512];
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#150#        final int max = (int) Math.min(n, Integer.MAX_VALUE);
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#151#        int total = 0;
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#153#        while (total < max) {
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#154#            int len = max - total;
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#155#            if (len > b.length) {
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#156#                len = b.length;
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#157#            }
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#158#            len = read(b, 0, len);
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#159#            if (len == EOF) {
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#160#                break;
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#161#            }
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#162#            total += len;
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#163#        }
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#164#
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#165#        return total;
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#166#    }
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#174#    public int available() throws IOException {
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#181#        if (baseNCodec.eof) {
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#182#            return 0;
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#183#        } else {
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#184#            return 1;
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#185#        }
+org/apache/commons/codec/binary/BaseNCodecInputStream.java#186#    }

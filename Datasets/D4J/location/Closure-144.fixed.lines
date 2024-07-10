@@ -1,0 +1,43 @@
+com/google/javascript/jscomp/FunctionTypeBuilder.java#74#  private boolean returnTypeInferred = false;
+com/google/javascript/jscomp/FunctionTypeBuilder.java#201#        info.getReturnType().evaluate(scope, typeRegistry) : null;
+com/google/javascript/jscomp/FunctionTypeBuilder.java#203#        returnType != null &&
+com/google/javascript/jscomp/FunctionTypeBuilder.java#214#  FunctionTypeBuilder inferReturnStatements(@Nullable Node functionBlock) {
+com/google/javascript/jscomp/FunctionTypeBuilder.java#215#    if (functionBlock == null || compiler.getInput(sourceName).isExtern()) {
+com/google/javascript/jscomp/FunctionTypeBuilder.java#216#      return this;
+com/google/javascript/jscomp/FunctionTypeBuilder.java#217#    }
+com/google/javascript/jscomp/FunctionTypeBuilder.java#218#    Preconditions.checkArgument(functionBlock.getType() == Token.BLOCK);
+com/google/javascript/jscomp/FunctionTypeBuilder.java#219#    if (returnType == null) {
+com/google/javascript/jscomp/FunctionTypeBuilder.java#220#      boolean hasNonEmptyReturns = false;
+com/google/javascript/jscomp/FunctionTypeBuilder.java#221#      List<Node> worklist = Lists.newArrayList(functionBlock);
+com/google/javascript/jscomp/FunctionTypeBuilder.java#222#      while (!worklist.isEmpty()) {
+com/google/javascript/jscomp/FunctionTypeBuilder.java#223#        Node current = worklist.remove(worklist.size() - 1);
+com/google/javascript/jscomp/FunctionTypeBuilder.java#224#        int cType = current.getType();
+com/google/javascript/jscomp/FunctionTypeBuilder.java#225#        if (cType == Token.RETURN && current.getFirstChild() != null ||
+com/google/javascript/jscomp/FunctionTypeBuilder.java#226#            cType == Token.THROW) {
+com/google/javascript/jscomp/FunctionTypeBuilder.java#227#          hasNonEmptyReturns = true;
+com/google/javascript/jscomp/FunctionTypeBuilder.java#228#          break;
+com/google/javascript/jscomp/FunctionTypeBuilder.java#229#        } else if (NodeUtil.isStatementBlock(current) ||
+com/google/javascript/jscomp/FunctionTypeBuilder.java#230#            NodeUtil.isControlStructure(current)) {
+com/google/javascript/jscomp/FunctionTypeBuilder.java#231#          for (Node child = current.getFirstChild();
+com/google/javascript/jscomp/FunctionTypeBuilder.java#232#               child != null; child = child.getNext()) {
+com/google/javascript/jscomp/FunctionTypeBuilder.java#233#            worklist.add(child);
+com/google/javascript/jscomp/FunctionTypeBuilder.java#234#          }
+com/google/javascript/jscomp/FunctionTypeBuilder.java#235#        }
+com/google/javascript/jscomp/FunctionTypeBuilder.java#236#      }
+com/google/javascript/jscomp/FunctionTypeBuilder.java#238#      if (!hasNonEmptyReturns) {
+com/google/javascript/jscomp/FunctionTypeBuilder.java#239#        returnType = typeRegistry.getNativeType(VOID_TYPE);
+com/google/javascript/jscomp/FunctionTypeBuilder.java#240#        returnTypeInferred = true;
+com/google/javascript/jscomp/FunctionTypeBuilder.java#241#      }
+com/google/javascript/jscomp/FunctionTypeBuilder.java#242#    }
+com/google/javascript/jscomp/FunctionTypeBuilder.java#243#    return this;
+com/google/javascript/jscomp/FunctionTypeBuilder.java#244#  }
+com/google/javascript/jscomp/FunctionTypeBuilder.java#527#          .withReturnType(returnType, returnTypeInferred)
+com/google/javascript/jscomp/TypedScopeCreator.java#577#      Node fnBlock = isFnLiteral ? parametersNode.getNext() : null;
+com/google/javascript/jscomp/TypedScopeCreator.java#618#                    .inferReturnStatements(fnBlock)
+com/google/javascript/jscomp/TypedScopeCreator.java#636#            .inferReturnStatements(fnBlock)
+com/google/javascript/rhino/jstype/FunctionBuilder.java#101#  public FunctionBuilder withReturnType(JSType returnType, boolean inferred) {
+com/google/javascript/rhino/jstype/FunctionBuilder.java#102#    this.returnType = returnType;
+com/google/javascript/rhino/jstype/FunctionBuilder.java#103#    this.inferredReturnType = inferred;
+com/google/javascript/rhino/jstype/FunctionBuilder.java#104#    return this;
+com/google/javascript/rhino/jstype/FunctionBuilder.java#105#  }
+com/google/javascript/rhino/jstype/FunctionType.java#517#        registry, null, source,

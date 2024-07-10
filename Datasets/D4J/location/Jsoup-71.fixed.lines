@@ -1,0 +1,24 @@
+org/jsoup/select/Evaluator.java#9#import org.jsoup.nodes.PseudoTextElement;
+org/jsoup/select/Evaluator.java#10#import org.jsoup.nodes.TextNode;
+org/jsoup/select/Evaluator.java#756#    public static final class MatchText extends Evaluator {
+org/jsoup/select/Evaluator.java#758#        @Override
+org/jsoup/select/Evaluator.java#759#        public boolean matches(Element root, Element element) {
+org/jsoup/select/Evaluator.java#760#            if (element instanceof PseudoTextElement)
+org/jsoup/select/Evaluator.java#761#                return true;
+org/jsoup/select/Evaluator.java#762#
+org/jsoup/select/Evaluator.java#763#            List<TextNode> textNodes = element.textNodes();
+org/jsoup/select/Evaluator.java#764#            for (TextNode textNode : textNodes) {
+org/jsoup/select/Evaluator.java#765#                PseudoTextElement pel = new PseudoTextElement(
+org/jsoup/select/Evaluator.java#766#                    org.jsoup.parser.Tag.valueOf(element.tagName()), element.baseUri(), element.attributes());
+org/jsoup/select/Evaluator.java#767#                textNode.replaceWith(pel);
+org/jsoup/select/Evaluator.java#768#                pel.appendChild(textNode);
+org/jsoup/select/Evaluator.java#769#            }
+org/jsoup/select/Evaluator.java#770#            return false;
+org/jsoup/select/Evaluator.java#771#        }
+org/jsoup/select/Evaluator.java#773#        @Override
+org/jsoup/select/Evaluator.java#774#        public String toString() {
+org/jsoup/select/Evaluator.java#775#            return ":matchText";
+org/jsoup/select/Evaluator.java#776#        }
+org/jsoup/select/Evaluator.java#777#    }
+org/jsoup/select/QueryParser.java#203#        else if (tq.matchChomp(":matchText"))
+org/jsoup/select/QueryParser.java#204#            evals.add(new Evaluator.MatchText());

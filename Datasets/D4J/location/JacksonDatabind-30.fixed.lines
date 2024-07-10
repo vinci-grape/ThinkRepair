@@ -1,0 +1,17 @@
+com/fasterxml/jackson/databind/ObjectMapper.java#2510#        if (isEnabled(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS)) {
+com/fasterxml/jackson/databind/ObjectMapper.java#2511#            buf = buf.forceUseOfBigDecimal(true);
+com/fasterxml/jackson/databind/ObjectMapper.java#2512#        }
+com/fasterxml/jackson/databind/ObjectMapper.java#3429#        if (isEnabled(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS)) {
+com/fasterxml/jackson/databind/ObjectMapper.java#3430#            buf = buf.forceUseOfBigDecimal(true);
+com/fasterxml/jackson/databind/ObjectMapper.java#3431#        }
+com/fasterxml/jackson/databind/util/TokenBuffer.java#80#    protected boolean _forceBigDecimal;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#189#        _forceBigDecimal = (ctxt == null) ? false
+com/fasterxml/jackson/databind/util/TokenBuffer.java#190#                : ctxt.isEnabled(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#196#    public TokenBuffer forceUseOfBigDecimal(boolean b) {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#197#        _forceBigDecimal = b;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#198#        return this;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#199#    }
+com/fasterxml/jackson/databind/util/TokenBuffer.java#966#            if (_forceBigDecimal) {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#972#                writeNumber(p.getDecimalValue());
+com/fasterxml/jackson/databind/util/TokenBuffer.java#973#            } else {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#983#                }

@@ -1,0 +1,7 @@
+com/fasterxml/jackson/databind/ser/PropertyBuilder.java#152#            Object defaultBean;
+com/fasterxml/jackson/databind/ser/PropertyBuilder.java#158#            if (_useRealPropertyDefaults && (defaultBean = getDefaultBean()) != null) {
+com/fasterxml/jackson/databind/ser/PropertyBuilder.java#163#                try {
+com/fasterxml/jackson/databind/ser/PropertyBuilder.java#164#                    valueToSuppress = am.getValue(defaultBean);
+com/fasterxml/jackson/databind/ser/PropertyBuilder.java#165#                } catch (Exception e) {
+com/fasterxml/jackson/databind/ser/PropertyBuilder.java#166#                    _throwWrapped(e, propDef.getName(), defaultBean);
+com/fasterxml/jackson/databind/ser/PropertyBuilder.java#167#                }

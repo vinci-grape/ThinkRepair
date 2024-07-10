@@ -1,0 +1,68 @@
+com/fasterxml/jackson/databind/MappingIterator.java#28#    protected final static int STATE_CLOSED = 0;
+com/fasterxml/jackson/databind/MappingIterator.java#33#    protected final static int STATE_NEED_RESYNC = 1;
+com/fasterxml/jackson/databind/MappingIterator.java#39#    protected final static int STATE_MAY_HAVE_VALUE = 2;
+com/fasterxml/jackson/databind/MappingIterator.java#45#    protected final static int STATE_HAS_VALUE = 3;
+com/fasterxml/jackson/databind/MappingIterator.java#73#    protected final JsonParser _parser;
+com/fasterxml/jackson/databind/MappingIterator.java#79#    protected final JsonStreamContext _seqContext;
+com/fasterxml/jackson/databind/MappingIterator.java#103#    protected int _state;
+com/fasterxml/jackson/databind/MappingIterator.java#143#        if (p == null) { // can this occur?
+com/fasterxml/jackson/databind/MappingIterator.java#144#            _seqContext = null;
+com/fasterxml/jackson/databind/MappingIterator.java#145#            _state = STATE_CLOSED;
+com/fasterxml/jackson/databind/MappingIterator.java#146#        } else {
+com/fasterxml/jackson/databind/MappingIterator.java#147#            JsonStreamContext sctxt = p.getParsingContext();
+com/fasterxml/jackson/databind/MappingIterator.java#148#            if (managedParser && p.isExpectedStartArrayToken()) {
+com/fasterxml/jackson/databind/MappingIterator.java#151#            } else {
+com/fasterxml/jackson/databind/MappingIterator.java#155#                JsonToken t = p.getCurrentToken();
+com/fasterxml/jackson/databind/MappingIterator.java#156#                if ((t == JsonToken.START_OBJECT) || (t == JsonToken.START_ARRAY)) {
+com/fasterxml/jackson/databind/MappingIterator.java#157#                    sctxt = sctxt.getParent();
+com/fasterxml/jackson/databind/MappingIterator.java#158#                }
+com/fasterxml/jackson/databind/MappingIterator.java#159#            }
+com/fasterxml/jackson/databind/MappingIterator.java#160#            _seqContext = sctxt;
+com/fasterxml/jackson/databind/MappingIterator.java#161#            _state = STATE_MAY_HAVE_VALUE;
+com/fasterxml/jackson/databind/MappingIterator.java#207#        if (_state != STATE_CLOSED) {
+com/fasterxml/jackson/databind/MappingIterator.java#208#            _state = STATE_CLOSED;
+com/fasterxml/jackson/databind/MappingIterator.java#212#        }
+com/fasterxml/jackson/databind/MappingIterator.java#231#        switch (_state) {
+com/fasterxml/jackson/databind/MappingIterator.java#232#        case STATE_CLOSED:
+com/fasterxml/jackson/databind/MappingIterator.java#234#        case STATE_NEED_RESYNC:
+com/fasterxml/jackson/databind/MappingIterator.java#235#            _resync();
+com/fasterxml/jackson/databind/MappingIterator.java#237#        case STATE_MAY_HAVE_VALUE:
+com/fasterxml/jackson/databind/MappingIterator.java#243#                    _state = STATE_CLOSED;
+com/fasterxml/jackson/databind/MappingIterator.java#244#                    if (_closeParser && (_parser != null)) {
+com/fasterxml/jackson/databind/MappingIterator.java#245#                        _parser.close();
+com/fasterxml/jackson/databind/MappingIterator.java#250#            _state = STATE_HAS_VALUE;
+com/fasterxml/jackson/databind/MappingIterator.java#251#            return true;
+com/fasterxml/jackson/databind/MappingIterator.java#252#        case STATE_HAS_VALUE:
+com/fasterxml/jackson/databind/MappingIterator.java#260#        switch (_state) {
+com/fasterxml/jackson/databind/MappingIterator.java#261#        case STATE_CLOSED:
+com/fasterxml/jackson/databind/MappingIterator.java#262#            return _throwNoSuchElement();
+com/fasterxml/jackson/databind/MappingIterator.java#263#        case STATE_NEED_RESYNC: // fall-through, will do re-sync
+com/fasterxml/jackson/databind/MappingIterator.java#264#        case STATE_MAY_HAVE_VALUE:
+com/fasterxml/jackson/databind/MappingIterator.java#268#            break;
+com/fasterxml/jackson/databind/MappingIterator.java#269#        case STATE_HAS_VALUE:
+com/fasterxml/jackson/databind/MappingIterator.java#270#            break;
+com/fasterxml/jackson/databind/MappingIterator.java#273#        int nextState = STATE_NEED_RESYNC;
+com/fasterxml/jackson/databind/MappingIterator.java#282#            nextState = STATE_MAY_HAVE_VALUE;
+com/fasterxml/jackson/databind/MappingIterator.java#285#            _state = nextState;
+com/fasterxml/jackson/databind/MappingIterator.java#382#    protected void _resync() throws IOException
+com/fasterxml/jackson/databind/MappingIterator.java#383#    {
+com/fasterxml/jackson/databind/MappingIterator.java#384#        final JsonParser p = _parser;
+com/fasterxml/jackson/databind/MappingIterator.java#386#        if (p.getParsingContext() == _seqContext) {
+com/fasterxml/jackson/databind/MappingIterator.java#387#            return;
+com/fasterxml/jackson/databind/MappingIterator.java#388#        }
+com/fasterxml/jackson/databind/MappingIterator.java#390#        while (true) {
+com/fasterxml/jackson/databind/MappingIterator.java#391#            JsonToken t = p.nextToken();
+com/fasterxml/jackson/databind/MappingIterator.java#392#            if ((t == JsonToken.END_ARRAY) || (t == JsonToken.END_OBJECT)) {
+com/fasterxml/jackson/databind/MappingIterator.java#393#                if (p.getParsingContext() == _seqContext) {
+com/fasterxml/jackson/databind/MappingIterator.java#394#                    p.clearCurrentToken();
+com/fasterxml/jackson/databind/MappingIterator.java#395#                    return;
+com/fasterxml/jackson/databind/MappingIterator.java#396#                }
+com/fasterxml/jackson/databind/MappingIterator.java#397#            } else if ((t == JsonToken.START_ARRAY) || (t == JsonToken.START_OBJECT)) {
+com/fasterxml/jackson/databind/MappingIterator.java#398#                p.skipChildren();
+com/fasterxml/jackson/databind/MappingIterator.java#399#            } else if (t == null) {
+com/fasterxml/jackson/databind/MappingIterator.java#400#                return;
+com/fasterxml/jackson/databind/MappingIterator.java#401#            }
+com/fasterxml/jackson/databind/MappingIterator.java#402#        }
+com/fasterxml/jackson/databind/MappingIterator.java#403#    }
+com/fasterxml/jackson/databind/MappingIterator.java#239#FIX_OF_OMISSION
+com/fasterxml/jackson/databind/MappingIterator.java#272#FIX_OF_OMISSION

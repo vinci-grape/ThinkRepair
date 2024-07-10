@@ -1,0 +1,2 @@
+org/jsoup/nodes/Node.java#445#            reindexChildren(index);
+org/jsoup/nodes/Node.java#447#FIX_OF_OMISSION

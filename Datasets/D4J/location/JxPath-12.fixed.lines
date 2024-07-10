@@ -1,0 +1,2 @@
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#108#                return equalStrings(namespaceURI, nodeNS) || nodeNS == null
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#109#                        && equalStrings(testPrefix, getPrefix(node));

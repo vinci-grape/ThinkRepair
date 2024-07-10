@@ -1,0 +1,29 @@
+com/google/javascript/jscomp/TypeValidator.java#110#  static final DiagnosticType HIDDEN_INTERFACE_PROPERTY_MISMATCH =
+com/google/javascript/jscomp/TypeValidator.java#111#      DiagnosticType.warning(
+com/google/javascript/jscomp/TypeValidator.java#112#        "JSC_HIDDEN_INTERFACE_PROPERTY_MISMATCH",
+com/google/javascript/jscomp/TypeValidator.java#113#        "mismatch of the {0} property type and the type " +
+com/google/javascript/jscomp/TypeValidator.java#114#        "of the property it overrides from interface {1}\n" +
+com/google/javascript/jscomp/TypeValidator.java#115#        "original: {2}\n" +
+com/google/javascript/jscomp/TypeValidator.java#116#        "override: {3}");
+com/google/javascript/jscomp/TypeValidator.java#124#      INTERFACE_METHOD_NOT_IMPLEMENTED,
+com/google/javascript/jscomp/TypeValidator.java#125#      HIDDEN_INTERFACE_PROPERTY_MISMATCH);
+com/google/javascript/jscomp/TypeValidator.java#596#    } else {
+com/google/javascript/jscomp/TypeValidator.java#597#      JSType found = instance.getPropertyType(prop);
+com/google/javascript/jscomp/TypeValidator.java#598#      JSType required
+com/google/javascript/jscomp/TypeValidator.java#599#        = implementedInterface.getImplicitPrototype().getPropertyType(prop);
+com/google/javascript/jscomp/TypeValidator.java#600#      found = found.restrictByNotNullOrUndefined();
+com/google/javascript/jscomp/TypeValidator.java#601#      required = required.restrictByNotNullOrUndefined();
+com/google/javascript/jscomp/TypeValidator.java#602#      if (!found.canAssignTo(required)) {
+com/google/javascript/jscomp/TypeValidator.java#604#        if (shouldReport) {
+com/google/javascript/jscomp/TypeValidator.java#605#          FunctionType constructor
+com/google/javascript/jscomp/TypeValidator.java#606#            = implementedInterface.toObjectType().getConstructor();
+com/google/javascript/jscomp/TypeValidator.java#607#          compiler.report(t.makeError(n,
+com/google/javascript/jscomp/TypeValidator.java#608#              HIDDEN_INTERFACE_PROPERTY_MISMATCH, prop,
+com/google/javascript/jscomp/TypeValidator.java#609#              constructor.getTopMostDefiningType(prop).toString(),
+com/google/javascript/jscomp/TypeValidator.java#610#              required.toString(), found.toString()));
+com/google/javascript/jscomp/TypeValidator.java#611#        }
+com/google/javascript/jscomp/TypeValidator.java#612#        registerMismatch(found, required);
+com/google/javascript/jscomp/TypeValidator.java#613#      }
+com/google/javascript/jscomp/TypeCheck.java#185#FIX_OF_OMISSION
+com/google/javascript/jscomp/TypeCheck.java#235#FIX_OF_OMISSION
+com/google/javascript/jscomp/TypeCheck.java#1040#FIX_OF_OMISSION

@@ -1,0 +1,11 @@
+com/fasterxml/jackson/databind/util/StdDateFormat.java#250#    @Override // since 2.7
+com/fasterxml/jackson/databind/util/StdDateFormat.java#251#    public void setLenient(boolean enabled) {
+com/fasterxml/jackson/databind/util/StdDateFormat.java#252#        Boolean newValue = enabled;
+com/fasterxml/jackson/databind/util/StdDateFormat.java#253#        if (_lenient != newValue) {
+com/fasterxml/jackson/databind/util/StdDateFormat.java#254#            _lenient = newValue;
+com/fasterxml/jackson/databind/util/StdDateFormat.java#256#            _clearFormats();
+com/fasterxml/jackson/databind/util/StdDateFormat.java#257#        }
+com/fasterxml/jackson/databind/util/StdDateFormat.java#258#    }
+com/fasterxml/jackson/databind/util/StdDateFormat.java#564#        }
+com/fasterxml/jackson/databind/util/StdDateFormat.java#565#        if (lenient != null) {
+com/fasterxml/jackson/databind/util/StdDateFormat.java#566#            df.setLenient(lenient.booleanValue());

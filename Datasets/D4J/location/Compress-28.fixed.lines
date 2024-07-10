@@ -1,0 +1,5 @@
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#585#            if (numToRead > 0) {
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#586#                throw new IOException("Truncated TAR archive");
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#587#            }
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#590#            count(totalRead);
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#583#FIX_OF_OMISSION

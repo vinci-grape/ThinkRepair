@@ -1,0 +1,2 @@
+org/jsoup/nodes/Entities.java#70#                m.appendReplacement(accum, Matcher.quoteReplacement(c));
+org/jsoup/nodes/Entities.java#72#                m.appendReplacement(accum, Matcher.quoteReplacement(m.group(0))); // replace with original string

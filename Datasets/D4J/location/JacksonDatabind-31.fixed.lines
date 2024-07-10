@@ -1,0 +1,44 @@
+com/fasterxml/jackson/databind/util/TokenBuffer.java#672#            _appendValue(JsonToken.VALUE_STRING, text);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#686#            _appendValue(JsonToken.VALUE_STRING, text);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#731#        _appendValue(JsonToken.VALUE_EMBEDDED_OBJECT, new RawValue(text));
+com/fasterxml/jackson/databind/util/TokenBuffer.java#739#        _appendValue(JsonToken.VALUE_EMBEDDED_OBJECT, new RawValue(text));
+com/fasterxml/jackson/databind/util/TokenBuffer.java#744#        _appendValue(JsonToken.VALUE_EMBEDDED_OBJECT, new String(text, offset, len));
+com/fasterxml/jackson/databind/util/TokenBuffer.java#755#        _appendValue(JsonToken.VALUE_NUMBER_INT, Short.valueOf(i));
+com/fasterxml/jackson/databind/util/TokenBuffer.java#760#        _appendValue(JsonToken.VALUE_NUMBER_INT, Integer.valueOf(i));
+com/fasterxml/jackson/databind/util/TokenBuffer.java#765#        _appendValue(JsonToken.VALUE_NUMBER_INT, Long.valueOf(l));
+com/fasterxml/jackson/databind/util/TokenBuffer.java#770#        _appendValue(JsonToken.VALUE_NUMBER_FLOAT, Double.valueOf(d));
+com/fasterxml/jackson/databind/util/TokenBuffer.java#775#        _appendValue(JsonToken.VALUE_NUMBER_FLOAT, Float.valueOf(f));
+com/fasterxml/jackson/databind/util/TokenBuffer.java#783#            _appendValue(JsonToken.VALUE_NUMBER_FLOAT, dec);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#792#            _appendValue(JsonToken.VALUE_NUMBER_INT, v);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#801#        _appendValue(JsonToken.VALUE_NUMBER_FLOAT, encodedValue);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#806#        _appendValue(state ? JsonToken.VALUE_TRUE : JsonToken.VALUE_FALSE);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#811#        _appendValue(JsonToken.VALUE_NULL);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#829#            _appendValue(JsonToken.VALUE_EMBEDDED_OBJECT, value);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#837#            _appendValue(JsonToken.VALUE_EMBEDDED_OBJECT, value);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#853#            _appendValue(JsonToken.VALUE_EMBEDDED_OBJECT, node);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1091#    protected final void _appendValue(JsonToken type)
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1092#    {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1093#        _writeContext.writeValue();
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1094#        Segment next = _hasNativeId
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1095#                ? _last.append(_appendAt, type, _objectId, _typeId)
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1096#                : _last.append(_appendAt, type);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1097#        if (next == null) {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1098#            ++_appendAt;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1099#        } else {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1100#            _last = next;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1101#            _appendAt = 1; // since we added first at 0
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1102#        }
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1103#    }
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1111#    protected final void _appendValue(JsonToken type, Object value)
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1112#    {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1113#        _writeContext.writeValue();
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1114#        Segment next = _hasNativeId
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1115#                ? _last.append(_appendAt, type, value, _objectId, _typeId)
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1116#                : _last.append(_appendAt, type, value);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1117#        if (next == null) {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1118#            ++_appendAt;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1119#        } else {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1120#            _last = next;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1121#            _appendAt = 1;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1122#        }
+com/fasterxml/jackson/databind/util/TokenBuffer.java#1123#    }

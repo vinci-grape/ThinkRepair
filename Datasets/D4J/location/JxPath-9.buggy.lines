@@ -1,0 +1,28 @@
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#121#        if (l instanceof Pointer && r instanceof Pointer) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#122#            if (l.equals(r)) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#123#                return true;
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#124#            }
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#125#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#134#        if (l == r) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#135#            return true;
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#136#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#138#            return (InfoSetUtil.booleanValue(l) == InfoSetUtil.booleanValue(r));
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#139#            }
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#141#        if (l instanceof Number || r instanceof Number) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#142#            return (InfoSetUtil.doubleValue(l) == InfoSetUtil.doubleValue(r));
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#145#            return (
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#146#                InfoSetUtil.stringValue(l).equals(InfoSetUtil.stringValue(r)));
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#148#        return l != null && l.equals(r);
+org/apache/commons/jxpath/ri/compiler/CoreOperationEqual.java#19#import org.apache.commons.jxpath.ri.EvalContext;
+org/apache/commons/jxpath/ri/compiler/CoreOperationEqual.java#32#    public Object computeValue(EvalContext context) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationEqual.java#33#        return equal(context, args[0], args[1]) ? Boolean.TRUE : Boolean.FALSE;
+org/apache/commons/jxpath/ri/compiler/CoreOperationEqual.java#34#    }
+org/apache/commons/jxpath/ri/compiler/CoreOperationNotEqual.java#19#import org.apache.commons.jxpath.ri.EvalContext;
+org/apache/commons/jxpath/ri/compiler/CoreOperationNotEqual.java#29#        super(arg1, arg2);
+org/apache/commons/jxpath/ri/compiler/CoreOperationNotEqual.java#32#    public Object computeValue(EvalContext context) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationNotEqual.java#33#        return equal(context, args[0], args[1]) ? Boolean.FALSE : Boolean.TRUE;
+org/apache/commons/jxpath/ri/compiler/CoreOperationNotEqual.java#34#    }
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#37#FAULT_OF_OMISSION
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#39#FAULT_OF_OMISSION
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#40#FAULT_OF_OMISSION
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#144#FAULT_OF_OMISSION

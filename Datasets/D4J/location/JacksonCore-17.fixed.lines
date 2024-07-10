@@ -1,0 +1,44 @@
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#528#        if (len <= buf.length) {
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#529#            text.getChars(offset, offset+len, buf, 0);
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#530#            _writeRawSegment(buf, 0, len);
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#531#            return;
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#532#        }
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#537#        final int maxChunk = (_outputEnd >> 2) + (_outputEnd >> 4); // == (1/4 + 1/16) == 5/16
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#538#        final int maxBytes = maxChunk * 3;
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#541#            int len2 = Math.min(maxChunk, len);
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#543#            if ((_outputTail + maxBytes) > _outputEnd) {
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#544#                _flushBuffer();
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#545#            }
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#548#            if (len > 0) {
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#549#                char ch = buf[len2-1];
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#550#                if ((ch >= SURR1_FIRST) && (ch <= SURR1_LAST)) {
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#551#                    --len2;
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#552#                }
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#553#            }
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#554#            _writeRawSegment(buf, 0, len2);
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#688#    private void _writeRawSegment(char[] cbuf, int offset, int end) throws IOException
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#689#    {
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#690#        main_loop:
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#691#        while (offset < end) {
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#692#            inner_loop:
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#693#            while (true) {
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#694#                int ch = (int) cbuf[offset];
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#695#                if (ch > 0x7F) {
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#696#                    break inner_loop;
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#697#                }
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#698#                _outputBuffer[_outputTail++] = (byte) ch;
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#699#                if (++offset >= end) {
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#700#                    break main_loop;
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#701#                }
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#702#            }
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#703#            char ch = cbuf[offset++];
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#704#            if (ch < 0x800) { // 2-byte?
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#705#                _outputBuffer[_outputTail++] = (byte) (0xc0 | (ch >> 6));
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#706#                _outputBuffer[_outputTail++] = (byte) (0x80 | (ch & 0x3f));
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#707#            } else {
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#708#                offset = _outputRawMultiByteChar(ch, cbuf, offset, end);
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#709#            }
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#710#        }
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#711#    }
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#1927#                    _reportError(String.format(
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#1928#"Split surrogate on writeRaw() input (last character): first character 0x%4x", ch));

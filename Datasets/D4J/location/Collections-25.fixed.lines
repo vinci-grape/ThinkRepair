@@ -1,0 +1,9 @@
+org/apache/commons/collections4/IteratorUtils.java#605#        @SuppressWarnings("unchecked")
+org/apache/commons/collections4/IteratorUtils.java#606#        final Comparator<E> comp = comparator == null ? ComparatorUtils.NATURAL_COMPARATOR : comparator;
+org/apache/commons/collections4/IteratorUtils.java#607#        return new CollatingIterator<E>(comp, iterator1, iterator2);
+org/apache/commons/collections4/IteratorUtils.java#628#        @SuppressWarnings("unchecked")
+org/apache/commons/collections4/IteratorUtils.java#629#        final Comparator<E> comp = comparator == null ? ComparatorUtils.NATURAL_COMPARATOR : comparator;
+org/apache/commons/collections4/IteratorUtils.java#630#        return new CollatingIterator<E>(comp, iterators);
+org/apache/commons/collections4/IteratorUtils.java#652#        @SuppressWarnings("unchecked")
+org/apache/commons/collections4/IteratorUtils.java#653#        final Comparator<E> comp = comparator == null ? ComparatorUtils.NATURAL_COMPARATOR : comparator;
+org/apache/commons/collections4/IteratorUtils.java#654#        return new CollatingIterator<E>(comp, iterators);

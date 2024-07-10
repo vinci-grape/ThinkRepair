@@ -1,0 +1,9 @@
+org/apache/commons/jxpath/ri/compiler/CoreFunction.java#656#        if (Double.isNaN(v) || Double.isInfinite(v)) {
+org/apache/commons/jxpath/ri/compiler/CoreFunction.java#657#        	return new Double(v);
+org/apache/commons/jxpath/ri/compiler/CoreFunction.java#658#        }
+org/apache/commons/jxpath/ri/compiler/CoreFunction.java#665#        if (Double.isNaN(v) || Double.isInfinite(v)) {
+org/apache/commons/jxpath/ri/compiler/CoreFunction.java#666#        	return new Double(v);
+org/apache/commons/jxpath/ri/compiler/CoreFunction.java#667#        }
+org/apache/commons/jxpath/ri/compiler/CoreFunction.java#674#        if (Double.isNaN(v) || Double.isInfinite(v)) {
+org/apache/commons/jxpath/ri/compiler/CoreFunction.java#675#        	return new Double(v);
+org/apache/commons/jxpath/ri/compiler/CoreFunction.java#676#        }

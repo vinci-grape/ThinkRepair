@@ -1,0 +1,38 @@
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#67#        if (format.hasPattern()) {
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#71#            SimpleDateFormat df = new SimpleDateFormat(format.getPattern(), loc);
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#72#            TimeZone tz = format.hasTimeZone() ? format.getTimeZone()
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#73#                    : serializers.getTimeZone();
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#79#        final boolean hasLocale = format.hasLocale();
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#80#        final boolean hasTZ = format.hasTimeZone();
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#81#        final boolean asString = (shape == JsonFormat.Shape.STRING);
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#83#        if (!hasLocale && !hasTZ && !asString) {
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#84#            return this;
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#85#        }
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#87#        DateFormat df0 = serializers.getConfig().getDateFormat();
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#89#        if (df0 instanceof StdDateFormat) {
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#90#            StdDateFormat std = (StdDateFormat) df0;
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#91#            if (format.hasLocale()) {
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#92#                std = std.withLocale(format.getLocale());
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#93#            }
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#94#            if (format.hasTimeZone()) {
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#95#                std = std.withTimeZone(format.getTimeZone());
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#96#            }
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#97#            return withFormat(Boolean.FALSE, std);
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#98#        }
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#103#        if (!(df0 instanceof SimpleDateFormat)) {
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#105#            serializers.reportMappingProblem(
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#106#"Configured `DateFormat` (%s) not a `SimpleDateFormat`; can not configure `Locale` or `TimeZone`",
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#107#df0.getClass().getName());
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#108#        }
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#109#        SimpleDateFormat df = (SimpleDateFormat) df0;
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#110#        if (hasLocale) {
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#112#            df = new SimpleDateFormat(df.toPattern(), format.getLocale());
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#113#        } else {
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#114#            df = (SimpleDateFormat) df.clone();
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#115#        }
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#116#        TimeZone newTz = format.getTimeZone();
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#117#        boolean changeTZ = (newTz != null) && !newTz.equals(df.getTimeZone());
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#118#        if (changeTZ) {
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#119#            df.setTimeZone(newTz);
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#120#        }
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#121#        return withFormat(Boolean.FALSE, df);

@@ -1,0 +1,24 @@
+com/google/javascript/jscomp/CollapseProperties.java#455#    if (n.canCollapse()) {
+com/google/javascript/jscomp/CollapseProperties.java#456#      updateObjLitOrFunctionDeclaration(n, alias, canCollapseChildNames);
+com/google/javascript/jscomp/CollapseProperties.java#574#  private void updateObjLitOrFunctionDeclaration(
+com/google/javascript/jscomp/CollapseProperties.java#575#      Name n, String alias, boolean canCollapseChildNames) {
+com/google/javascript/jscomp/CollapseProperties.java#590#        updateObjLitOrFunctionDeclarationAtAssignNode(
+com/google/javascript/jscomp/CollapseProperties.java#591#            n, alias, canCollapseChildNames);
+com/google/javascript/jscomp/CollapseProperties.java#594#        updateObjLitOrFunctionDeclarationAtVarNode(n, canCollapseChildNames);
+com/google/javascript/jscomp/CollapseProperties.java#597#        updateFunctionDeclarationAtFunctionNode(n, canCollapseChildNames);
+com/google/javascript/jscomp/CollapseProperties.java#611#      Name n, String alias, boolean canCollapseChildNames) {
+com/google/javascript/jscomp/CollapseProperties.java#655#    if (canCollapseChildNames) {
+com/google/javascript/jscomp/CollapseProperties.java#656#      if (isObjLit) {
+com/google/javascript/jscomp/CollapseProperties.java#660#      }
+com/google/javascript/jscomp/CollapseProperties.java#662#      addStubsForUndeclaredProperties(n, alias, varParent, varNode);
+com/google/javascript/jscomp/CollapseProperties.java#703#  private void updateObjLitOrFunctionDeclarationAtVarNode(
+com/google/javascript/jscomp/CollapseProperties.java#704#      Name n, boolean canCollapseChildNames) {
+com/google/javascript/jscomp/CollapseProperties.java#705#    if (!canCollapseChildNames) {
+com/google/javascript/jscomp/CollapseProperties.java#706#      return;
+com/google/javascript/jscomp/CollapseProperties.java#707#    }
+com/google/javascript/jscomp/CollapseProperties.java#750#  private void updateFunctionDeclarationAtFunctionNode(
+com/google/javascript/jscomp/CollapseProperties.java#751#      Name n, boolean canCollapseChildNames) {
+com/google/javascript/jscomp/CollapseProperties.java#752#    if (!canCollapseChildNames) {
+com/google/javascript/jscomp/CollapseProperties.java#753#      return;
+com/google/javascript/jscomp/CollapseProperties.java#754#    }
+com/google/javascript/jscomp/CollapseProperties.java#664#FIX_OF_OMISSION

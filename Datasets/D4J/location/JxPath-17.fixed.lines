@@ -1,0 +1,11 @@
+org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java#84#            if (testPrefix == null || equalStrings(testPrefix, nodePrefix)) {
+org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java#87#            if (nodePrefix == null) {
+org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java#88#                return false;
+org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java#90#            return equalStrings(parent.getNamespaceURI(testPrefix), parent
+org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java#91#                    .getNamespaceURI(nodePrefix));
+org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java#151#}
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#80#                    if (ns == Namespace.NO_NAMESPACE
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#81#                            || attr.getNamespace().equals(ns)) {
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#116#}
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#70#FIX_OF_OMISSION
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#73#FIX_OF_OMISSION

@@ -1,0 +1,1 @@
+org/jsoup/nodes/Attributes.java#319#            if (!Attribute.shouldCollapseAttribute(key, val, out)) {

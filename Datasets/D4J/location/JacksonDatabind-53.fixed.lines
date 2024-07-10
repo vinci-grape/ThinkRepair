@@ -1,0 +1,77 @@
+com/fasterxml/jackson/databind/type/TypeBindings.java#302#    public Object asKey(Class<?> rawBase) {
+com/fasterxml/jackson/databind/type/TypeBindings.java#305#        return new AsKey(rawBase, _types, _hashCode);
+com/fasterxml/jackson/databind/type/TypeBindings.java#306#    }
+com/fasterxml/jackson/databind/type/TypeBindings.java#431#    final static class AsKey {
+com/fasterxml/jackson/databind/type/TypeBindings.java#432#        private final Class<?> _raw;
+com/fasterxml/jackson/databind/type/TypeBindings.java#433#        private final JavaType[] _params;
+com/fasterxml/jackson/databind/type/TypeBindings.java#434#        private final int _hash;
+com/fasterxml/jackson/databind/type/TypeBindings.java#435#
+com/fasterxml/jackson/databind/type/TypeBindings.java#436#        public AsKey(Class<?> raw, JavaType[] params, int hash) {
+com/fasterxml/jackson/databind/type/TypeBindings.java#437#            _raw = raw ;
+com/fasterxml/jackson/databind/type/TypeBindings.java#438#            _params = params;
+com/fasterxml/jackson/databind/type/TypeBindings.java#439#            _hash = hash;
+com/fasterxml/jackson/databind/type/TypeBindings.java#440#        }
+com/fasterxml/jackson/databind/type/TypeBindings.java#442#        @Override
+com/fasterxml/jackson/databind/type/TypeBindings.java#443#        public int hashCode() { return _hash; }
+com/fasterxml/jackson/databind/type/TypeBindings.java#444#
+com/fasterxml/jackson/databind/type/TypeBindings.java#445#        @Override
+com/fasterxml/jackson/databind/type/TypeBindings.java#446#        public boolean equals(Object o) {
+com/fasterxml/jackson/databind/type/TypeBindings.java#447#            if (o == this) return true;
+com/fasterxml/jackson/databind/type/TypeBindings.java#448#            if (o == null) return false;
+com/fasterxml/jackson/databind/type/TypeBindings.java#449#            if (o.getClass() != getClass()) return false;
+com/fasterxml/jackson/databind/type/TypeBindings.java#450#            AsKey other = (AsKey) o;
+com/fasterxml/jackson/databind/type/TypeBindings.java#451#
+com/fasterxml/jackson/databind/type/TypeBindings.java#452#            if ((_hash == other._hash) && (_raw == other._raw)) {
+com/fasterxml/jackson/databind/type/TypeBindings.java#453#                final JavaType[] otherParams = other._params;
+com/fasterxml/jackson/databind/type/TypeBindings.java#454#                final int len = _params.length;
+com/fasterxml/jackson/databind/type/TypeBindings.java#455#
+com/fasterxml/jackson/databind/type/TypeBindings.java#456#                if (len == otherParams.length) {
+com/fasterxml/jackson/databind/type/TypeBindings.java#457#                    for (int i = 0; i < len; ++i) {
+com/fasterxml/jackson/databind/type/TypeBindings.java#458#                        if (!_params[i].equals(otherParams[i])) {
+com/fasterxml/jackson/databind/type/TypeBindings.java#459#                            return false;
+com/fasterxml/jackson/databind/type/TypeBindings.java#460#                        }
+com/fasterxml/jackson/databind/type/TypeBindings.java#461#                    }
+com/fasterxml/jackson/databind/type/TypeBindings.java#462#                    return true;
+com/fasterxml/jackson/databind/type/TypeBindings.java#463#                }
+com/fasterxml/jackson/databind/type/TypeBindings.java#464#            }
+com/fasterxml/jackson/databind/type/TypeBindings.java#465#            return false;
+com/fasterxml/jackson/databind/type/TypeBindings.java#466#        }
+com/fasterxml/jackson/databind/type/TypeBindings.java#468#        @Override
+com/fasterxml/jackson/databind/type/TypeBindings.java#469#        public String toString() {
+com/fasterxml/jackson/databind/type/TypeBindings.java#470#            return _raw.getName()+"<>";
+com/fasterxml/jackson/databind/type/TypeBindings.java#471#        }
+com/fasterxml/jackson/databind/type/TypeBindings.java#472#    }
+com/fasterxml/jackson/databind/type/TypeFactory.java#117#    protected final LRUMap<Object,JavaType> _typeCache = new LRUMap<Object,JavaType>(16, 100);
+com/fasterxml/jackson/databind/type/TypeFactory.java#385#            TypeBindings tb = _bindingsForSubtype(baseType, typeParamCount, subclass);
+com/fasterxml/jackson/databind/type/TypeFactory.java#387#                newType = baseType.refine(subclass, tb, null, new JavaType[] { baseType });
+com/fasterxml/jackson/databind/type/TypeFactory.java#389#                newType = baseType.refine(subclass, tb, baseType, NO_TYPES);
+com/fasterxml/jackson/databind/type/TypeFactory.java#393#                newType = _fromClass(null, subclass, tb);
+com/fasterxml/jackson/databind/type/TypeFactory.java#447#    private TypeBindings _bindingsForSubtype(JavaType baseType, int typeParamCount, Class<?> subclass)
+com/fasterxml/jackson/databind/type/TypeFactory.java#448#    {
+com/fasterxml/jackson/databind/type/TypeFactory.java#451#        int baseCount = baseType.containedTypeCount();
+com/fasterxml/jackson/databind/type/TypeFactory.java#452#        if (baseCount == typeParamCount) {
+com/fasterxml/jackson/databind/type/TypeFactory.java#453#            if (typeParamCount == 1) {
+com/fasterxml/jackson/databind/type/TypeFactory.java#454#                return TypeBindings.create(subclass, baseType.containedType(0));
+com/fasterxml/jackson/databind/type/TypeFactory.java#455#            }
+com/fasterxml/jackson/databind/type/TypeFactory.java#456#            if (typeParamCount == 2) {
+com/fasterxml/jackson/databind/type/TypeFactory.java#457#                return TypeBindings.create(subclass, baseType.containedType(0),
+com/fasterxml/jackson/databind/type/TypeFactory.java#458#                        baseType.containedType(1));
+com/fasterxml/jackson/databind/type/TypeFactory.java#459#            }
+com/fasterxml/jackson/databind/type/TypeFactory.java#460#            List<JavaType> types = new ArrayList<JavaType>(baseCount);
+com/fasterxml/jackson/databind/type/TypeFactory.java#461#            for (int i = 0; i < baseCount; ++i) {
+com/fasterxml/jackson/databind/type/TypeFactory.java#462#                types.add(baseType.containedType(i));
+com/fasterxml/jackson/databind/type/TypeFactory.java#463#            }
+com/fasterxml/jackson/databind/type/TypeFactory.java#464#            return TypeBindings.create(subclass, types);
+com/fasterxml/jackson/databind/type/TypeFactory.java#465#        }
+com/fasterxml/jackson/databind/type/TypeFactory.java#467#        return TypeBindings.emptyBindings();
+com/fasterxml/jackson/databind/type/TypeFactory.java#468#    }
+com/fasterxml/jackson/databind/type/TypeFactory.java#1170#        final Object key;
+com/fasterxml/jackson/databind/type/TypeFactory.java#1171#        if ((bindings == null) || bindings.isEmpty()) {
+com/fasterxml/jackson/databind/type/TypeFactory.java#1172#            key = rawType;
+com/fasterxml/jackson/databind/type/TypeFactory.java#1173#            result = _typeCache.get(key); // ok, cache object is synced
+com/fasterxml/jackson/databind/type/TypeFactory.java#1174#        } else {
+com/fasterxml/jackson/databind/type/TypeFactory.java#1175#            key = bindings.asKey(rawType);
+com/fasterxml/jackson/databind/type/TypeFactory.java#1176#        }
+com/fasterxml/jackson/databind/type/TypeFactory.java#1177#        result = _typeCache.get(key); // ok, cache object is synced
+com/fasterxml/jackson/databind/type/TypeFactory.java#1239#        _typeCache.putIfAbsent(key, result); // cache object syncs
+com/fasterxml/jackson/databind/type/TypeFactory.java#1180#FIX_OF_OMISSION

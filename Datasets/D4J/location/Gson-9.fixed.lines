@@ -1,0 +1,17 @@
+com/google/gson/internal/bind/JsonTreeWriter.java#162#  @Override public JsonWriter value(Boolean value) throws IOException {
+com/google/gson/internal/bind/JsonTreeWriter.java#163#    if (value == null) {
+com/google/gson/internal/bind/JsonTreeWriter.java#164#      return nullValue();
+com/google/gson/internal/bind/JsonTreeWriter.java#165#    }
+com/google/gson/internal/bind/JsonTreeWriter.java#166#    put(new JsonPrimitive(value));
+com/google/gson/internal/bind/JsonTreeWriter.java#167#    return this;
+com/google/gson/internal/bind/JsonTreeWriter.java#168#  }
+com/google/gson/stream/JsonWriter.java#476#  public JsonWriter value(Boolean value) throws IOException {
+com/google/gson/stream/JsonWriter.java#477#    if (value == null) {
+com/google/gson/stream/JsonWriter.java#478#      return nullValue();
+com/google/gson/stream/JsonWriter.java#479#    }
+com/google/gson/stream/JsonWriter.java#480#    writeDeferredName();
+com/google/gson/stream/JsonWriter.java#481#    beforeValue();
+com/google/gson/stream/JsonWriter.java#482#    out.write(value ? "true" : "false");
+com/google/gson/stream/JsonWriter.java#483#    return this;
+com/google/gson/stream/JsonWriter.java#484#  }
+com/google/gson/internal/bind/TypeAdapters.java#165#FIX_OF_OMISSION

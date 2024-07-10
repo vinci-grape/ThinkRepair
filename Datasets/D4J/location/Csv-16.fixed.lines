@@ -1,0 +1,7 @@
+org/apache/commons/csv/CSVParser.java#289#    private final CSVRecordIterator csvRecordIterator;
+org/apache/commons/csv/CSVParser.java#358#        this.csvRecordIterator = new CSVRecordIterator();
+org/apache/commons/csv/CSVParser.java#525#        return csvRecordIterator;
+org/apache/commons/csv/CSVParser.java#526#    }
+org/apache/commons/csv/CSVParser.java#527#    
+org/apache/commons/csv/CSVParser.java#528#    class CSVRecordIterator implements Iterator<CSVRecord> {
+org/apache/commons/csv/CSVParser.java#576#FIX_OF_OMISSION

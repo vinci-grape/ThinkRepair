@@ -1,0 +1,15 @@
+org/apache/commons/cli/PosixParser.java#41#    private Option currentOption;
+org/apache/commons/cli/PosixParser.java#117#                    processNonOptionToken(token, stopAtNonOption);
+org/apache/commons/cli/PosixParser.java#121#                    currentOption = options.getOption(opt);
+org/apache/commons/cli/PosixParser.java#150#                processNonOptionToken(token, stopAtNonOption);
+org/apache/commons/cli/PosixParser.java#182#    private void processNonOptionToken(String value, boolean stopAtNonOption)
+org/apache/commons/cli/PosixParser.java#184#        if (stopAtNonOption && (currentOption == null || !currentOption.hasArg()))
+org/apache/commons/cli/PosixParser.java#185#        {
+org/apache/commons/cli/PosixParser.java#188#        }
+org/apache/commons/cli/PosixParser.java#212#        if (options.hasOption(token))
+org/apache/commons/cli/PosixParser.java#213#        {
+org/apache/commons/cli/PosixParser.java#214#            currentOption = options.getOption(token);
+org/apache/commons/cli/PosixParser.java#215#        }
+org/apache/commons/cli/PosixParser.java#266#                processNonOptionToken(token.substring(i), true);
+org/apache/commons/cli/PosixParser.java#148#FIX_OF_OMISSION
+org/apache/commons/cli/PosixParser.java#248#FIX_OF_OMISSION

@@ -1,0 +1,4 @@
+org/apache/commons/csv/CSVParser.java#32#import java.util.Arrays;
+org/apache/commons/csv/CSVParser.java#372#                    if (hdrMap.containsKey(header[i])) {
+org/apache/commons/csv/CSVParser.java#373#                        throw new IllegalStateException("The header contains duplicate names: " + Arrays.toString(header));
+org/apache/commons/csv/CSVParser.java#374#                    }

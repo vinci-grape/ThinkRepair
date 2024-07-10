@@ -1,0 +1,2 @@
+org/jsoup/helper/DataUtil.java#98#            if (docData.charAt(0) == 65279)
+org/jsoup/helper/DataUtil.java#99#                docData = docData.substring(1);

@@ -1,0 +1,3 @@
+org/apache/commons/csv/CSVPrinter.java#70#        if (format.getHeader() != null) {
+org/apache/commons/csv/CSVPrinter.java#71#            this.printRecord((Object[]) format.getHeader());
+org/apache/commons/csv/CSVPrinter.java#72#        }

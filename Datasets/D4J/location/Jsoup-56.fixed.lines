@@ -1,0 +1,25 @@
+org/jsoup/nodes/DocumentType.java#15#    private static final String PUB_SYS_KEY = "pubSysKey"; // PUBLIC or SYSTEM
+org/jsoup/nodes/DocumentType.java#32#        if (has(PUBLIC_ID)) {
+org/jsoup/nodes/DocumentType.java#33#            attr(PUB_SYS_KEY, PUBLIC_KEY);
+org/jsoup/nodes/DocumentType.java#34#        }
+org/jsoup/nodes/DocumentType.java#45#    public DocumentType(String name, String pubSysKey, String publicId, String systemId, String baseUri) {
+org/jsoup/nodes/DocumentType.java#46#        super(baseUri);
+org/jsoup/nodes/DocumentType.java#48#        attr(NAME, name);
+org/jsoup/nodes/DocumentType.java#49#        if (pubSysKey != null) {
+org/jsoup/nodes/DocumentType.java#50#            attr(PUB_SYS_KEY, pubSysKey);
+org/jsoup/nodes/DocumentType.java#51#        }
+org/jsoup/nodes/DocumentType.java#52#        attr(PUBLIC_ID, publicId);
+org/jsoup/nodes/DocumentType.java#53#        attr(SYSTEM_ID, systemId);
+org/jsoup/nodes/DocumentType.java#54#    }
+org/jsoup/nodes/DocumentType.java#71#        if (has(PUB_SYS_KEY))
+org/jsoup/nodes/DocumentType.java#72#            accum.append(" ").append(attr(PUB_SYS_KEY));
+org/jsoup/nodes/DocumentType.java#74#            accum.append(" \"").append(attr(PUBLIC_ID)).append('"');
+org/jsoup/parser/HtmlTreeBuilderState.java#23#                    tb.settings.normalizeTag(d.getName()), d.getPubSysKey(), d.getPublicIdentifier(), d.getSystemIdentifier(), tb.getBaseUri());
+org/jsoup/parser/Token.java#35#        String pubSysKey = null;
+org/jsoup/parser/Token.java#47#            pubSysKey = null;
+org/jsoup/parser/Token.java#58#        String getPubSysKey() {
+org/jsoup/parser/Token.java#59#            return pubSysKey;
+org/jsoup/parser/Token.java#60#        }
+org/jsoup/parser/TokeniserState.java#1195#                t.doctypePending.pubSysKey = DocumentType.PUBLIC_KEY;
+org/jsoup/parser/TokeniserState.java#1198#                t.doctypePending.pubSysKey = DocumentType.SYSTEM_KEY;
+org/jsoup/parser/XmlTreeBuilder.java#100#        DocumentType doctypeNode = new DocumentType(settings.normalizeTag(d.getName()), d.getPubSysKey(), d.getPublicIdentifier(), d.getSystemIdentifier(), baseUri);

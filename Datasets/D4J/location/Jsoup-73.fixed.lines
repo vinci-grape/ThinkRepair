@@ -1,0 +1,7 @@
+org/jsoup/helper/W3CDom.java#22#import java.util.Stack;
+org/jsoup/helper/W3CDom.java#74#        private final Stack<HashMap<String, String>> namespacesStack = new Stack<>(); // stack of namespaces, prefix => urn
+org/jsoup/helper/W3CDom.java#79#            this.namespacesStack.push(new HashMap<String, String>());
+org/jsoup/helper/W3CDom.java#83#            namespacesStack.push(new HashMap<>(namespacesStack.peek())); // inherit from above on the stack
+org/jsoup/helper/W3CDom.java#88#                String namespace = namespacesStack.peek().get(prefix);
+org/jsoup/helper/W3CDom.java#119#            namespacesStack.pop();
+org/jsoup/helper/W3CDom.java#148#                namespacesStack.peek().put(prefix, attr.getValue());

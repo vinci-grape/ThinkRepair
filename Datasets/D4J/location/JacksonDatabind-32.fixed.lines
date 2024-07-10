@@ -1,0 +1,3 @@
+com/fasterxml/jackson/databind/deser/std/UntypedObjectDeserializer.java#221#        case JsonTokenId.ID_END_OBJECT:
+com/fasterxml/jackson/databind/deser/std/UntypedObjectDeserializer.java#536#            case JsonTokenId.ID_END_OBJECT:
+com/fasterxml/jackson/databind/deser/std/UntypedObjectDeserializer.java#539#                return new LinkedHashMap<String,Object>(2);

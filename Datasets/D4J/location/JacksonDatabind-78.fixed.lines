@@ -1,0 +1,25 @@
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#48#    protected final static Set<String> DEFAULT_NO_DESER_CLASS_NAMES;
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#49#    static {
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#50#        Set<String> s = new HashSet<>();
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#53#        s.add("org.apache.commons.collections.functors.InvokerTransformer");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#54#        s.add("org.apache.commons.collections.functors.InstantiateTransformer");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#55#        s.add("org.apache.commons.collections4.functors.InvokerTransformer");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#56#        s.add("org.apache.commons.collections4.functors.InstantiateTransformer");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#57#        s.add("org.codehaus.groovy.runtime.ConvertedClosure");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#58#        s.add("org.codehaus.groovy.runtime.MethodClosure");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#59#        s.add("org.springframework.beans.factory.ObjectFactory");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#60#        s.add("com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#61#        DEFAULT_NO_DESER_CLASS_NAMES = Collections.unmodifiableSet(s);
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#62#    }
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#69#    protected Set<String> _cfgIllegalClassNames = DEFAULT_NO_DESER_CLASS_NAMES;
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#170#        checkIllegalTypes(ctxt, type, beanDesc);
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#893#    protected void checkIllegalTypes(DeserializationContext ctxt, JavaType type,
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#894#            BeanDescription beanDesc)
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#895#        throws JsonMappingException
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#896#    {
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#899#        String full = type.getRawClass().getName();
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#901#        if (_cfgIllegalClassNames.contains(full)) {
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#902#            ctxt.reportBadTypeDefinition(beanDesc,
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#903#                    "Illegal type (%s) to deserialize: prevented for security reasons", full);
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#904#        }
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#905#    }

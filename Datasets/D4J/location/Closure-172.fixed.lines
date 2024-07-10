@@ -1,0 +1,6 @@
+com/google/javascript/jscomp/TypedScopeCreator.java#1670#        String className = qName.substring(0, qName.lastIndexOf(".prototype"));
+com/google/javascript/jscomp/TypedScopeCreator.java#1671#        Var slot = scope.getSlot(className);
+com/google/javascript/jscomp/TypedScopeCreator.java#1672#        JSType classType = slot == null ? null : slot.getType();
+com/google/javascript/jscomp/TypedScopeCreator.java#1673#        if (classType != null
+com/google/javascript/jscomp/TypedScopeCreator.java#1674#            && (classType.isConstructor() || classType.isInterface())) {
+com/google/javascript/jscomp/TypedScopeCreator.java#1676#        }

@@ -1,0 +1,12 @@
+com/fasterxml/jackson/core/base/GeneratorBase.java#53#    protected final static int MAX_BIG_DECIMAL_SCALE = 9999;
+com/fasterxml/jackson/core/base/GeneratorBase.java#435#        if (Feature.WRITE_BIGDECIMAL_AS_PLAIN.enabledIn(_features)) {
+com/fasterxml/jackson/core/base/GeneratorBase.java#437#            int scale = value.scale();
+com/fasterxml/jackson/core/base/GeneratorBase.java#438#            if ((scale < -MAX_BIG_DECIMAL_SCALE) || (scale > MAX_BIG_DECIMAL_SCALE)) {
+com/fasterxml/jackson/core/base/GeneratorBase.java#439#                _reportError(String.format(
+com/fasterxml/jackson/core/base/GeneratorBase.java#440#"Attempt to write plain `java.math.BigDecimal` (see JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN) with illegal scale (%d): needs to be between [-%d, %d]",
+com/fasterxml/jackson/core/base/GeneratorBase.java#441#scale, MAX_BIG_DECIMAL_SCALE, MAX_BIG_DECIMAL_SCALE));
+com/fasterxml/jackson/core/base/GeneratorBase.java#442#            }
+com/fasterxml/jackson/core/base/GeneratorBase.java#443#            return value.toPlainString();
+com/fasterxml/jackson/core/base/GeneratorBase.java#444#        }
+com/fasterxml/jackson/core/json/UTF8JsonGenerator.java#910#            _writeQuotedRaw(_asString(value));
+com/fasterxml/jackson/core/json/WriterBasedJsonGenerator.java#687#            _writeQuotedRaw(_asString(value));

@@ -1,0 +1,2 @@
+org/apache/commons/codec/binary/Base64.java#419#FIX_OF_OMISSION
+org/apache/commons/codec/binary/Base64InputStream.java#169#FIX_OF_OMISSION

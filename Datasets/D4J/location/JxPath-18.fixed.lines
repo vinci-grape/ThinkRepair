@@ -1,0 +1,16 @@
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#19#import org.apache.commons.jxpath.ri.Compiler;
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#24#import org.apache.commons.jxpath.ri.compiler.NodeTypeTest;
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#35#    private static final NodeNameTest WILDCARD_TEST = new NodeNameTest(new QName(null, "*"));
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#78#            NodeNameTest nodeNameTest = null;
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#79#            if (nodeTest instanceof NodeTypeTest) {
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#80#                if (((NodeTypeTest) nodeTest).getNodeType() == Compiler.NODE_TYPE_NODE) {
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#81#                    nodeNameTest = WILDCARD_TEST;
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#82#                }
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#83#            }
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#84#            else if (nodeTest instanceof NodeNameTest) {
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#85#                nodeNameTest = (NodeNameTest) nodeTest;
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#86#            }
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#87#            if (nodeNameTest == null) {
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#90#            iterator = parentContext.getCurrentNodePointer().attributeIterator(
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#91#                    nodeNameTest.getNodeName());
+org/apache/commons/jxpath/ri/axes/AttributeContext.java#102#}

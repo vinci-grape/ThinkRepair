@@ -1,0 +1,14 @@
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#415#                && supportsDataDescriptorFor(ze)
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#416#                && supportsCompressedSizeFor(ze);
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#441#        if (!supportsCompressedSizeFor(current.entry)) {
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#442#            throw new UnsupportedZipFeatureException(UnsupportedZipFeatureException.Feature.UNKNOWN_COMPRESSED_SIZE,
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#443#                    current.entry);
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#444#        }
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#814#    private boolean supportsCompressedSizeFor(final ZipArchiveEntry entry) {
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#815#        return entry.getCompressedSize() != ArchiveEntry.SIZE_UNKNOWN
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#816#            || entry.getMethod() == ZipEntry.DEFLATED
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#817#            || entry.getMethod() == ZipMethod.ENHANCED_DEFLATED.getCode()
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#818#            || (entry.getGeneralPurposeBit().usesDataDescriptor()
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#819#                && allowStoredEntriesWithDataDescriptor
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#820#                && entry.getMethod() == ZipEntry.STORED);
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#821#    }

@@ -1,0 +1,18 @@
+com/fasterxml/jackson/core/base/ParserBase.java#869#        if (expType == NR_INT) {
+com/fasterxml/jackson/core/base/ParserBase.java#870#            reportOverflowInt(rawNum);
+com/fasterxml/jackson/core/base/ParserBase.java#871#        } else {
+com/fasterxml/jackson/core/base/ParserBase.java#872#            reportOverflowLong(rawNum);
+com/fasterxml/jackson/core/base/ParserBase.java#873#        }
+com/fasterxml/jackson/core/base/ParserBase.java#889#                reportOverflowInt(getText(), currentToken());
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#565#        reportOverflowInt(numDesc, JsonToken.VALUE_NUMBER_INT);
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#569#    protected void reportOverflowInt(String numDesc, JsonToken inputType) throws IOException {
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#570#        _reportInputCoercion(String.format("Numeric value (%s) out of range of int (%d - %s)",
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#571#                _longIntegerDesc(numDesc), Integer.MIN_VALUE, Integer.MAX_VALUE),
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#572#                inputType, Integer.TYPE);
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#573#    }
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#586#        reportOverflowLong(numDesc, JsonToken.VALUE_NUMBER_INT);
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#590#    protected void reportOverflowLong(String numDesc, JsonToken inputType) throws IOException {
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#591#        _reportInputCoercion(String.format("Numeric value (%s) out of range of long (%d - %s)",
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#592#                _longIntegerDesc(numDesc), Long.MIN_VALUE, Long.MAX_VALUE),
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#593#                inputType, Long.TYPE);
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#594#    }

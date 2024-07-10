@@ -1,0 +1,6 @@
+org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.java#331#        if (CpioUtil.fileType(mode) != 0){ // mode is initialised to 0
+org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.java#347#        if (CpioUtil.fileType(mode) == 0 && !name.equals(CPIO_TRAILER)){
+org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.java#361#        if (CpioUtil.fileType(mode) != 0) {
+org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.java#373#        if (CpioUtil.fileType(mode) == 0 && !name.equals(CPIO_TRAILER)){
+org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.java#387#        if (CpioUtil.fileType(mode) != 0){
+org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.java#399#        if (CpioUtil.fileType(mode) == 0 && !name.equals(CPIO_TRAILER)){

@@ -1,0 +1,4 @@
+com/google/javascript/jscomp/CodeConsumer.java#241#    if ((long) x == x && !isNegativeZero(x)) {
+com/google/javascript/jscomp/CodeConsumer.java#259#  }
+com/google/javascript/jscomp/CodeConsumer.java#261#  static boolean isNegativeZero(double x) {
+com/google/javascript/jscomp/CodeConsumer.java#262#    return x == 0.0 && Math.copySign(1, x) == -1.0;

@@ -1,0 +1,4 @@
+org/jsoup/nodes/DocumentType.java#4#import org.jsoup.helper.Validate;
+org/jsoup/nodes/DocumentType.java#22#        Validate.notEmpty(name);
+org/jsoup/nodes/DocumentType.java#35#        accum.append("<!DOCTYPE ").append(attr("name"));
+org/jsoup/nodes/DocumentType.java#39#            accum.append(" \"").append(attr("systemId")).append("\"");

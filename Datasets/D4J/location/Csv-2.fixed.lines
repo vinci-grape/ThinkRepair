@@ -1,0 +1,7 @@
+org/apache/commons/csv/CSVRecord.java#85#        try {
+org/apache/commons/csv/CSVRecord.java#87#        } catch (ArrayIndexOutOfBoundsException e) {
+org/apache/commons/csv/CSVRecord.java#88#            throw new IllegalArgumentException(
+org/apache/commons/csv/CSVRecord.java#89#                    String.format(
+org/apache/commons/csv/CSVRecord.java#90#                            "Index for header '%s' is %d but CSVRecord only has %d values!",
+org/apache/commons/csv/CSVRecord.java#91#                            name, index.intValue(), values.length));
+org/apache/commons/csv/CSVRecord.java#92#        }

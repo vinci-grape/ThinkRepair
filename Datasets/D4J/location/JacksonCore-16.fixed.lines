@@ -1,0 +1,14 @@
+com/fasterxml/jackson/core/util/JsonParserSequence.java#35#    protected boolean _suppressNextToken;
+com/fasterxml/jackson/core/util/JsonParserSequence.java#46#        _suppressNextToken = delegate.hasCurrentToken();
+com/fasterxml/jackson/core/util/JsonParserSequence.java#106#    public JsonToken nextToken() throws IOException
+com/fasterxml/jackson/core/util/JsonParserSequence.java#108#        if (delegate == null) {
+com/fasterxml/jackson/core/util/JsonParserSequence.java#109#            return null;
+com/fasterxml/jackson/core/util/JsonParserSequence.java#110#        }
+com/fasterxml/jackson/core/util/JsonParserSequence.java#111#        if (_suppressNextToken) {
+com/fasterxml/jackson/core/util/JsonParserSequence.java#112#            _suppressNextToken = false;
+com/fasterxml/jackson/core/util/JsonParserSequence.java#113#            return delegate.currentToken();
+com/fasterxml/jackson/core/util/JsonParserSequence.java#114#        }
+com/fasterxml/jackson/core/util/JsonParserSequence.java#116#        while ((t == null) && switchToNext()) {
+com/fasterxml/jackson/core/util/JsonParserSequence.java#117#            t = delegate.hasCurrentToken()
+com/fasterxml/jackson/core/util/JsonParserSequence.java#118#                    ? delegate.currentToken() : delegate.nextToken();
+com/fasterxml/jackson/core/util/JsonParserSequence.java#120#        return t;

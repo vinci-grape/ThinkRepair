@@ -1,0 +1,4 @@
+org/apache/commons/cli2/option/GroupImpl.java#258#                validate = true;
+org/apache/commons/cli2/option/GroupImpl.java#259#            }
+org/apache/commons/cli2/option/GroupImpl.java#261#            if (validate) {
+org/apache/commons/cli2/option/GroupImpl.java#250#FIX_OF_OMISSION

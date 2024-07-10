@@ -1,0 +1,5 @@
+com/fasterxml/jackson/databind/deser/std/JdkDeserializers.java#22#                ByteBuffer.class,
+com/fasterxml/jackson/databind/deser/std/JdkDeserializers.java#23#                Void.class
+com/fasterxml/jackson/databind/deser/std/JdkDeserializers.java#48#            }
+com/fasterxml/jackson/databind/deser/std/JdkDeserializers.java#49#            if (rawType == Void.class) {
+com/fasterxml/jackson/databind/deser/std/JdkDeserializers.java#50#                return NullifyingDeserializer.instance;

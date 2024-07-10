@@ -1,0 +1,15 @@
+org/jsoup/helper/DataUtil.java#93#        byteData.mark();
+org/jsoup/helper/DataUtil.java#94#        byte[] bom = new byte[4];
+org/jsoup/helper/DataUtil.java#95#        byteData.get(bom);
+org/jsoup/helper/DataUtil.java#96#        byteData.rewind();
+org/jsoup/helper/DataUtil.java#97#        if (bom[0] == 0x00 && bom[1] == 0x00 && bom[2] == (byte) 0xFE && bom[3] == (byte) 0xFF || // BE
+org/jsoup/helper/DataUtil.java#98#                bom[0] == (byte) 0xFF && bom[1] == (byte) 0xFE && bom[2] == 0x00 && bom[3] == 0x00) { // LE
+org/jsoup/helper/DataUtil.java#99#            charsetName = "UTF-32"; // and I hope it's on your system
+org/jsoup/helper/DataUtil.java#100#        } else if (bom[0] == (byte) 0xFE && bom[1] == (byte) 0xFF || // BE
+org/jsoup/helper/DataUtil.java#101#                bom[0] == (byte) 0xFF && bom[1] == (byte) 0xFE) {
+org/jsoup/helper/DataUtil.java#102#            charsetName = "UTF-16"; // in all Javas
+org/jsoup/helper/DataUtil.java#103#        } else if (bom[0] == (byte) 0xEF && bom[1] == (byte) 0xBB && bom[2] == (byte) 0xBF) {
+org/jsoup/helper/DataUtil.java#104#            charsetName = "UTF-8"; // in all Javas
+org/jsoup/helper/DataUtil.java#105#            byteData.position(3); // 16 and 32 decoders consume the BOM to determine be/le; utf-8 should be consumed
+org/jsoup/helper/DataUtil.java#106#        }
+org/jsoup/helper/DataUtil.java#139#FIX_OF_OMISSION

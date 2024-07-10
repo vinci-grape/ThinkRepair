@@ -1,0 +1,7 @@
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#228#        if (t == JsonToken.VALUE_NULL) {
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#229#            return null;
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#230#        }
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#254#        if (t == JsonToken.VALUE_NULL) {
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#255#            _properties[index].getProperty().set(bean, null);
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#256#            return;
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#257#        }

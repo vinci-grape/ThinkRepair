@@ -1,0 +1,29 @@
+org/jsoup/safety/Cleaner.java#6#import org.jsoup.select.NodeTraversor;
+org/jsoup/safety/Cleaner.java#7#import org.jsoup.select.NodeVisitor;
+org/jsoup/safety/Cleaner.java#72#    private final class CleaningVisitor implements NodeVisitor {
+org/jsoup/safety/Cleaner.java#73#        private int numDiscarded = 0;
+org/jsoup/safety/Cleaner.java#74#        private final Element root;
+org/jsoup/safety/Cleaner.java#75#        private Element destination; // current element to append nodes to
+org/jsoup/safety/Cleaner.java#76#
+org/jsoup/safety/Cleaner.java#77#        private CleaningVisitor(Element root, Element destination) {
+org/jsoup/safety/Cleaner.java#78#            this.root = root;
+org/jsoup/safety/Cleaner.java#79#            this.destination = destination;
+org/jsoup/safety/Cleaner.java#80#        }
+org/jsoup/safety/Cleaner.java#82#        public void head(Node source, int depth) {
+org/jsoup/safety/Cleaner.java#92#                    destination = destChild;
+org/jsoup/safety/Cleaner.java#93#                } else if (source != root) { // not a safe tag, so don't add. don't count root against discarded.
+org/jsoup/safety/Cleaner.java#100#            } else { // else, we don't care about comments, xml proc instructions, etc
+org/jsoup/safety/Cleaner.java#101#                numDiscarded++;
+org/jsoup/safety/Cleaner.java#105#        public void tail(Node source, int depth) {
+org/jsoup/safety/Cleaner.java#106#            if (source instanceof Element && whitelist.isSafeTag(source.nodeName())) {
+org/jsoup/safety/Cleaner.java#107#                destination = destination.parent(); // would have descended, so pop destination stack
+org/jsoup/safety/Cleaner.java#108#            }
+org/jsoup/safety/Cleaner.java#109#        }
+org/jsoup/safety/Cleaner.java#110#    }
+org/jsoup/safety/Cleaner.java#112#    private int copySafeNodes(Element source, Element dest) {
+org/jsoup/safety/Cleaner.java#113#        CleaningVisitor cleaningVisitor = new CleaningVisitor(source, dest);
+org/jsoup/safety/Cleaner.java#114#        NodeTraversor traversor = new NodeTraversor(cleaningVisitor);
+org/jsoup/safety/Cleaner.java#115#        traversor.traverse(source);
+org/jsoup/safety/Cleaner.java#116#        return cleaningVisitor.numDiscarded;
+org/jsoup/safety/Cleaner.java#95#FIX_OF_OMISSION
+org/jsoup/safety/Cleaner.java#104#FIX_OF_OMISSION

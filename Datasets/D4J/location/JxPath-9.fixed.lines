@@ -1,0 +1,33 @@
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#37#    private boolean invert;
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#40#        this(arg1, arg2, false);
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#41#    }
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#42#
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#43#    protected CoreOperationCompare(Expression arg1, Expression arg2, boolean invert) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#45#        this.invert = invert;
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#46#    }
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#47#
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#48#    public Object computeValue(EvalContext context) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#49#        return equal(context, args[0], args[1]) ? Boolean.TRUE : Boolean.FALSE;
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#139#        boolean result;
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#141#            result = l == r || InfoSetUtil.booleanValue(l) == InfoSetUtil.booleanValue(r);
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#142#        } else if (l instanceof Number || r instanceof Number) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#143#            //if either side is NaN, no comparison returns true:
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#144#            double ld = InfoSetUtil.doubleValue(l);
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#145#            if (Double.isNaN(ld)) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#146#                return false;
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#148#            double rd = InfoSetUtil.doubleValue(r);
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#149#            if (Double.isNaN(rd)) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#150#                return false;
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#152#            result = ld == rd;
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#153#        } else {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#155#                l = InfoSetUtil.stringValue(l);
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#156#                r = InfoSetUtil.stringValue(r);
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#157#            }
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#158#            result = l == r || l != null && l.equals(r);
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#160#        return result ^ invert;
+org/apache/commons/jxpath/ri/compiler/CoreOperationNotEqual.java#28#        super(arg1, arg2, true);
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#131#FIX_OF_OMISSION
+org/apache/commons/jxpath/ri/compiler/CoreOperationEqual.java#19#FIX_OF_OMISSION
+org/apache/commons/jxpath/ri/compiler/CoreOperationEqual.java#31#FIX_OF_OMISSION
+org/apache/commons/jxpath/ri/compiler/CoreOperationNotEqual.java#19#FIX_OF_OMISSION
+org/apache/commons/jxpath/ri/compiler/CoreOperationNotEqual.java#31#FIX_OF_OMISSION

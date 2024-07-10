@@ -1,0 +1,6 @@
+org/apache/commons/compress/archivers/zip/ZipFile.java#808#        Map<ZipArchiveEntry, OffsetEntry> origMap =
+org/apache/commons/compress/archivers/zip/ZipFile.java#809#            new LinkedHashMap<ZipArchiveEntry, OffsetEntry>(entries);
+org/apache/commons/compress/archivers/zip/ZipFile.java#810#        entries.clear();
+org/apache/commons/compress/archivers/zip/ZipFile.java#811#        for (ZipArchiveEntry ze : origMap.keySet()) {
+org/apache/commons/compress/archivers/zip/ZipFile.java#812#            OffsetEntry offsetEntry = origMap.get(ze);
+org/apache/commons/compress/archivers/zip/ZipFile.java#845#            entries.put(ze, offsetEntry);

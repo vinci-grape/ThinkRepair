@@ -1,0 +1,17 @@
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#4#import java.lang.reflect.Field;
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#65#    @Override
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#66#    public String findEnumValue(Enum<?> value)
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#67#    {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#71#        try {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#73#            Field f = value.getClass().getField(value.name());
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#74#            if (f != null) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#75#                JsonProperty prop = f.getAnnotation(JsonProperty.class);
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#76#                String n = prop.value();
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#77#                if (n != null && !n.isEmpty()) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#78#                    return n;
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#79#                }
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#80#            }
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#81#        } catch (Exception e) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#83#        }
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#84#        return value.name();
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#85#    }

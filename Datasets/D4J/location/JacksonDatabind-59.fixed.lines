@@ -1,0 +1,46 @@
+com/fasterxml/jackson/databind/JavaType.java#140#    public JavaType withHandlersFrom(JavaType src) {
+com/fasterxml/jackson/databind/JavaType.java#141#        JavaType type = this;
+com/fasterxml/jackson/databind/JavaType.java#142#        Object h = src.getTypeHandler();
+com/fasterxml/jackson/databind/JavaType.java#143#        if (h != _typeHandler) {
+com/fasterxml/jackson/databind/JavaType.java#144#            type = type.withTypeHandler(h);
+com/fasterxml/jackson/databind/JavaType.java#145#        }
+com/fasterxml/jackson/databind/JavaType.java#146#        h = src.getValueHandler();
+com/fasterxml/jackson/databind/JavaType.java#147#        if (h != _valueHandler) {
+com/fasterxml/jackson/databind/JavaType.java#148#            type = type.withValueHandler(h);
+com/fasterxml/jackson/databind/JavaType.java#149#        }
+com/fasterxml/jackson/databind/JavaType.java#150#        return type;
+com/fasterxml/jackson/databind/JavaType.java#151#    }
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#136#    @Override
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#137#    public JavaType withHandlersFrom(JavaType src) {
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#138#        JavaType type = super.withHandlersFrom(src);
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#139#        JavaType srcCt = src.getContentType();
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#140#        if (srcCt != null) {
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#141#            JavaType ct = _elementType.withHandlersFrom(srcCt);
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#142#            if (ct != _elementType) {
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#143#                type = type.withContentType(ct);
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#144#            }
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#145#        }
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#146#        return type;
+com/fasterxml/jackson/databind/type/CollectionLikeType.java#147#    }
+com/fasterxml/jackson/databind/type/MapLikeType.java#148#    @Override
+com/fasterxml/jackson/databind/type/MapLikeType.java#149#    public JavaType withHandlersFrom(JavaType src) {
+com/fasterxml/jackson/databind/type/MapLikeType.java#150#        JavaType type = super.withHandlersFrom(src);
+com/fasterxml/jackson/databind/type/MapLikeType.java#151#        JavaType srcKeyType = src.getKeyType();
+com/fasterxml/jackson/databind/type/MapLikeType.java#153#        if (type instanceof MapLikeType) {
+com/fasterxml/jackson/databind/type/MapLikeType.java#154#            if (srcKeyType != null) {
+com/fasterxml/jackson/databind/type/MapLikeType.java#155#                JavaType ct = _keyType.withHandlersFrom(srcKeyType);
+com/fasterxml/jackson/databind/type/MapLikeType.java#156#                if (ct != _keyType) {
+com/fasterxml/jackson/databind/type/MapLikeType.java#157#                    type = ((MapLikeType) type).withKeyType(ct);
+com/fasterxml/jackson/databind/type/MapLikeType.java#158#                }
+com/fasterxml/jackson/databind/type/MapLikeType.java#159#            }
+com/fasterxml/jackson/databind/type/MapLikeType.java#160#        }
+com/fasterxml/jackson/databind/type/MapLikeType.java#161#        JavaType srcCt = src.getContentType();
+com/fasterxml/jackson/databind/type/MapLikeType.java#162#        if (srcCt != null) {
+com/fasterxml/jackson/databind/type/MapLikeType.java#163#            JavaType ct = _valueType.withHandlersFrom(srcCt);
+com/fasterxml/jackson/databind/type/MapLikeType.java#164#            if (ct != _valueType) {
+com/fasterxml/jackson/databind/type/MapLikeType.java#165#                type = type.withContentType(ct);
+com/fasterxml/jackson/databind/type/MapLikeType.java#166#            }
+com/fasterxml/jackson/databind/type/MapLikeType.java#167#        }
+com/fasterxml/jackson/databind/type/MapLikeType.java#168#        return type;
+com/fasterxml/jackson/databind/type/MapLikeType.java#169#    }
+com/fasterxml/jackson/databind/type/TypeFactory.java#428#        newType = newType.withHandlersFrom(baseType);

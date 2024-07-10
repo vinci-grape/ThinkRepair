@@ -1,0 +1,10 @@
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#88#            return containsMatch(left, (Iterator) right);
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#138#    private boolean containsMatch(Object value, Iterator it) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#139#        while (it.hasNext()) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#140#            Object element = it.next();
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#141#            if (compute(value, element)) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#142#                return true;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#143#            }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#144#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#145#        return false;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#146#    }

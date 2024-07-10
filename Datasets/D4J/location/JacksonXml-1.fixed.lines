@@ -1,0 +1,8 @@
+com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java#512#                if (_parsingContext.inArray()) {
+com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java#515#                    _nextToken = JsonToken.END_OBJECT;
+com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java#516#                    _parsingContext = _parsingContext.createChildObjectContext(-1, -1);
+com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java#517#                    return (_currToken = JsonToken.START_OBJECT);
+com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java#518#                }
+com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java#555#                        _nextToken = JsonToken.END_OBJECT;
+com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java#556#                        _parsingContext = _parsingContext.createChildObjectContext(-1, -1);
+com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java#557#                        return (_currToken = JsonToken.START_OBJECT);

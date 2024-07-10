@@ -1,0 +1,6 @@
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#239#            if (read == 0) {
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#240#                if (inf.finished()) {
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#241#                    return -1;
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#242#                } else if (lengthOfLastRead == -1) {
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#243#                    throw new IOException("Truncated ZIP file");
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#244#                }

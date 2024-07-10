@@ -1,0 +1,12 @@
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#283#            boolean verify;
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#291#                verify = true;
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#292#            } else {
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#294#                verify = !explicit;
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#298#            if (verify && (oldOne.getClass() == newOne.getClass())) {
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#300#                Class<?> oldType = oldOne.getRawParameterType(0);
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#301#                Class<?> newType = newOne.getRawParameterType(0);
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#303#                if (oldType == newType) {
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#306#                }
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#308#                if (newType.isAssignableFrom(oldType)) {
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#310#                    return;
+com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java#311#                }

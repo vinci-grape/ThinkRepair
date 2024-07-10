@@ -1,0 +1,1 @@
+org/apache/commons/compress/archivers/zip/X5455_ExtendedTimestamp.java#529#        if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {

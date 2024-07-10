@@ -1,0 +1,6 @@
+com/fasterxml/jackson/databind/jsontype/impl/AsWrapperTypeDeserializer.java#89#        JsonToken t = p.getCurrentToken();
+com/fasterxml/jackson/databind/jsontype/impl/AsWrapperTypeDeserializer.java#90#        if (t == JsonToken.START_OBJECT) {
+com/fasterxml/jackson/databind/jsontype/impl/AsWrapperTypeDeserializer.java#96#        } else if (t != JsonToken.FIELD_NAME) {
+com/fasterxml/jackson/databind/jsontype/impl/AsWrapperTypeDeserializer.java#97#            throw ctxt.wrongTokenException(p, JsonToken.START_OBJECT,
+com/fasterxml/jackson/databind/jsontype/impl/AsWrapperTypeDeserializer.java#98#                    "need JSON Object to contain As.WRAPPER_OBJECT type information for class "+baseTypeName());
+com/fasterxml/jackson/databind/jsontype/impl/AsWrapperTypeDeserializer.java#99#        }

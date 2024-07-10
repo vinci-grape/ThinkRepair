@@ -1,0 +1,6 @@
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#776#                    if (t != JsonToken.END_OBJECT) {
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#777#                        ctxt.reportWrongTokenException(this, JsonToken.END_OBJECT, 
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#778#                                "Attempted to unwrap '%s' value",
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#779#                                handledType().getName());
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#780#                    }
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#771#FIX_OF_OMISSION

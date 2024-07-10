@@ -1,0 +1,8 @@
+com/google/javascript/jscomp/DevirtualizePrototypeMethods.java#362#        newName.setJSType(child.getJSType());
+com/google/javascript/rhino/jstype/FunctionType.java#412#  @Override
+com/google/javascript/rhino/jstype/FunctionType.java#413#  public boolean hasOwnProperty(String name) {
+com/google/javascript/rhino/jstype/FunctionType.java#414#    return super.hasOwnProperty(name) || "prototype".equals(name);
+com/google/javascript/rhino/jstype/FunctionType.java#415#  }
+com/google/javascript/rhino/jstype/FunctionType.java#476#        if (objType.equals(prototype)) {
+com/google/javascript/rhino/jstype/FunctionType.java#477#          return true;
+com/google/javascript/rhino/jstype/FunctionType.java#478#        }

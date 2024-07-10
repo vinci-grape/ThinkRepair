@@ -1,0 +1,19 @@
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#24#    protected JsonSerializer<Object> _serializer;
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#30#            AnnotatedMember accessor, JsonSerializer<?> serializer)
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#34#        _serializer = (JsonSerializer<Object>) serializer;
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#35#        if (serializer instanceof MapSerializer) {
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#37#        }
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#56#        _serializer.serialize(value, gen, provider);
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#80#        _serializer.serialize(value, gen, provider);
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#88#        if (_serializer instanceof ContextualSerializer) {
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#89#            JsonSerializer<?> ser = provider.handlePrimaryContextualization(_serializer, _property);
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#90#            _serializer = (JsonSerializer<Object>) ser;
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#91#            if (ser instanceof MapSerializer) {
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#92#                _mapSerializer = (MapSerializer) ser;
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#93#            }
+com/fasterxml/jackson/databind/ser/AnyGetterWriter.java#94#        }
+com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java#395#            JsonSerializer<?> anySer = findSerializerFromAnnotation(prov, anyGetter);
+com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java#396#            if (anySer == null) {
+com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java#398#                anySer = MapSerializer.construct(/* ignored props*/ null, type, staticTyping,
+com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java#399#                        typeSer, null, null, /*filterId*/ null);
+com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java#400#            }

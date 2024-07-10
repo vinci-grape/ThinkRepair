@@ -1,0 +1,42 @@
+com/google/gson/TypeInfoFactory.java#93#      } else if (typeToEvaluate instanceof TypeVariable<?>) {
+com/google/gson/TypeInfoFactory.java#94#        Type theSearchedType = null;
+com/google/gson/TypeInfoFactory.java#96#        do {
+com/google/gson/TypeInfoFactory.java#97#          theSearchedType = extractTypeForHierarchy(parentType, (TypeVariable<?>) typeToEvaluate);
+com/google/gson/TypeInfoFactory.java#98#        } while ((theSearchedType != null) && (theSearchedType instanceof TypeVariable<?>));
+com/google/gson/TypeInfoFactory.java#99#
+com/google/gson/TypeInfoFactory.java#100#        if (theSearchedType != null) {
+com/google/gson/TypeInfoFactory.java#101#          return theSearchedType;
+com/google/gson/TypeInfoFactory.java#102#        }
+com/google/gson/TypeInfoFactory.java#117#  private static Type extractTypeForHierarchy(Type parentType, TypeVariable<?> typeToEvaluate) {
+com/google/gson/TypeInfoFactory.java#118#    Class<?> rawParentType = null;
+com/google/gson/TypeInfoFactory.java#119#    if (parentType instanceof Class<?>) {
+com/google/gson/TypeInfoFactory.java#120#      rawParentType = (Class<?>) parentType;
+com/google/gson/TypeInfoFactory.java#121#    } else if (parentType instanceof ParameterizedType) {
+com/google/gson/TypeInfoFactory.java#122#      ParameterizedType parentTypeAsPT = (ParameterizedType) parentType;
+com/google/gson/TypeInfoFactory.java#123#      rawParentType = (Class<?>) parentTypeAsPT.getRawType();
+com/google/gson/TypeInfoFactory.java#124#    } else {
+com/google/gson/TypeInfoFactory.java#125#      return null;
+com/google/gson/TypeInfoFactory.java#126#    }
+com/google/gson/TypeInfoFactory.java#128#    Type superClass = rawParentType.getGenericSuperclass();
+com/google/gson/TypeInfoFactory.java#129#    if (superClass instanceof ParameterizedType
+com/google/gson/TypeInfoFactory.java#130#        && ((ParameterizedType) superClass).getRawType() == typeToEvaluate.getGenericDeclaration()) {
+com/google/gson/TypeInfoFactory.java#132#      TypeVariable<?>[] classTypeVariables =
+com/google/gson/TypeInfoFactory.java#133#          ((Class<?>) ((ParameterizedType) superClass).getRawType()).getTypeParameters();
+com/google/gson/TypeInfoFactory.java#134#      int indexOfActualTypeArgument = getIndex(classTypeVariables, typeToEvaluate);
+com/google/gson/TypeInfoFactory.java#135#
+com/google/gson/TypeInfoFactory.java#136#      Type[] actualTypeArguments = null;
+com/google/gson/TypeInfoFactory.java#137#      if (parentType instanceof Class<?>) {
+com/google/gson/TypeInfoFactory.java#138#        actualTypeArguments = ((ParameterizedType) superClass).getActualTypeArguments();
+com/google/gson/TypeInfoFactory.java#139#      } else if (parentType instanceof ParameterizedType) {
+com/google/gson/TypeInfoFactory.java#140#        actualTypeArguments = ((ParameterizedType) parentType).getActualTypeArguments();
+com/google/gson/TypeInfoFactory.java#141#      } else {
+com/google/gson/TypeInfoFactory.java#142#        return null;
+com/google/gson/TypeInfoFactory.java#143#      }
+com/google/gson/TypeInfoFactory.java#145#      return actualTypeArguments[indexOfActualTypeArgument];
+com/google/gson/TypeInfoFactory.java#146#    }
+com/google/gson/TypeInfoFactory.java#148#    Type searchedType = null;
+com/google/gson/TypeInfoFactory.java#149#    if (superClass != null) {
+com/google/gson/TypeInfoFactory.java#150#      searchedType = extractTypeForHierarchy(superClass, typeToEvaluate);
+com/google/gson/TypeInfoFactory.java#151#    }
+com/google/gson/TypeInfoFactory.java#152#    return searchedType;
+com/google/gson/TypeInfoFactory.java#153#  }

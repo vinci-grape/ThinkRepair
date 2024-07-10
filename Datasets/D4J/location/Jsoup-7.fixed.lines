@@ -1,0 +1,22 @@
+org/jsoup/nodes/Document.java#5#import org.jsoup.select.Elements;
+org/jsoup/nodes/Document.java#114#        normaliseStructure("head", htmlEl);
+org/jsoup/nodes/Document.java#115#        normaliseStructure("body", htmlEl);
+org/jsoup/nodes/Document.java#140#    private void normaliseStructure(String tag, Element htmlEl) {
+org/jsoup/nodes/Document.java#141#        Elements elements = this.getElementsByTag(tag);
+org/jsoup/nodes/Document.java#142#        Element master = elements.first(); // will always be available as created above if not existent
+org/jsoup/nodes/Document.java#143#        if (elements.size() > 1) { // dupes, move contents to master
+org/jsoup/nodes/Document.java#144#            List<Node> toMove = new ArrayList<Node>();
+org/jsoup/nodes/Document.java#145#            for (int i = 1; i < elements.size(); i++) {
+org/jsoup/nodes/Document.java#146#                Node dupe = elements.get(i);
+org/jsoup/nodes/Document.java#147#                for (Node node : dupe.childNodes)
+org/jsoup/nodes/Document.java#148#                    toMove.add(node);
+org/jsoup/nodes/Document.java#149#                dupe.remove();
+org/jsoup/nodes/Document.java#150#            }
+org/jsoup/nodes/Document.java#151#
+org/jsoup/nodes/Document.java#152#            for (Node dupe : toMove)
+org/jsoup/nodes/Document.java#153#                master.appendChild(dupe);
+org/jsoup/nodes/Document.java#154#        }
+org/jsoup/nodes/Document.java#156#        if (!master.parent().equals(htmlEl)) {
+org/jsoup/nodes/Document.java#157#            htmlEl.appendChild(master); // includes remove()            
+org/jsoup/nodes/Document.java#158#        }
+org/jsoup/nodes/Document.java#159#    }

@@ -1,0 +1,16 @@
+org/jsoup/select/CombiningEvaluator.java#64#        Or() {
+org/jsoup/select/CombiningEvaluator.java#65#            super();
+org/jsoup/select/CombiningEvaluator.java#66#        }
+org/jsoup/select/QueryParser.java#58#            if (tq.matchesAny(combinators)) {
+org/jsoup/select/QueryParser.java#93#        else if (combinator == ',') { // group or
+org/jsoup/select/QueryParser.java#94#            CombiningEvaluator.Or or;
+org/jsoup/select/QueryParser.java#95#            if (e instanceof CombiningEvaluator.Or) {
+org/jsoup/select/QueryParser.java#96#                or = (CombiningEvaluator.Or) e;
+org/jsoup/select/QueryParser.java#97#                or.add(f);
+org/jsoup/select/QueryParser.java#98#            } else {
+org/jsoup/select/QueryParser.java#99#                or = new CombiningEvaluator.Or();
+org/jsoup/select/QueryParser.java#100#                or.add(e);
+org/jsoup/select/QueryParser.java#101#                or.add(f);
+org/jsoup/select/QueryParser.java#102#            }
+org/jsoup/select/QueryParser.java#103#            evals.add(or);
+org/jsoup/select/QueryParser.java#104#        }

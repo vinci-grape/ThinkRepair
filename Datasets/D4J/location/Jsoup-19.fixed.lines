@@ -1,0 +1,2 @@
+org/jsoup/safety/Whitelist.java#342#        if (value.length() == 0)
+org/jsoup/safety/Whitelist.java#343#            value = attr.getValue(); // if it could not be made abs, run as-is to allow custom unknown protocols

@@ -1,0 +1,9 @@
+com/fasterxml/jackson/databind/deser/ValueInstantiator.java#72#                || canCreateUsingDelegate() || canCreateUsingArrayDelegate()
+com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java#232#    @Override
+com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java#233#    public boolean canInstantiate() {
+com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java#234#        return canCreateUsingDefault()
+com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java#235#                || canCreateUsingDelegate() || canCreateUsingArrayDelegate()
+com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java#236#                || canCreateFromObjectWith() || canCreateFromString()
+com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java#237#                || canCreateFromInt() || canCreateFromLong()
+com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java#238#                || canCreateFromDouble() || canCreateFromBoolean();
+com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java#239#    }

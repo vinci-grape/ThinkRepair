@@ -1,0 +1,9 @@
+com/fasterxml/jackson/databind/deser/std/NumberDeserializers.java#148#        @Override
+com/fasterxml/jackson/databind/deser/std/NumberDeserializers.java#149#        public T getEmptyValue(DeserializationContext ctxt) throws JsonMappingException {
+com/fasterxml/jackson/databind/deser/std/NumberDeserializers.java#152#            if (_primitive && ctxt.isEnabled(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES)) {
+com/fasterxml/jackson/databind/deser/std/NumberDeserializers.java#153#                throw ctxt.mappingException(
+com/fasterxml/jackson/databind/deser/std/NumberDeserializers.java#154#                        "Can not map Empty String as null into type %s (set DeserializationConfig.DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES to 'false' to allow)",
+com/fasterxml/jackson/databind/deser/std/NumberDeserializers.java#155#                        handledType().toString());
+com/fasterxml/jackson/databind/deser/std/NumberDeserializers.java#156#            }
+com/fasterxml/jackson/databind/deser/std/NumberDeserializers.java#157#            return _nullValue;
+com/fasterxml/jackson/databind/deser/std/NumberDeserializers.java#158#        }

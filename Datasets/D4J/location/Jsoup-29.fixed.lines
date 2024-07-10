@@ -1,0 +1,2 @@
+org/jsoup/nodes/Document.java#3#import org.jsoup.helper.StringUtil;
+org/jsoup/nodes/Document.java#70#        return titleEl != null ? StringUtil.normaliseWhitespace(titleEl.text()).trim() : "";

@@ -1,0 +1,79 @@
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#197#    if (config.warningGuards != null) {
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#198#      for (WarningGuardSpec.Entry entry : config.warningGuards.entries) {
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#199#        diagnosticGroups.setWarningLevel(options, entry.groupName, entry.level);
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#200#      }
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#201#    }
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1496#    private WarningGuardSpec warningGuards = null;
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1501#    CommandLineConfig setWarningGuardSpec(WarningGuardSpec spec) {
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1502#      this.warningGuards = spec;
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1614#  protected static class WarningGuardSpec {
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1615#    private static class Entry {
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1616#      private final CheckLevel level;
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1617#      private final String groupName;
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1618#
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1619#      private Entry(CheckLevel level, String groupName) {
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1620#        this.level = level;
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1621#        this.groupName = groupName;
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1622#      }
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1623#    }
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1626#    private final List<Entry> entries = Lists.newArrayList();
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1628#    protected void add(CheckLevel level, String groupName) {
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1629#      entries.add(new Entry(level, groupName));
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1630#    }
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1632#    protected void clear() {
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1633#      entries.clear();
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1634#    }
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#1635#  }
+com/google/javascript/jscomp/CommandLineRunner.java#26#import com.google.javascript.jscomp.AbstractCommandLineRunner.WarningGuardSpec;
+com/google/javascript/jscomp/CommandLineRunner.java#95#    private static final WarningGuardSpec warningGuardSpec =
+com/google/javascript/jscomp/CommandLineRunner.java#96#        new WarningGuardSpec();
+com/google/javascript/jscomp/CommandLineRunner.java#234#        handler = WarningGuardErrorOptionHandler.class,
+com/google/javascript/jscomp/CommandLineRunner.java#240#        handler = WarningGuardWarningOptionHandler.class,
+com/google/javascript/jscomp/CommandLineRunner.java#246#        handler = WarningGuardOffOptionHandler.class,
+com/google/javascript/jscomp/CommandLineRunner.java#395#    public static class WarningGuardErrorOptionHandler
+com/google/javascript/jscomp/CommandLineRunner.java#396#        extends StringOptionHandler {
+com/google/javascript/jscomp/CommandLineRunner.java#397#      public WarningGuardErrorOptionHandler(
+com/google/javascript/jscomp/CommandLineRunner.java#398#          CmdLineParser parser, OptionDef option,
+com/google/javascript/jscomp/CommandLineRunner.java#399#          Setter<? super String> setter) {
+com/google/javascript/jscomp/CommandLineRunner.java#400#        super(parser, option, new WarningGuardSetter(setter, CheckLevel.ERROR));
+com/google/javascript/jscomp/CommandLineRunner.java#401#      }
+com/google/javascript/jscomp/CommandLineRunner.java#402#    }
+com/google/javascript/jscomp/CommandLineRunner.java#404#    public static class WarningGuardWarningOptionHandler
+com/google/javascript/jscomp/CommandLineRunner.java#405#        extends StringOptionHandler {
+com/google/javascript/jscomp/CommandLineRunner.java#406#      public WarningGuardWarningOptionHandler(
+com/google/javascript/jscomp/CommandLineRunner.java#407#          CmdLineParser parser, OptionDef option,
+com/google/javascript/jscomp/CommandLineRunner.java#408#          Setter<? super String> setter) {
+com/google/javascript/jscomp/CommandLineRunner.java#409#        super(parser, option,
+com/google/javascript/jscomp/CommandLineRunner.java#410#            new WarningGuardSetter(setter, CheckLevel.WARNING));
+com/google/javascript/jscomp/CommandLineRunner.java#411#      }
+com/google/javascript/jscomp/CommandLineRunner.java#412#    }
+com/google/javascript/jscomp/CommandLineRunner.java#414#    public static class WarningGuardOffOptionHandler
+com/google/javascript/jscomp/CommandLineRunner.java#415#        extends StringOptionHandler {
+com/google/javascript/jscomp/CommandLineRunner.java#416#      public WarningGuardOffOptionHandler(
+com/google/javascript/jscomp/CommandLineRunner.java#417#          CmdLineParser parser, OptionDef option,
+com/google/javascript/jscomp/CommandLineRunner.java#418#          Setter<? super String> setter) {
+com/google/javascript/jscomp/CommandLineRunner.java#419#        super(parser, option, new WarningGuardSetter(setter, CheckLevel.OFF));
+com/google/javascript/jscomp/CommandLineRunner.java#420#      }
+com/google/javascript/jscomp/CommandLineRunner.java#421#    }
+com/google/javascript/jscomp/CommandLineRunner.java#423#    private static class WarningGuardSetter implements Setter {
+com/google/javascript/jscomp/CommandLineRunner.java#424#      private final Setter proxy;
+com/google/javascript/jscomp/CommandLineRunner.java#425#      private final CheckLevel level;
+com/google/javascript/jscomp/CommandLineRunner.java#426#
+com/google/javascript/jscomp/CommandLineRunner.java#427#      private WarningGuardSetter(Setter proxy, CheckLevel level) {
+com/google/javascript/jscomp/CommandLineRunner.java#428#        this.proxy = proxy;
+com/google/javascript/jscomp/CommandLineRunner.java#429#        this.level = level;
+com/google/javascript/jscomp/CommandLineRunner.java#430#      }
+com/google/javascript/jscomp/CommandLineRunner.java#432#      @Override public boolean isMultiValued() { return proxy.isMultiValued(); }
+com/google/javascript/jscomp/CommandLineRunner.java#434#      @Override public Class getType() { return proxy.getType(); }
+com/google/javascript/jscomp/CommandLineRunner.java#436#      @Override public void addValue(Object value) throws CmdLineException {
+com/google/javascript/jscomp/CommandLineRunner.java#437#        proxy.addValue((String) value);
+com/google/javascript/jscomp/CommandLineRunner.java#438#        warningGuardSpec.add(level, (String) value);
+com/google/javascript/jscomp/CommandLineRunner.java#439#      }
+com/google/javascript/jscomp/CommandLineRunner.java#440#    }
+com/google/javascript/jscomp/CommandLineRunner.java#530#    Flags.warningGuardSpec.clear();
+com/google/javascript/jscomp/CommandLineRunner.java#546#    Flags.warningGuardSpec.clear();
+com/google/javascript/jscomp/CommandLineRunner.java#599#          .setWarningGuardSpec(Flags.warningGuardSpec)
+com/google/javascript/jscomp/DiagnosticGroups.java#185#  void setWarningLevel(CompilerOptions options,
+com/google/javascript/jscomp/DiagnosticGroups.java#186#      String name, CheckLevel level) {
+com/google/javascript/jscomp/DiagnosticGroups.java#23#FIX_OF_OMISSION
+com/google/javascript/jscomp/DiagnosticGroups.java#190#FIX_OF_OMISSION

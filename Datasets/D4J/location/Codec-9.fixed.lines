@@ -1,0 +1,1 @@
+org/apache/commons/codec/binary/Base64.java#827#        long len = getEncodeLength(binaryData, isChunked ? MIME_CHUNK_SIZE : 0, CHUNK_SEPARATOR);

@@ -1,0 +1,2 @@
+org/jsoup/nodes/FormElement.java#80#            if (el.hasAttr("disabled")) continue; // skip disabled form inputs
+org/jsoup/nodes/FormElement.java#100#                    final String val = el.val().length() >  0 ? el.val() : "on";

@@ -1,0 +1,64 @@
+// Provide a fix for the buggy function
+
+// Buggy Function
+int binarySearch(int arr[], int l, int r, int x)
+{{
+    if (r >= l) {{
+        int mid = l + (r + l) / 2; // Buggy Line
+        if (arr[mid] == x)
+            return mid;
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        return binarySearch(arr, mid + 1, r, x);
+    }}
+    return -1;
+}}
+
+Let's think step by step. The bug location is in the calculation of the "mid" variable. The line is currently: int mid = l + (r + l) / 2.
+
+// Fixed Function
+int binarySearch(int arr[], int l, int r, int x)
+{{
+    if (r >= l) {{
+        int mid = l + (r - l) / 2;
+        if (arr[mid] == x)
+            return mid;
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        return binarySearch(arr, mid + 1, r, x);
+    }}
+    return -1;
+}}
+
+// Provide a fix for the buggy function
+
+// Buggy Function
+int bitcount(int n) 
+{{
+    int count = 0;
+    while (n != 0) {{
+        n = (n ^ (n - 1)); // Buggy Line
+        count++;
+    }}
+    return count;
+}}
+
+Let's think step by step. The bug in the bitcount function is with the expression n = (n ^ (n - 1)). This expression is used to clear the rightmost set bit of n and update the count of set bits. However, it is incorrect and will result in an infinite loop for certain inputs.
+
+// Fixed Function
+int bitcount(int n) 
+{{
+    int count = 0;
+    while (n != 0) {{
+        n = (n & (n - 1));
+        count++;
+    }}
+    return count;
+}}
+
+// Provide a fix for the buggy function
+
+// Buggy Function
+{bug}
+
+Let's think step by step. 

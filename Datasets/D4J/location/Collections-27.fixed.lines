@@ -1,0 +1,7 @@
+org/apache/commons/collections4/map/MultiValueMap.java#568#        private void readObject(ObjectInputStream is) throws IOException, ClassNotFoundException {
+org/apache/commons/collections4/map/MultiValueMap.java#569#            is.defaultReadObject();
+org/apache/commons/collections4/map/MultiValueMap.java#570#            // ensure that the de-serialized class is a Collection, COLLECTIONS-580
+org/apache/commons/collections4/map/MultiValueMap.java#571#            if (clazz != null && !Collection.class.isAssignableFrom(clazz)) {
+org/apache/commons/collections4/map/MultiValueMap.java#572#                throw new UnsupportedOperationException();
+org/apache/commons/collections4/map/MultiValueMap.java#573#            }
+org/apache/commons/collections4/map/MultiValueMap.java#574#        }

@@ -1,0 +1,8 @@
+org/apache/commons/compress/utils/ArchiveUtils.java#31#    private static final int MAX_SANITIZED_NAME_LENGTH = 255;
+org/apache/commons/compress/utils/ArchiveUtils.java#274#        final char[] cs = s.toCharArray();
+org/apache/commons/compress/utils/ArchiveUtils.java#275#        final char[] chars = cs.length <= MAX_SANITIZED_NAME_LENGTH ? cs : Arrays.copyOf(cs, MAX_SANITIZED_NAME_LENGTH);
+org/apache/commons/compress/utils/ArchiveUtils.java#276#        if (cs.length > MAX_SANITIZED_NAME_LENGTH) {
+org/apache/commons/compress/utils/ArchiveUtils.java#277#            for (int i = MAX_SANITIZED_NAME_LENGTH - 3; i < MAX_SANITIZED_NAME_LENGTH; i++) {
+org/apache/commons/compress/utils/ArchiveUtils.java#278#                chars[i] = '.';
+org/apache/commons/compress/utils/ArchiveUtils.java#279#            }
+org/apache/commons/compress/utils/ArchiveUtils.java#280#        }

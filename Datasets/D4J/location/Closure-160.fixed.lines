@@ -1,0 +1,4 @@
+com/google/javascript/jscomp/Compiler.java#268#    ComposeWarningsGuard composedGuards = new ComposeWarningsGuard(guards);
+com/google/javascript/jscomp/Compiler.java#276#        !composedGuards.enables(DiagnosticGroups.CHECK_VARIABLES)) {
+com/google/javascript/jscomp/Compiler.java#277#      composedGuards.addGuard(new DiagnosticGroupWarningsGuard(
+com/google/javascript/jscomp/Compiler.java#281#    this.warningsGuard = composedGuards;

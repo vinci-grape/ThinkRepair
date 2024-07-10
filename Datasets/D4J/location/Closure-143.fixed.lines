@@ -1,0 +1,4 @@
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#871#                  || (defValue.charAt(0) == '\"' &&
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#872#                      defValue.charAt(defValue.length() - 1) == '\"'))) {
+com/google/javascript/jscomp/RemoveConstantExpressions.java#91#          || exprBody.getType() == Token.NEW
+com/google/javascript/jscomp/RemoveConstantExpressions.java#92#          || exprBody.getType() == Token.CALL) {

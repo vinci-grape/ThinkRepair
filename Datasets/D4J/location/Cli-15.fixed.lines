@@ -1,0 +1,14 @@
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#117#        if (defaultValues == null || defaultValues.isEmpty()) {
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#118#            defaultValues = (List) this.defaultValues.get(option);
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#122#        if (defaultValues != null && !defaultValues.isEmpty()) {
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#123#            if (valueList == null || valueList.isEmpty()) {
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#124#                valueList = defaultValues;
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#125#            } else {
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#128#                if (defaultValues.size() > valueList.size()) {
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#130#                    valueList = new ArrayList(valueList);
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#131#                    for (int i=valueList.size(); i<defaultValues.size(); i++) {
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#132#                        valueList.add(defaultValues.get(i));
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#133#                    }
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#134#                }
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#135#            }
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#136#        }

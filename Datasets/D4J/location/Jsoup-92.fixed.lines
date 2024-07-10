@@ -1,0 +1,35 @@
+org/jsoup/nodes/Attributes.java#6#import org.jsoup.parser.ParseSettings;
+org/jsoup/nodes/Attributes.java#119#    public Attributes add(String key, String value) {
+org/jsoup/nodes/Attributes.java#124#        return this;
+org/jsoup/nodes/Attributes.java#241#    public boolean isEmpty() {
+org/jsoup/nodes/Attributes.java#242#        return size == 0;
+org/jsoup/nodes/Attributes.java#243#    }
+org/jsoup/nodes/Attributes.java#402#    public int deduplicate(ParseSettings settings) {
+org/jsoup/nodes/Attributes.java#403#        if (isEmpty())
+org/jsoup/nodes/Attributes.java#404#            return 0;
+org/jsoup/nodes/Attributes.java#405#        boolean preserve = settings.preserveAttributeCase();
+org/jsoup/nodes/Attributes.java#406#        int dupes = 0;
+org/jsoup/nodes/Attributes.java#407#        OUTER: for (int i = 0; i < keys.length; i++) {
+org/jsoup/nodes/Attributes.java#408#            for (int j = i + 1; j < keys.length; j++) {
+org/jsoup/nodes/Attributes.java#409#                if (keys[j] == null)
+org/jsoup/nodes/Attributes.java#410#                    continue OUTER; // keys.length doesn't shrink when removing, so re-test
+org/jsoup/nodes/Attributes.java#411#                if ((preserve && keys[i].equals(keys[j])) || (!preserve && keys[i].equalsIgnoreCase(keys[j]))) {
+org/jsoup/nodes/Attributes.java#412#                    dupes++;
+org/jsoup/nodes/Attributes.java#413#                    remove(j);
+org/jsoup/nodes/Attributes.java#414#                    j--;
+org/jsoup/nodes/Attributes.java#415#                }
+org/jsoup/nodes/Attributes.java#416#            }
+org/jsoup/nodes/Attributes.java#417#        }
+org/jsoup/nodes/Attributes.java#418#        return dupes;
+org/jsoup/nodes/Attributes.java#419#    }
+org/jsoup/parser/HtmlTreeBuilder.java#199#        if (!startTag.attributes.isEmpty()) {
+org/jsoup/parser/HtmlTreeBuilder.java#200#            int dupes = startTag.attributes.deduplicate(settings);
+org/jsoup/parser/HtmlTreeBuilder.java#201#            if (dupes > 0) {
+org/jsoup/parser/HtmlTreeBuilder.java#202#                error("Duplicate attribute");
+org/jsoup/parser/HtmlTreeBuilder.java#203#            }
+org/jsoup/parser/HtmlTreeBuilder.java#204#        }
+org/jsoup/parser/ParseSettings.java#38#    public boolean preserveAttributeCase() {
+org/jsoup/parser/ParseSettings.java#39#        return preserveAttributeCase;
+org/jsoup/parser/ParseSettings.java#40#    }
+org/jsoup/parser/Token.java#116#                    attributes.add(pendingAttributeName, value);
+org/jsoup/parser/XmlTreeBuilder.java#78#        startTag.attributes.deduplicate(settings);

@@ -1,0 +1,12 @@
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#231#                    int ix = _firstHyphenOrUnderscore(value);
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#237#                    ix = _firstHyphenOrUnderscore(value);
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#292#        protected int _firstHyphenOrUnderscore(String str)
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#293#        {
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#294#            for (int i = 0, end = str.length(); i < end; ++i) {
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#295#                char c = str.charAt(i);
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#296#                if (c == '_' || c == '-') {
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#297#                    return i;
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#298#                }
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#299#            }
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#300#            return -1;
+com/fasterxml/jackson/databind/deser/std/FromStringDeserializer.java#301#        }

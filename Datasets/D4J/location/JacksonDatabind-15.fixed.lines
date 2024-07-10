@@ -1,0 +1,35 @@
+com/fasterxml/jackson/databind/JavaType.java#302#    public final boolean isJavaLangObject() { return _class == Object.class; }
+com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java#163#        if (ser == null && !delegateType.isJavaLangObject()) {
+com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java#370#                    JsonSerializer<?> ser = delegateType.isJavaLangObject() ? null
+com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java#371#                            : provider.findValueSerializer(delegateType, prop);
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#121#            if (!delegateType.isJavaLangObject()) {
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#123#            }
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#128#        if (delSer == _delegateSerializer && delegateType == _delegateType) {
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#129#            return this;
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#130#        }
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#131#        return withDelegate(_converter, delegateType, delSer);
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#165#        JsonSerializer<Object> ser = _delegateSerializer;
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#166#        if (ser == null) {
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#167#            ser = _findSerializer(delegateValue, provider);
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#168#        }
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#169#        ser.serialize(delegateValue, gen, provider);
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#180#        JsonSerializer<Object> ser = _delegateSerializer;
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#181#        if (ser == null) {
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#182#            ser = _findSerializer(value, provider);
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#183#        }
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#184#        ser.serializeWithType(delegateValue, gen, provider, typeSer);
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#192#        if (_delegateSerializer == null) { // best we can do for now, too costly to look up
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#193#            return (value == null);
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#194#        }
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#202#        if (_delegateSerializer == null) { // best we can do for now, too costly to look up
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#203#            return (value == null);
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#204#        }
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#242#        if (_delegateSerializer != null) {
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#243#            _delegateSerializer.acceptJsonFormatVisitor(visitor, typeHint);
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#244#        }
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#276#    protected JsonSerializer<Object> _findSerializer(Object value, SerializerProvider serializers)
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#277#        throws JsonMappingException
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#278#    {
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#280#        return serializers.findValueSerializer(value.getClass());
+com/fasterxml/jackson/databind/ser/std/StdDelegatingSerializer.java#281#    }
+com/fasterxml/jackson/databind/ser/std/StdSerializer.java#262#                    if (existingSerializer == null && !delegateType.hasRawClass(Object.class)) {

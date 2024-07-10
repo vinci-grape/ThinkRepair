@@ -1,0 +1,12 @@
+com/fasterxml/jackson/databind/JsonMappingException.java#130#                    int arrays = 0;
+com/fasterxml/jackson/databind/JsonMappingException.java#131#                    while (cls.isArray()) {
+com/fasterxml/jackson/databind/JsonMappingException.java#132#                        cls = cls.getComponentType();
+com/fasterxml/jackson/databind/JsonMappingException.java#133#                        ++arrays;
+com/fasterxml/jackson/databind/JsonMappingException.java#134#                    }
+com/fasterxml/jackson/databind/JsonMappingException.java#135#                    sb.append(cls.getName());
+com/fasterxml/jackson/databind/JsonMappingException.java#136#                    while (--arrays >= 0) {
+com/fasterxml/jackson/databind/JsonMappingException.java#137#                        sb.append("[]");
+com/fasterxml/jackson/databind/JsonMappingException.java#138#                    }
+com/fasterxml/jackson/databind/JsonMappingException.java#139#                    /* was:
+com/fasterxml/jackson/databind/JsonMappingException.java#145#                    */
+com/fasterxml/jackson/databind/JsonMappingException.java#10#FIX_OF_OMISSION

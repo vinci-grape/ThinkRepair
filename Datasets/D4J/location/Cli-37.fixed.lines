@@ -1,0 +1,7 @@
+org/apache/commons/cli/DefaultParser.java#302#        if (!token.startsWith("-") || token.length() == 1)
+org/apache/commons/cli/DefaultParser.java#303#        {
+org/apache/commons/cli/DefaultParser.java#304#            return false;
+org/apache/commons/cli/DefaultParser.java#305#        }
+org/apache/commons/cli/DefaultParser.java#308#        int pos = token.indexOf("=");
+org/apache/commons/cli/DefaultParser.java#309#        String optName = pos == -1 ? token.substring(1) : token.substring(1, pos);
+org/apache/commons/cli/DefaultParser.java#310#        return options.hasShortOption(optName);

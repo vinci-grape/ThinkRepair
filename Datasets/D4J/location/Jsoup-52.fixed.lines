@@ -1,0 +1,12 @@
+org/jsoup/nodes/XmlDeclaration.java#46#        return attributes.html().trim(); // attr html starts with a " "
+org/jsoup/nodes/XmlDeclaration.java#53#            .append(name);
+org/jsoup/nodes/XmlDeclaration.java#54#        attributes.html(accum, out);
+org/jsoup/nodes/XmlDeclaration.java#55#        accum
+org/jsoup/nodes/XmlDeclaration.java#56#            .append(isProcessingInstruction ? "!" : "?")
+org/jsoup/parser/XmlTreeBuilder.java#3#import org.jsoup.Jsoup;
+org/jsoup/parser/XmlTreeBuilder.java#77#                Document doc = Jsoup.parse("<" + data.substring(1, data.length() -1) + ">", baseUri, Parser.xmlParser());
+org/jsoup/parser/XmlTreeBuilder.java#78#                Element el = doc.child(0);
+org/jsoup/parser/XmlTreeBuilder.java#79#                insert = new XmlDeclaration(el.tagName(), comment.baseUri(), data.startsWith("!"));
+org/jsoup/parser/XmlTreeBuilder.java#80#                insert.attributes().addAll(el.attributes());
+org/jsoup/helper/DataUtil.java#112#FIX_OF_OMISSION
+org/jsoup/helper/DataUtil.java#113#FIX_OF_OMISSION

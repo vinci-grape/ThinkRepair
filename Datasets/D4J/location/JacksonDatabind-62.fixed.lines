@@ -1,0 +1,8 @@
+com/fasterxml/jackson/databind/deser/std/CollectionDeserializer.java#184#            } else if (_valueInstantiator.canCreateUsingArrayDelegate()) {
+com/fasterxml/jackson/databind/deser/std/CollectionDeserializer.java#185#                JavaType delegateType = _valueInstantiator.getArrayDelegateType(ctxt.getConfig());
+com/fasterxml/jackson/databind/deser/std/CollectionDeserializer.java#186#                if (delegateType == null) {
+com/fasterxml/jackson/databind/deser/std/CollectionDeserializer.java#187#                    throw new IllegalArgumentException("Invalid array-delegate-creator definition for "+_collectionType
+com/fasterxml/jackson/databind/deser/std/CollectionDeserializer.java#188#                            +": value instantiator ("+_valueInstantiator.getClass().getName()
+com/fasterxml/jackson/databind/deser/std/CollectionDeserializer.java#189#                            +") returned true for 'canCreateUsingArrayDelegate()', but null for 'getArrayDelegateType()'");
+com/fasterxml/jackson/databind/deser/std/CollectionDeserializer.java#190#                }
+com/fasterxml/jackson/databind/deser/std/CollectionDeserializer.java#191#                delegateDeser = findDeserializer(ctxt, delegateType, property);

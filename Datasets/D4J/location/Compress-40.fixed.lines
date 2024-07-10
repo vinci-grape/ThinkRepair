@@ -1,0 +1,28 @@
+org/apache/commons/compress/utils/BitInputStream.java#85#        while (bitsCachedSize < count && bitsCachedSize < 57) {
+org/apache/commons/compress/utils/BitInputStream.java#98#        int overflowBits = 0;
+org/apache/commons/compress/utils/BitInputStream.java#99#        long overflow = 0l;
+org/apache/commons/compress/utils/BitInputStream.java#100#        if (bitsCachedSize < count) {
+org/apache/commons/compress/utils/BitInputStream.java#102#            int bitsToAddCount = count - bitsCachedSize;
+org/apache/commons/compress/utils/BitInputStream.java#103#            overflowBits = 8 - bitsToAddCount;
+org/apache/commons/compress/utils/BitInputStream.java#104#            final long nextByte = in.read();
+org/apache/commons/compress/utils/BitInputStream.java#105#            if (nextByte < 0) {
+org/apache/commons/compress/utils/BitInputStream.java#106#                return nextByte;
+org/apache/commons/compress/utils/BitInputStream.java#107#            }
+org/apache/commons/compress/utils/BitInputStream.java#108#            if (byteOrder == ByteOrder.LITTLE_ENDIAN) {
+org/apache/commons/compress/utils/BitInputStream.java#109#                long bitsToAdd = nextByte & MASKS[bitsToAddCount];
+org/apache/commons/compress/utils/BitInputStream.java#110#                bitsCached |= (bitsToAdd << bitsCachedSize);
+org/apache/commons/compress/utils/BitInputStream.java#111#                overflow = (nextByte >>> bitsToAddCount) & MASKS[overflowBits];
+org/apache/commons/compress/utils/BitInputStream.java#112#            } else {
+org/apache/commons/compress/utils/BitInputStream.java#113#                bitsCached <<= bitsToAddCount;
+org/apache/commons/compress/utils/BitInputStream.java#114#                long bitsToAdd = (nextByte >>> (overflowBits)) & MASKS[bitsToAddCount];
+org/apache/commons/compress/utils/BitInputStream.java#115#                bitsCached |= bitsToAdd;
+org/apache/commons/compress/utils/BitInputStream.java#116#                overflow = nextByte & MASKS[overflowBits];
+org/apache/commons/compress/utils/BitInputStream.java#117#            }
+org/apache/commons/compress/utils/BitInputStream.java#118#            bitsCachedSize = count;
+org/apache/commons/compress/utils/BitInputStream.java#119#        }
+org/apache/commons/compress/utils/BitInputStream.java#122#        if (overflowBits == 0) {
+org/apache/commons/compress/utils/BitInputStream.java#130#        } else {
+org/apache/commons/compress/utils/BitInputStream.java#131#            bitsOut = bitsCached & MASKS[count];
+org/apache/commons/compress/utils/BitInputStream.java#132#            bitsCached = overflow;
+org/apache/commons/compress/utils/BitInputStream.java#133#            bitsCachedSize = overflowBits;
+org/apache/commons/compress/utils/BitInputStream.java#134#        }

@@ -1,0 +1,4 @@
+org/jsoup/helper/StringUtil.java#131#    public static boolean isInvisibleChar(int c) {
+org/jsoup/helper/StringUtil.java#132#        return Character.getType(c) == 16 && (c == 8203 || c == 8204 || c == 8205 || c == 173);
+org/jsoup/helper/StringUtil.java#134#    }
+org/jsoup/helper/StringUtil.java#168#            else if (!isInvisibleChar(c)) {

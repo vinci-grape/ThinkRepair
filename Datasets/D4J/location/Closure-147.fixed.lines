@@ -1,0 +1,7 @@
+com/google/javascript/jscomp/CheckGlobalThis.java#108#            pType == Token.ASSIGN ||
+com/google/javascript/jscomp/CheckGlobalThis.java#109#            pType == Token.OBJECTLIT)) {
+com/google/javascript/jscomp/RuntimeTypeCheck.java#247#      for (Node next = block.getFirstChild();
+com/google/javascript/jscomp/RuntimeTypeCheck.java#248#           next != null && NodeUtil.isFunctionDeclaration(next);
+com/google/javascript/jscomp/RuntimeTypeCheck.java#249#           next = next.getNext()) {
+com/google/javascript/jscomp/RuntimeTypeCheck.java#250#        insertionPoint = next;
+com/google/javascript/jscomp/RuntimeTypeCheck.java#251#      }

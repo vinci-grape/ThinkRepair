@@ -1,0 +1,15 @@
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#301#          left, leftType, leftIsRefineable ? merged.typeA : null,
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#302#          right, rightType, rightIsRefineable ? merged.typeB : null);
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#348#          left, leftType, leftIsRefineable ? restrictedLeftType : null,
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#349#          right, rightType, rightIsRefineable ? restrictedRightType : null);
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#394#    if (restrictedType != null && restrictedType != originalType) {
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#407#      Node left, JSType originalLeftType, JSType restrictedLeftType,
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#408#      Node right, JSType originalRightType, JSType restrictedRightType) {
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#410#        restrictedLeftType != null && restrictedLeftType != originalLeftType;
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#412#        restrictedRightType != null && restrictedRightType != originalRightType;
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#430#      return maybeRestrictName(
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#431#          blindScope, name, type,
+com/google/javascript/jscomp/type/SemanticReverseAbstractInterpreter.java#432#          type.getRestrictedTypeGivenToBooleanOutcome(outcome));
+com/google/javascript/rhino/jstype/JSType.java#883#    if (outcome && this == getNativeType(JSTypeNative.UNKNOWN_TYPE)) {
+com/google/javascript/rhino/jstype/JSType.java#884#      return getNativeType(JSTypeNative.CHECKED_UNKNOWN_TYPE);
+com/google/javascript/rhino/jstype/JSType.java#885#    }

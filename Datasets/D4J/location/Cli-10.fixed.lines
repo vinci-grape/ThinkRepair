@@ -1,0 +1,2 @@
+org/apache/commons/cli/Parser.java#19#import java.util.ArrayList;
+org/apache/commons/cli/Parser.java#47#        this.requiredOptions = new ArrayList(options.getRequiredOptions());

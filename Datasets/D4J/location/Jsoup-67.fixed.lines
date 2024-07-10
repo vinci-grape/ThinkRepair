@@ -1,0 +1,4 @@
+org/jsoup/parser/HtmlTreeBuilder.java#42#    public static final int MaxScopeSearchDepth = 100; // prevents the parser bogging down in exceptionally broken pages
+org/jsoup/parser/HtmlTreeBuilder.java#469#        if (depth > MaxScopeSearchDepth) {
+org/jsoup/parser/HtmlTreeBuilder.java#470#            depth = MaxScopeSearchDepth;
+org/jsoup/parser/HtmlTreeBuilder.java#471#        }

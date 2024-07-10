@@ -1,0 +1,35 @@
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#296#    protected static String findEnclosingAttribute(Node n, String attrName) {
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#300#                String attr = e.getAttribute(attrName);
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#310#    protected String getLanguage() {
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#311#        return findEnclosingAttribute(node, "xml:lang");
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#312#    }
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#634#        if (node.getNodeType() == Node.COMMENT_NODE) {
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#635#            String text = ((Comment) node).getData();
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#636#            return text == null ? "" : text.trim();
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#637#        }
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#644#            return "";
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#646#        boolean trim = !"preserve".equals(findEnclosingAttribute(node, "xml:space"));
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#649#            return text == null ? "" : trim ? text.trim() : text;
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#653#            return text == null ? "" : trim ? text.trim() : text;
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#661#        return buf.toString();
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#240#            StringBuffer buf = new StringBuffer();
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#241#            for (NodeIterator children = childIterator(null, false, null); children.setPosition(children.getPosition() + 1);) {
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#242#                NodePointer ptr = children.getNodePointer();
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#243#                if (ptr.getImmediateNode() instanceof Element || ptr.getImmediateNode() instanceof Text) {
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#244#                    buf.append(ptr.getValue());
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#245#                }
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#246#            }
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#247#            return buf.toString();
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#256#        String result = null;
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#258#            result = ((Text) node).getText();
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#261#            result = ((ProcessingInstruction) node).getData();
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#263#        boolean trim = !"preserve".equals(findEnclosingAttribute(node, "space", Namespace.XML_NAMESPACE));
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#264#        return result != null && trim ? result.trim() : result;
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#438#        return findEnclosingAttribute(node, "lang", Namespace.XML_NAMESPACE);
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#439#    }
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#440#
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#441#    protected static String findEnclosingAttribute(Object n, String attrName, Namespace ns) {
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#445#                String attr = e.getAttributeValue(attrName, ns);
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#760#}
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#659#FIX_OF_OMISSION
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#660#FIX_OF_OMISSION

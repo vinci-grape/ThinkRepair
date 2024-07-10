@@ -1,0 +1,4 @@
+org/jsoup/nodes/Node.java#363#        new NodeTraversor(new OuterHtmlVisitor(accum, getOutputSettings())).traverse(this);
+org/jsoup/nodes/Node.java#367#    private Document.OutputSettings getOutputSettings() {
+org/jsoup/nodes/Node.java#368#        return ownerDocument() != null ? ownerDocument().outputSettings() : (new Document("")).outputSettings();
+org/jsoup/nodes/Node.java#369#    }

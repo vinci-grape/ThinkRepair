@@ -1,0 +1,2 @@
+org/apache/commons/compress/archivers/zip/X7875_NewUnix.java#58#    private static final ZipShort ZERO = new ZipShort(0);
+org/apache/commons/compress/archivers/zip/X7875_NewUnix.java#147#        return ZERO;

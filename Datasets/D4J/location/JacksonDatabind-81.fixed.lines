@@ -1,0 +1,32 @@
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#764#                    } else if (_primitiveAndWrapper(currRaw, serClass)) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#766#                        type = type.withStaticTyping();
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#799#                        } else if (_primitiveAndWrapper(currRaw, keyClass)) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#801#                            keyType = keyType.withStaticTyping();
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#835#                       } else if (_primitiveAndWrapper(currRaw, contentClass)) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#837#                           contentType = contentType.withStaticTyping();
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1125#        if ((valueClass != null) && !type.hasRawClass(valueClass)
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1126#                && !_primitiveAndWrapper(type, valueClass)) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1142#            if ((keyClass != null)
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1143#                    && !_primitiveAndWrapper(keyType, keyClass)) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1159#            if ((contentClass != null)
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1160#                    && !_primitiveAndWrapper(contentType, contentClass)) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1466#    private boolean _primitiveAndWrapper(Class<?> baseType, Class<?> refinement)
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1467#    {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1468#        if (baseType.isPrimitive()) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1469#            return baseType == ClassUtil.primitiveType(refinement);
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1470#        }
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1471#        if (refinement.isPrimitive()) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1472#            return refinement == ClassUtil.primitiveType(baseType);
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1473#        }
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1474#        return false;
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1475#    }
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1477#    private boolean _primitiveAndWrapper(JavaType baseType, Class<?> refinement)
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1478#    {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1479#        if (baseType.isPrimitive()) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1480#            return baseType.hasRawClass(ClassUtil.primitiveType(refinement));
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1481#        }
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1482#        if (refinement.isPrimitive()) {
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1483#            return refinement == ClassUtil.primitiveType(baseType.getRawClass());
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1484#        }
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1485#        return false;
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#1486#    }

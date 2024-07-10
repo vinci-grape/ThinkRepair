@@ -1,0 +1,14 @@
+org/apache/commons/codec/binary/StringUtils.java#70#    public static boolean equals(final CharSequence cs1, final CharSequence cs2) {
+org/apache/commons/codec/binary/StringUtils.java#71#        if (cs1 == cs2) {
+org/apache/commons/codec/binary/StringUtils.java#72#            return true;
+org/apache/commons/codec/binary/StringUtils.java#73#        }
+org/apache/commons/codec/binary/StringUtils.java#74#        if (cs1 == null || cs2 == null) {
+org/apache/commons/codec/binary/StringUtils.java#75#            return false;
+org/apache/commons/codec/binary/StringUtils.java#76#        }
+org/apache/commons/codec/binary/StringUtils.java#77#        if (cs1 instanceof String && cs2 instanceof String) {
+org/apache/commons/codec/binary/StringUtils.java#78#            return cs1.equals(cs2);
+org/apache/commons/codec/binary/StringUtils.java#79#        }
+org/apache/commons/codec/binary/StringUtils.java#80#        return CharSequenceUtils.regionMatches(cs1, false, 0, cs2, 0, Math.max(cs1.length(), cs2.length()));
+org/apache/commons/codec/binary/StringUtils.java#81#    }
+org/apache/commons/codec/language/DoubleMetaphone.java#22#import org.apache.commons.codec.binary.StringUtils;
+org/apache/commons/codec/language/DoubleMetaphone.java#245#        return StringUtils.equals(doubleMetaphone(value1, alternate), doubleMetaphone(value2, alternate));

@@ -1,0 +1,3 @@
+org/jsoup/parser/HtmlTreeBuilderState.java#455#                        if (tb.getFromStack("svg") == null)
+org/jsoup/parser/HtmlTreeBuilderState.java#457#                        else
+org/jsoup/parser/HtmlTreeBuilderState.java#458#                            tb.insert(startTag);

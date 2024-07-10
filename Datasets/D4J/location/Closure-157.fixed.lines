@@ -1,0 +1,65 @@
+com/google/javascript/jscomp/CodeGenerator.java#343#        if (!n.isQuotedString() &&
+com/google/javascript/jscomp/CodeGenerator.java#344#            TokenStream.isJSIdentifier(name) &&
+com/google/javascript/jscomp/CodeGenerator.java#351#          double d = getSimpleNumber(name);
+com/google/javascript/jscomp/CodeGenerator.java#352#          if (!Double.isNaN(d)) {
+com/google/javascript/jscomp/CodeGenerator.java#353#            cc.addNumber(d);
+com/google/javascript/jscomp/CodeGenerator.java#354#          } else {
+com/google/javascript/jscomp/CodeGenerator.java#355#            add(jsString(n.getString(), outputCharsetEncoder));
+com/google/javascript/jscomp/CodeGenerator.java#356#          }
+com/google/javascript/jscomp/CodeGenerator.java#660#            Preconditions.checkState(c.getType() == Token.STRING);
+com/google/javascript/jscomp/CodeGenerator.java#661#            String key = c.getString();
+com/google/javascript/jscomp/CodeGenerator.java#664#            if (!c.isQuotedString() &&
+com/google/javascript/jscomp/CodeGenerator.java#665#                !TokenStream.isKeyword(key) &&
+com/google/javascript/jscomp/CodeGenerator.java#666#                TokenStream.isJSIdentifier(key) &&
+com/google/javascript/jscomp/CodeGenerator.java#669#                NodeUtil.isLatin(key)) {
+com/google/javascript/jscomp/CodeGenerator.java#670#              add(key);
+com/google/javascript/jscomp/CodeGenerator.java#673#              double d = getSimpleNumber(key);
+com/google/javascript/jscomp/CodeGenerator.java#674#              if (!Double.isNaN(d)) {
+com/google/javascript/jscomp/CodeGenerator.java#675#                cc.addNumber(d);
+com/google/javascript/jscomp/CodeGenerator.java#676#              } else {
+com/google/javascript/jscomp/CodeGenerator.java#677#                addExpr(c, 1);
+com/google/javascript/jscomp/CodeGenerator.java#678#              }
+com/google/javascript/jscomp/CodeGenerator.java#736#  static boolean isSimpleNumber(String s) {
+com/google/javascript/jscomp/CodeGenerator.java#737#    int len = s.length();
+com/google/javascript/jscomp/CodeGenerator.java#738#    for (int index = 0; index < len; index++) {
+com/google/javascript/jscomp/CodeGenerator.java#739#      char c = s.charAt(index);
+com/google/javascript/jscomp/CodeGenerator.java#740#      if (c < '0' || c > '9') {
+com/google/javascript/jscomp/CodeGenerator.java#741#        return false;
+com/google/javascript/jscomp/CodeGenerator.java#742#      }
+com/google/javascript/jscomp/CodeGenerator.java#743#    }
+com/google/javascript/jscomp/CodeGenerator.java#744#    return len > 0;
+com/google/javascript/jscomp/CodeGenerator.java#745#  }
+com/google/javascript/jscomp/CodeGenerator.java#747#  static double getSimpleNumber(String s) {
+com/google/javascript/jscomp/CodeGenerator.java#748#    if (isSimpleNumber(s)) {
+com/google/javascript/jscomp/CodeGenerator.java#749#      long l = Long.parseLong(s);
+com/google/javascript/jscomp/CodeGenerator.java#750#      if (l < NodeUtil.MAX_POSITIVE_INTEGER_NUMBER) {
+com/google/javascript/jscomp/CodeGenerator.java#751#        return l;
+com/google/javascript/jscomp/CodeGenerator.java#752#      }
+com/google/javascript/jscomp/CodeGenerator.java#753#    }
+com/google/javascript/jscomp/CodeGenerator.java#754#    return Double.NaN;
+com/google/javascript/jscomp/CodeGenerator.java#755#  }
+com/google/javascript/jscomp/parsing/IRFactory.java#255#  private Node transformNumberAsString(NumberLiteral literalNode) {
+com/google/javascript/jscomp/parsing/IRFactory.java#256#    JSDocInfo jsDocInfo = handleJsDoc(literalNode);
+com/google/javascript/jscomp/parsing/IRFactory.java#257#    Node irNode = newStringNode(getStringValue(literalNode.getNumber()));
+com/google/javascript/jscomp/parsing/IRFactory.java#258#    if (jsDocInfo != null) {
+com/google/javascript/jscomp/parsing/IRFactory.java#259#      irNode.setJSDocInfo(jsDocInfo);
+com/google/javascript/jscomp/parsing/IRFactory.java#260#    }
+com/google/javascript/jscomp/parsing/IRFactory.java#261#    setSourceInfo(irNode, literalNode);
+com/google/javascript/jscomp/parsing/IRFactory.java#262#    return irNode;
+com/google/javascript/jscomp/parsing/IRFactory.java#263#  }
+com/google/javascript/jscomp/parsing/IRFactory.java#265#  private static String getStringValue(double value) {
+com/google/javascript/jscomp/parsing/IRFactory.java#266#    long longValue = (long) value;
+com/google/javascript/jscomp/parsing/IRFactory.java#269#    if (longValue == value) {
+com/google/javascript/jscomp/parsing/IRFactory.java#270#      return Long.toString(longValue);
+com/google/javascript/jscomp/parsing/IRFactory.java#271#    } else {
+com/google/javascript/jscomp/parsing/IRFactory.java#272#      return Double.toString(value);
+com/google/javascript/jscomp/parsing/IRFactory.java#273#    }
+com/google/javascript/jscomp/parsing/IRFactory.java#274#  }
+com/google/javascript/jscomp/parsing/IRFactory.java#364#      } else if (n instanceof NumberLiteral) {
+com/google/javascript/jscomp/parsing/IRFactory.java#365#        ret = transformNumberAsString((NumberLiteral)n);
+com/google/javascript/jscomp/parsing/IRFactory.java#366#        ret.putBooleanProp(Node.QUOTED_PROP, true);
+com/google/javascript/jscomp/parsing/IRFactory.java#371#      Preconditions.checkState(ret.getType() == Token.STRING);
+com/google/javascript/jscomp/RenamePrototypes.java#336#              if (TokenStream.isJSIdentifier(child.getString())) {
+com/google/javascript/jscomp/RenamePrototypes.java#377#              if (TokenStream.isJSIdentifier(key.getString())) {
+com/google/javascript/jscomp/parsing/IRFactory.java#369#FIX_OF_OMISSION
+com/google/javascript/jscomp/parsing/IRFactory.java#370#FIX_OF_OMISSION

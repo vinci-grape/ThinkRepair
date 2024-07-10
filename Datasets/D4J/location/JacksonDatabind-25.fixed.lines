@@ -1,0 +1,4 @@
+com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java#1757#                type = (T) ctxt.getTypeFactory().constructSpecializedType(type, subclass);
+com/fasterxml/jackson/databind/deser/DeserializerCache.java#477#                type = ctxt.getTypeFactory().constructSpecializedType(type, subclass);
+com/fasterxml/jackson/databind/jsontype/impl/TypeDeserializerBase.java#177#                    type = ctxt.getTypeFactory().constructSpecializedType(_baseType, type.getRawClass());
+com/fasterxml/jackson/databind/module/SimpleAbstractTypeResolver.java#80#        return config.getTypeFactory().constructSpecializedType(type, dst);

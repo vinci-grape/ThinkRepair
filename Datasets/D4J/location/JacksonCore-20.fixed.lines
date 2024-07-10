@@ -1,0 +1,10 @@
+com/fasterxml/jackson/core/JsonGenerator.java#1330#        if (object == null) {
+com/fasterxml/jackson/core/JsonGenerator.java#1331#            writeNull();
+com/fasterxml/jackson/core/JsonGenerator.java#1332#            return;
+com/fasterxml/jackson/core/JsonGenerator.java#1333#        }
+com/fasterxml/jackson/core/JsonGenerator.java#1334#        if (object instanceof byte[]) {
+com/fasterxml/jackson/core/JsonGenerator.java#1335#            writeBinary((byte[]) object);
+com/fasterxml/jackson/core/JsonGenerator.java#1336#            return;
+com/fasterxml/jackson/core/JsonGenerator.java#1337#        }
+com/fasterxml/jackson/core/JsonGenerator.java#1338#        throw new JsonGenerationException("No native support for writing embedded objects of type "
+com/fasterxml/jackson/core/JsonGenerator.java#1339#                +object.getClass().getName(),

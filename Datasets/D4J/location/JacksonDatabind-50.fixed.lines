@@ -1,0 +1,42 @@
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#9#import com.fasterxml.jackson.databind.deser.impl.ReadableObjectId.Referring;
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#388#        List<BeanReferring> referrings = null;
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#431#                try {
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#433#                } catch (UnresolvedForwardReference reference) {
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#437#                    BeanReferring referring = handleUnresolvedReference(p, prop, buffer, reference);
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#438#                    if (referrings == null) {
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#439#                        referrings = new ArrayList<BeanReferring>();
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#440#                    }
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#441#                    referrings.add(referring);
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#442#                }
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#475#        if (referrings != null) {
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#476#            for (BeanReferring referring : referrings) {
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#477#               referring.setBean(bean);
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#478#            }
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#479#        }
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#494#    private BeanReferring handleUnresolvedReference(JsonParser p,
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#495#            SettableBeanProperty prop, PropertyValueBuffer buffer,
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#496#            UnresolvedForwardReference reference)
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#497#        throws JsonMappingException
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#498#    {
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#499#        BeanReferring referring = new BeanReferring(reference, prop.getType().getRawClass(),
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#500#                buffer, prop);
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#501#        reference.getRoid().appendReferring(referring);
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#502#        return referring;
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#503#    }
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#958#    static class BeanReferring extends Referring {
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#959#        private final SettableBeanProperty _prop;
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#960#        private Object _bean;
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#962#        public void setBean(Object bean) {
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#963#            _bean = bean;
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#964#        }
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#966#        BeanReferring(UnresolvedForwardReference ref,
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#967#                Class<?> valueType, PropertyValueBuffer buffer, SettableBeanProperty prop)
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#968#        {
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#969#            super(ref, valueType);
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#970#            _prop = prop;
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#971#        }
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#973#        @Override
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#974#        public void handleResolvedForwardReference(Object id, Object value) throws IOException {
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#975#            _prop.set(_bean, value);
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#976#        }
+com/fasterxml/jackson/databind/deser/BeanDeserializer.java#977#    }

@@ -1,0 +1,4 @@
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#748#                    || _hasAnnotation(a, JsonRawValue.class)
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#749#                    || _hasAnnotation(a, JsonUnwrapped.class)
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#750#                    || _hasAnnotation(a, JsonBackReference.class)
+com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java#751#                    || _hasAnnotation(a, JsonManagedReference.class)) {

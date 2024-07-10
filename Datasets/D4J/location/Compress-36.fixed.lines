@@ -1,0 +1,3 @@
+org/apache/commons/compress/archivers/sevenz/SevenZFile.java#902#        if (archive.files[currentEntryIndex].getSize() == 0) {
+org/apache/commons/compress/archivers/sevenz/SevenZFile.java#903#            return new ByteArrayInputStream(new byte[0]);
+org/apache/commons/compress/archivers/sevenz/SevenZFile.java#904#        }

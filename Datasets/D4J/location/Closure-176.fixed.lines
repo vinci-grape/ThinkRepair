@@ -1,0 +1,8 @@
+com/google/javascript/jscomp/TypeInference.java#530#        JSType varType = var == null ? null : var.getType();
+com/google/javascript/jscomp/TypeInference.java#531#        boolean isVarDeclaration = left.hasChildren()
+com/google/javascript/jscomp/TypeInference.java#532#            && varType != null && !var.isTypeInferred();
+com/google/javascript/jscomp/TypeInference.java#550#        boolean isVarTypeBetter = isVarDeclaration &&
+com/google/javascript/jscomp/TypeInference.java#552#            !resultType.isNullType() && !resultType.isVoidType();
+com/google/javascript/jscomp/TypeInference.java#565#          redeclareSimpleVar(scope, left, varType);
+com/google/javascript/jscomp/TypeInference.java#566#        } else {
+com/google/javascript/jscomp/TypeInference.java#569#        left.setJSType(resultType);

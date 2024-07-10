@@ -1,0 +1,9 @@
+com/fasterxml/jackson/core/JsonPointer.java#193#        char c = str.charAt(0);
+com/fasterxml/jackson/core/JsonPointer.java#194#        if (c <= '0') {
+com/fasterxml/jackson/core/JsonPointer.java#195#            return (len == 1 && c == '0') ? 0 : -1;
+com/fasterxml/jackson/core/JsonPointer.java#196#        }
+com/fasterxml/jackson/core/JsonPointer.java#197#        if (c > '9') {
+com/fasterxml/jackson/core/JsonPointer.java#198#            return -1;
+com/fasterxml/jackson/core/JsonPointer.java#199#        }
+com/fasterxml/jackson/core/JsonPointer.java#200#        for (int i = 1; i < len; ++i) {
+com/fasterxml/jackson/core/JsonPointer.java#201#            c = str.charAt(i);

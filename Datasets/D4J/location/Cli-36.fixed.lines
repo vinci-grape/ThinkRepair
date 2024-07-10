@@ -1,0 +1,5 @@
+org/apache/commons/cli/OptionGroup.java#23#import java.util.LinkedHashMap;
+org/apache/commons/cli/OptionGroup.java#37#    private final Map<String, Option> optionMap = new LinkedHashMap<String, Option>();
+org/apache/commons/cli/Options.java#60#    private final Map<String, OptionGroup> optionGroups = new LinkedHashMap<String, OptionGroup>();
+org/apache/commons/cli/OptionGroup.java#22#FIX_OF_OMISSION
+org/apache/commons/cli/Options.java#24#FIX_OF_OMISSION

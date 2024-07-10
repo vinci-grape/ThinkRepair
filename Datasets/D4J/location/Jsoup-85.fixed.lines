@@ -1,0 +1,2 @@
+org/jsoup/nodes/Attribute.java#44#        key = key.trim();
+org/jsoup/nodes/Attribute.java#46#        this.key = key;

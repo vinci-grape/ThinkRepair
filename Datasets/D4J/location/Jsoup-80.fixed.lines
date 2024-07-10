@@ -1,0 +1,2 @@
+org/jsoup/parser/XmlTreeBuilder.java#91#                if (doc.childNodeSize() > 0) {
+org/jsoup/parser/XmlTreeBuilder.java#95#                } // else, we couldn't parse it as a decl, so leave as a comment

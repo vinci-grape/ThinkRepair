@@ -1,0 +1,13 @@
+com/google/gson/internal/UnsafeAllocator.java#23#import java.lang.reflect.Modifier;
+com/google/gson/internal/UnsafeAllocator.java#49#          assertInstantiable(c);
+com/google/gson/internal/UnsafeAllocator.java#73#          assertInstantiable(c);
+com/google/gson/internal/UnsafeAllocator.java#93#          assertInstantiable(c);
+com/google/gson/internal/UnsafeAllocator.java#114#  private static void assertInstantiable(Class<?> c) {
+com/google/gson/internal/UnsafeAllocator.java#115#    int modifiers = c.getModifiers();
+com/google/gson/internal/UnsafeAllocator.java#116#    if (Modifier.isInterface(modifiers)) {
+com/google/gson/internal/UnsafeAllocator.java#117#      throw new UnsupportedOperationException("Interface can't be instantiated! Interface name: " + c.getName());
+com/google/gson/internal/UnsafeAllocator.java#118#    }
+com/google/gson/internal/UnsafeAllocator.java#119#    if (Modifier.isAbstract(modifiers)) {
+com/google/gson/internal/UnsafeAllocator.java#120#      throw new UnsupportedOperationException("Abstract class can't be instantiated! Class name: " + c.getName());
+com/google/gson/internal/UnsafeAllocator.java#121#    }
+com/google/gson/internal/UnsafeAllocator.java#122#  }

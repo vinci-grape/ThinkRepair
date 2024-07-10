@@ -1,0 +1,19 @@
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#560#            if (n.getNodeType() == Node.ELEMENT_NODE && matchesQName(n)) {
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#568#    private boolean matchesQName(Node n) {
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#569#        if (getNamespaceURI() != null) {
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#570#            return equalStrings(getNamespaceURI(n), getNamespaceURI())
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#571#                    && equalStrings(node.getLocalName(), n.getLocalName());
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#572#        }
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#573#        return equalStrings(node.getNodeName(), n.getNodeName());
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#574#    }
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#696#                if (child instanceof Element && matchesQName(((Element) child))) {
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#708#    private boolean matchesQName(Element element) {
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#709#        if (getNamespaceURI() != null) {
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#710#            String ns = getNamespaceURI(element);
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#711#            if (ns == null || !ns.equals(getNamespaceURI())) {
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#712#                return false;
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#713#            }
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#714#        }
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#715#        return element.getName().equals(((Element) node).getName());
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#716#    }
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#562#FIX_OF_OMISSION

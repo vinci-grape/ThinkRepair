@@ -1,0 +1,6 @@
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#65#        s.add("java.util.logging.FileHandler");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#66#        s.add("java.rmi.server.UnicastRemoteObject");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#68#        s.add("org.springframework.aop.support.AbstractBeanFactoryPointcutAdvisor");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#69#        s.add("org.springframework.beans.factory.config.PropertyPathFactoryBean");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#70#        s.add("com.mchange.v2.c3p0.JndiRefForwardingDataSource");
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#71#        s.add("com.mchange.v2.c3p0.WrapperConnectionPoolDataSource");

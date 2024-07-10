@@ -1,0 +1,27 @@
+org/jsoup/nodes/Entities.java#3#import org.jsoup.parser.Parser;
+org/jsoup/nodes/Entities.java#62#    public static boolean isBaseNamedEntity(String name) {
+org/jsoup/nodes/Entities.java#63#        return base.containsKey(name);
+org/jsoup/nodes/Entities.java#64#    }
+org/jsoup/nodes/Entities.java#107#        return Parser.unescapeEntities(string, strict);
+org/jsoup/parser/Parser.java#133#    public static String unescapeEntities(String string, boolean inAttribute) {
+org/jsoup/parser/Parser.java#134#        Tokeniser tokeniser = new Tokeniser(new CharacterReader(string), ParseErrorList.noTracking());
+org/jsoup/parser/Parser.java#135#        return tokeniser.unescapeEntities(inAttribute);
+org/jsoup/parser/Parser.java#136#    }
+org/jsoup/parser/Tokeniser.java#138#            boolean found = (Entities.isBaseNamedEntity(nameRef) || (Entities.isNamedEntity(nameRef) && looksLegit));
+org/jsoup/parser/Tokeniser.java#143#                    characterReferenceError(String.format("invalid named referenece '%s'", nameRef));
+org/jsoup/parser/Tokeniser.java#229#    String unescapeEntities(boolean inAttribute) {
+org/jsoup/parser/Tokeniser.java#230#        StringBuilder builder = new StringBuilder();
+org/jsoup/parser/Tokeniser.java#231#        while (!reader.isEmpty()) {
+org/jsoup/parser/Tokeniser.java#232#            builder.append(reader.consumeTo('&'));
+org/jsoup/parser/Tokeniser.java#233#            if (reader.matches('&')) {
+org/jsoup/parser/Tokeniser.java#234#                reader.consume();
+org/jsoup/parser/Tokeniser.java#235#                Character c = consumeCharacterReference(null, inAttribute);
+org/jsoup/parser/Tokeniser.java#236#                if (c == null)
+org/jsoup/parser/Tokeniser.java#237#                    builder.append('&');
+org/jsoup/parser/Tokeniser.java#238#                else
+org/jsoup/parser/Tokeniser.java#239#                    builder.append(c);
+org/jsoup/parser/Tokeniser.java#240#            }
+org/jsoup/parser/Tokeniser.java#241#        }
+org/jsoup/parser/Tokeniser.java#242#        return builder.toString();
+org/jsoup/parser/Tokeniser.java#243#    }
+org/jsoup/parser/Tokeniser.java#136#FIX_OF_OMISSION

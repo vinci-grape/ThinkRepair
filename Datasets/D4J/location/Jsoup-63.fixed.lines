@@ -1,0 +1,8 @@
+org/jsoup/parser/HtmlTreeBuilder.java#227#                if (!tag.isEmpty())
+org/jsoup/parser/HtmlTreeBuilder.java#228#                    tokeniser.error("Tag cannot be self closing; not a void tag");
+org/jsoup/parser/HtmlTreeBuilder.java#230#            else // unknown tag, remember this is self closing for output
+org/jsoup/parser/HtmlTreeBuilder.java#232#FIX_OF_OMISSION
+org/jsoup/parser/Tokeniser.java#36#FIX_OF_OMISSION
+org/jsoup/parser/Tokeniser.java#43#FIX_OF_OMISSION
+org/jsoup/parser/Tokeniser.java#71#FIX_OF_OMISSION
+org/jsoup/parser/Tokeniser.java#117#FIX_OF_OMISSION

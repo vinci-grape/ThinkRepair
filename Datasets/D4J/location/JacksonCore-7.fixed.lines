@@ -1,0 +1,3 @@
+com/fasterxml/jackson/core/json/JsonWriteContext.java#169#            if (!_gotName) {
+com/fasterxml/jackson/core/json/JsonWriteContext.java#170#                return STATUS_EXPECT_NAME;
+com/fasterxml/jackson/core/json/JsonWriteContext.java#171#            }

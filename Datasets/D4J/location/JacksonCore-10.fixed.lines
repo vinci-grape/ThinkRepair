@@ -1,0 +1,4 @@
+com/fasterxml/jackson/core/sym/ByteQuadsCanonicalizer.java#925#        final int end = (_hashSize << 3);
+com/fasterxml/jackson/core/sym/ByteQuadsCanonicalizer.java#926#        if (_spilloverEnd >= end) {
+com/fasterxml/jackson/core/sym/ByteQuadsCanonicalizer.java#985#        hash ^= (hash << 3); // shuffle back a bit
+com/fasterxml/jackson/core/sym/ByteQuadsCanonicalizer.java#986#        hash += (hash >>> 12); // and bit more

@@ -1,0 +1,6 @@
+org/jsoup/helper/DataUtil.java#5#import org.jsoup.nodes.Comment;
+org/jsoup/helper/DataUtil.java#137#                else if (first instanceof Comment) {
+org/jsoup/helper/DataUtil.java#138#                    Comment comment = (Comment) first;
+org/jsoup/helper/DataUtil.java#139#                    if (comment.isXmlDeclaration())
+org/jsoup/helper/DataUtil.java#140#                        decl = comment.asXmlDeclaration();
+org/jsoup/helper/DataUtil.java#141#                }

@@ -1,0 +1,5 @@
+org/apache/commons/cli/DefaultParser.java#310#        if (options.hasShortOption(optName))
+org/apache/commons/cli/DefaultParser.java#311#        {
+org/apache/commons/cli/DefaultParser.java#312#            return true;
+org/apache/commons/cli/DefaultParser.java#313#        }
+org/apache/commons/cli/DefaultParser.java#315#        return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.charAt(0)));

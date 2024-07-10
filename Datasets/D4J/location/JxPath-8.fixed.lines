@@ -1,0 +1,6 @@
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#76#        if (Double.isNaN(ld)) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#77#            return false;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#78#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#80#        if (Double.isNaN(rd)) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#81#            return false;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#82#        }

@@ -1,0 +1,2 @@
+org/jsoup/parser/CharacterReader.java#18#        input = input.replaceAll("\r\n?", "\n"); // normalise carriage returns to newlines
+org/jsoup/parser/CharacterReader.java#100#        String data = input.substring(pos, input.length());

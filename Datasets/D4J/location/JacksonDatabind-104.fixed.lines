@@ -1,0 +1,20 @@
+com/fasterxml/jackson/databind/util/StdDateFormat.java#441#        if (cal.get(Calendar.ERA) == GregorianCalendar.BC) {
+com/fasterxml/jackson/databind/util/StdDateFormat.java#442#            _formatBCEYear(buffer, year);
+com/fasterxml/jackson/databind/util/StdDateFormat.java#443#        } else {
+com/fasterxml/jackson/databind/util/StdDateFormat.java#444#            if (year > 9999) {
+com/fasterxml/jackson/databind/util/StdDateFormat.java#450#                buffer.append('+');
+com/fasterxml/jackson/databind/util/StdDateFormat.java#451#            }
+com/fasterxml/jackson/databind/util/StdDateFormat.java#453#        }
+com/fasterxml/jackson/databind/util/StdDateFormat.java#490#    protected void _formatBCEYear(StringBuffer buffer, int bceYearNoSign) {
+com/fasterxml/jackson/databind/util/StdDateFormat.java#493#        if (bceYearNoSign == 1) {
+com/fasterxml/jackson/databind/util/StdDateFormat.java#494#            buffer.append("+0000");
+com/fasterxml/jackson/databind/util/StdDateFormat.java#495#            return;
+com/fasterxml/jackson/databind/util/StdDateFormat.java#496#        }
+com/fasterxml/jackson/databind/util/StdDateFormat.java#497#        final int isoYear = bceYearNoSign - 1;
+com/fasterxml/jackson/databind/util/StdDateFormat.java#498#        buffer.append('-');
+com/fasterxml/jackson/databind/util/StdDateFormat.java#502#        pad4(buffer, isoYear);
+com/fasterxml/jackson/databind/util/StdDateFormat.java#503#    }
+com/fasterxml/jackson/databind/util/StdDateFormat.java#532#            if (h > 99) { // [databind#2167]: handle above 9999 correctly
+com/fasterxml/jackson/databind/util/StdDateFormat.java#533#                buffer.append(h);
+com/fasterxml/jackson/databind/util/StdDateFormat.java#534#            } else {
+com/fasterxml/jackson/databind/util/StdDateFormat.java#536#            }

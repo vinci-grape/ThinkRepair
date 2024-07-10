@@ -1,0 +1,3 @@
+com/fasterxml/jackson/databind/deser/std/JsonNodeDeserializer.java#97#            if (p.isExpectedStartObjectToken() || p.hasToken(JsonToken.FIELD_NAME)) {
+com/fasterxml/jackson/databind/deser/std/JsonNodeDeserializer.java#102#            if (p.hasToken(JsonToken.END_OBJECT)) {
+com/fasterxml/jackson/databind/deser/std/JsonNodeDeserializer.java#103#                return ctxt.getNodeFactory().objectNode();

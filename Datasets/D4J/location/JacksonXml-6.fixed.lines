@@ -1,0 +1,66 @@
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#843#    @Override
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#844#    public int writeBinary(Base64Variant b64variant, InputStream data, int dataLength) throws IOException
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#845#    {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#846#        if (data == null) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#847#            writeNull();
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#848#            return 0;
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#849#        }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#850#        _verifyValueWrite("write Binary value");
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#851#        if (_nextName == null) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#852#            handleMissingName();
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#853#        }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#854#        try {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#855#            if (_nextIsAttribute) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#857#                byte[] fullBuffer = toFullBuffer(data, dataLength);
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#858#                _xmlWriter.writeBinaryAttribute("", _nextName.getNamespaceURI(), _nextName.getLocalPart(), fullBuffer);
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#859#            } else if (checkNextIsUnwrapped()) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#861#                writeStreamAsBinary(data, dataLength);
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#863#            } else {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#864#                if (_xmlPrettyPrinter != null) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#865#                    _xmlPrettyPrinter.writeLeafElement(_xmlWriter,
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#866#                            _nextName.getNamespaceURI(), _nextName.getLocalPart(),
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#867#                            toFullBuffer(data, dataLength), 0, dataLength);
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#868#                } else {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#869#                    _xmlWriter.writeStartElement(_nextName.getNamespaceURI(), _nextName.getLocalPart());
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#870#                    writeStreamAsBinary(data, dataLength);
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#871#                    _xmlWriter.writeEndElement();
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#872#                }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#873#            }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#874#        } catch (XMLStreamException e) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#875#            StaxUtil.throwAsGenerationException(e, this);
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#876#        }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#878#        return dataLength;
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#879#    }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#881#    private void writeStreamAsBinary(InputStream data, int len) throws IOException, XMLStreamException 
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#882#    {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#884#        byte[] tmp = new byte[3];
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#885#        int offset = 0;
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#886#        int read;
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#887#        while((read = data.read(tmp, offset, Math.min(3 - offset, len))) != -1) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#888#            offset += read;
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#889#            len -= read;
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#890#            if(offset == 3) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#891#                offset = 0;
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#892#                _xmlWriter.writeBinary(tmp, 0, 3);
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#893#            }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#894#            if (len == 0) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#895#                break;
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#896#            }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#897#        }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#900#        if(offset > 0) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#901#            _xmlWriter.writeBinary(tmp, 0, offset);
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#902#        }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#903#    }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#919#    private byte[] toFullBuffer(InputStream data, final int len) throws IOException 
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#920#    {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#921#        byte[] result = new byte[len];
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#922#        int offset = 0;
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#924#        for (; offset < len; ) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#925#            int count = data.read(result, offset, len - offset);
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#926#            if (count < 0) {
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#927#                _reportError("Too few bytes available: missing "+(len - offset)+" bytes (out of "+len+")");
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#928#            }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#929#            offset += count;
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#930#        }
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#931#        return result;
+com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java#932#    }

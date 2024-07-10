@@ -1,0 +1,2 @@
+org/jsoup/helper/W3CDom.java#91#                Element el = namespace == null && tagName.contains(":") ?
+org/jsoup/helper/W3CDom.java#92#                    doc.createElementNS("", tagName) : // doesn't have a real namespace defined

@@ -1,0 +1,10 @@
+com/google/gson/stream/JsonReader.java#954#    } else if (p == PEEKED_SINGLE_QUOTED || p == PEEKED_DOUBLE_QUOTED || p == PEEKED_UNQUOTED) {
+com/google/gson/stream/JsonReader.java#955#      if (p == PEEKED_UNQUOTED) {
+com/google/gson/stream/JsonReader.java#956#        peekedString = nextUnquotedValue();
+com/google/gson/stream/JsonReader.java#957#      } else {
+com/google/gson/stream/JsonReader.java#959#      }
+com/google/gson/stream/JsonReader.java#1186#    } else if (p == PEEKED_SINGLE_QUOTED || p == PEEKED_DOUBLE_QUOTED || p == PEEKED_UNQUOTED) {
+com/google/gson/stream/JsonReader.java#1187#      if (p == PEEKED_UNQUOTED) {
+com/google/gson/stream/JsonReader.java#1188#        peekedString = nextUnquotedValue();
+com/google/gson/stream/JsonReader.java#1189#      } else {
+com/google/gson/stream/JsonReader.java#1191#      }

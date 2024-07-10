@@ -1,0 +1,9 @@
+com/fasterxml/jackson/databind/AnnotationIntrospector.java#816#                Class<?> currRaw = type.getRawClass();
+com/fasterxml/jackson/databind/AnnotationIntrospector.java#820#                    if (serClass.isAssignableFrom(currRaw)) { // common case
+com/fasterxml/jackson/databind/AnnotationIntrospector.java#822#                    } else if (currRaw.isAssignableFrom(serClass)) { // specialization, ok as well
+com/fasterxml/jackson/databind/AnnotationIntrospector.java#823#                        type = tf.constructSpecializedType(type, serClass);
+com/fasterxml/jackson/databind/AnnotationIntrospector.java#824#                    } else {
+com/fasterxml/jackson/databind/AnnotationIntrospector.java#825#                        throw new JsonMappingException(null,
+com/fasterxml/jackson/databind/AnnotationIntrospector.java#826#                                String.format("Can not refine serialization type %s into %s; types not related",
+com/fasterxml/jackson/databind/AnnotationIntrospector.java#827#                                        type, serClass.getName()));
+com/fasterxml/jackson/databind/AnnotationIntrospector.java#828#                    }

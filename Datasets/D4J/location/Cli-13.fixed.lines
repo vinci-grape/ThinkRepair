@@ -1,0 +1,10 @@
+org/apache/commons/cli2/WriteableCommandLine.java#47#    List getUndefaultedValues(final Option option);
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#132#    public List getUndefaultedValues(Option option) {
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#134#      List valueList = (List) values.get(option);
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#137#      if (valueList == null) {
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#138#        valueList = Collections.EMPTY_LIST;
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#139#      }
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#140#
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#141#      return valueList;
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#142#    }
+org/apache/commons/cli2/option/ArgumentImpl.java#144#        int argumentCount = commandLine.getUndefaultedValues(option).size();

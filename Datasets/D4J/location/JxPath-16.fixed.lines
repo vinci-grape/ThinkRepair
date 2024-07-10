@@ -1,0 +1,2 @@
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#147#                    return true;
+org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java#391#                    return true;

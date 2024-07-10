@@ -1,0 +1,27 @@
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#10#import com.fasterxml.jackson.databind.util.EnumValues;
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#83#                return EnumKeySerializer.construct(rawKeyType,
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#84#                        EnumValues.constructFromName(config, (Class<Enum<?>>) rawKeyType));
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#217#    public static class EnumKeySerializer extends StdSerializer<Object>
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#218#    {
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#219#        protected final EnumValues _values;
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#221#        protected EnumKeySerializer(Class<?> enumType, EnumValues values) {
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#222#            super(enumType, false);
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#223#            _values = values;
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#224#        }
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#226#        public static EnumKeySerializer construct(Class<?> enumType,
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#227#                EnumValues enumValues)
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#228#        {
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#229#            return new EnumKeySerializer(enumType, enumValues);
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#230#        }
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#232#        @Override
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#233#        public void serialize(Object value, JsonGenerator g, SerializerProvider serializers)
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#234#                throws IOException
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#235#        {
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#236#            if (serializers.isEnabled(SerializationFeature.WRITE_ENUMS_USING_TO_STRING)) {
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#237#                g.writeFieldName(value.toString());
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#238#                return;
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#239#            }
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#240#            Enum<?> en = (Enum<?>) value;
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#241#            g.writeFieldName(_values.serializedValueFor(en));
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#242#        }
+com/fasterxml/jackson/databind/ser/std/StdKeySerializers.java#243#    }

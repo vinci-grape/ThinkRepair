@@ -1,0 +1,6 @@
+com/fasterxml/jackson/databind/node/TreeTraversingParser.java#308#        if (!node.canConvertToInt()) {
+com/fasterxml/jackson/databind/node/TreeTraversingParser.java#309#            reportOverflowInt();
+com/fasterxml/jackson/databind/node/TreeTraversingParser.java#310#        }
+com/fasterxml/jackson/databind/node/TreeTraversingParser.java#317#        if (!node.canConvertToInt()) {
+com/fasterxml/jackson/databind/node/TreeTraversingParser.java#318#            reportOverflowLong();
+com/fasterxml/jackson/databind/node/TreeTraversingParser.java#319#        }

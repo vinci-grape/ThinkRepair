@@ -1,0 +1,7 @@
+com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java#7#import com.fasterxml.jackson.annotation.JsonProperty.Access;
+com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java#732#            Access acc = prop.removeNonVisible(inferMutators);
+com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java#733#            if (!_forSerialization && (acc == Access.READ_ONLY)) {
+com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java#734#                _collectIgnorals(prop.getName());
+com/fasterxml/jackson/databind/introspect/POJOPropertiesCollector.java#735#            }
+com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java#644#    public JsonProperty.Access removeNonVisible(boolean inferMutators)
+com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java#683#        return acc;

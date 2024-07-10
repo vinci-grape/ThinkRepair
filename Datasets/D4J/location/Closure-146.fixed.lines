@@ -1,0 +1,2 @@
+com/google/javascript/rhino/jstype/JSType.java#706#        JSType noType = getNativeType(JSTypeNative.NO_TYPE);
+com/google/javascript/rhino/jstype/JSType.java#707#        return new TypePair(noType, noType);

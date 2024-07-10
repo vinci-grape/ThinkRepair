@@ -1,0 +1,34 @@
+org/apache/commons/cli/CommandLine.java#22#import java.util.Set;
+org/apache/commons/cli/CommandLine.java#23#import java.util.HashSet;
+org/apache/commons/cli/CommandLine.java#46#    private Set options = new HashSet();
+org/apache/commons/cli/CommandLine.java#67#        return options.contains( resolveOption(opt));
+org/apache/commons/cli/CommandLine.java#91#        Option option = resolveOption(opt);
+org/apache/commons/cli/CommandLine.java#92#        if (option == null)
+org/apache/commons/cli/CommandLine.java#97#        Object type = option.getType();
+org/apache/commons/cli/CommandLine.java#148#        Option key = resolveOption( opt );
+org/apache/commons/cli/CommandLine.java#150#        if (options.contains(key))
+org/apache/commons/cli/CommandLine.java#152#            return key.getValues();
+org/apache/commons/cli/CommandLine.java#163#    private Option resolveOption( String opt )
+org/apache/commons/cli/CommandLine.java#164#    {
+org/apache/commons/cli/CommandLine.java#165#        opt = Util.stripLeadingHyphens(opt);
+org/apache/commons/cli/CommandLine.java#166#        for ( Iterator it = options.iterator(); it.hasNext(); )
+org/apache/commons/cli/CommandLine.java#167#        {
+org/apache/commons/cli/CommandLine.java#168#            Option option = (Option) it.next();
+org/apache/commons/cli/CommandLine.java#169#            if (opt.equals(option.getOpt()))
+org/apache/commons/cli/CommandLine.java#170#            {
+org/apache/commons/cli/CommandLine.java#171#                return option;
+org/apache/commons/cli/CommandLine.java#172#            }
+org/apache/commons/cli/CommandLine.java#173#            if (opt.equals( option.getLongOpt()))
+org/apache/commons/cli/CommandLine.java#174#            {
+org/apache/commons/cli/CommandLine.java#175#                return option;
+org/apache/commons/cli/CommandLine.java#176#        }
+org/apache/commons/cli/CommandLine.java#178#        }
+org/apache/commons/cli/CommandLine.java#179#        return null;
+org/apache/commons/cli/CommandLine.java#180#    }
+org/apache/commons/cli/CommandLine.java#288#        options.add(opt);
+org/apache/commons/cli/CommandLine.java#299#        return options.iterator();
+org/apache/commons/cli/CommandLine.java#309#        Collection processed = options;
+org/apache/commons/cli/CommandLine.java#317#}
+org/apache/commons/cli/CommandLine.java#19#FIX_OF_OMISSION
+org/apache/commons/cli/CommandLine.java#50#FIX_OF_OMISSION
+org/apache/commons/cli/CommandLine.java#155#FIX_OF_OMISSION

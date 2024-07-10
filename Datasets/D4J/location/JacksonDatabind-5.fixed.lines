@@ -1,0 +1,5 @@
+com/fasterxml/jackson/databind/introspect/AnnotatedClass.java#658#                    am = mixIns.find(m);
+com/fasterxml/jackson/databind/introspect/AnnotatedClass.java#659#                    if (am != null) {
+com/fasterxml/jackson/databind/introspect/AnnotatedClass.java#660#                        _addMixUnders(m, am);
+com/fasterxml/jackson/databind/introspect/AnnotatedClass.java#661#                    } else {
+com/fasterxml/jackson/databind/introspect/AnnotatedClass.java#663#                    }

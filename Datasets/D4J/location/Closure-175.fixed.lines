@@ -1,0 +1,21 @@
+com/google/javascript/jscomp/FunctionInjector.java#46#  private final Supplier<String> throwawayNameSupplier =
+com/google/javascript/jscomp/FunctionInjector.java#47#      new Supplier<String>() {
+com/google/javascript/jscomp/FunctionInjector.java#48#    private int nextId = 0;
+com/google/javascript/jscomp/FunctionInjector.java#49#    @Override
+com/google/javascript/jscomp/FunctionInjector.java#50#    public String get() {
+com/google/javascript/jscomp/FunctionInjector.java#51#      return String.valueOf(nextId++);
+com/google/javascript/jscomp/FunctionInjector.java#52#    }
+com/google/javascript/jscomp/FunctionInjector.java#53#  };
+com/google/javascript/jscomp/FunctionInjector.java#216#      return canInlineReferenceDirectly(callNode, fnNode, needAliases);
+com/google/javascript/jscomp/FunctionInjector.java#698#      Node callNode, Node fnNode, Set<String> namesToAlias) {
+com/google/javascript/jscomp/FunctionInjector.java#722#    Map<String, Node> args =
+com/google/javascript/jscomp/FunctionInjector.java#723#        FunctionArgumentInjector.getFunctionCallParameterMap(
+com/google/javascript/jscomp/FunctionInjector.java#724#            fnNode, callNode, this.throwawayNameSupplier);
+com/google/javascript/jscomp/FunctionInjector.java#725#    boolean hasArgs = !args.isEmpty();
+com/google/javascript/jscomp/FunctionInjector.java#726#    if (hasArgs) {
+com/google/javascript/jscomp/FunctionInjector.java#728#      Set<String> allNamesToAlias = Sets.newHashSet(namesToAlias);
+com/google/javascript/jscomp/FunctionInjector.java#729#      FunctionArgumentInjector.maybeAddTempsForCallArguments(
+com/google/javascript/jscomp/FunctionInjector.java#730#          fnNode, args, allNamesToAlias, compiler.getCodingConvention());
+com/google/javascript/jscomp/FunctionInjector.java#731#      if (!allNamesToAlias.isEmpty()) {
+com/google/javascript/jscomp/FunctionInjector.java#703#FIX_OF_OMISSION
+com/google/javascript/jscomp/FunctionInjector.java#733#FIX_OF_OMISSION

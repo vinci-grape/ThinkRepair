@@ -1,0 +1,5 @@
+org/apache/commons/compress/archivers/tar/TarUtils.java#129#        while (start < end && (trailer == 0 || trailer == ' ')) {
+org/apache/commons/compress/archivers/tar/TarUtils.java#131#            trailer = buffer[end - 1];
+org/apache/commons/compress/archivers/tar/TarUtils.java#132#        }
+org/apache/commons/compress/archivers/tar/TarUtils.java#133#        if (start == end) {
+org/apache/commons/compress/archivers/tar/TarUtils.java#135#                    exceptionMessage(buffer, offset, length, start, trailer));

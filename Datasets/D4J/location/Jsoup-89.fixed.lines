@@ -1,0 +1,2 @@
+org/jsoup/nodes/Attribute.java#88#        String oldVal = this.val;
+org/jsoup/nodes/Attribute.java#90#            oldVal = parent.get(this.key); // trust the container more

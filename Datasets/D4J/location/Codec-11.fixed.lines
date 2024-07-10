@@ -1,0 +1,52 @@
+org/apache/commons/codec/net/QuotedPrintableCodec.java#70#    private static final byte CR = 13;
+org/apache/commons/codec/net/QuotedPrintableCodec.java#72#    private static final byte LF = 10;
+org/apache/commons/codec/net/QuotedPrintableCodec.java#75#    private static final int SAFE_LENGTH = 73;
+org/apache/commons/codec/net/QuotedPrintableCodec.java#117#    private static final int encodeQuotedPrintable(int b, ByteArrayOutputStream buffer) {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#123#        return 3;
+org/apache/commons/codec/net/QuotedPrintableCodec.java#136#    private static int getUnsignedOctet(final int index, final byte[] bytes) {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#137#        int b = bytes[index];
+org/apache/commons/codec/net/QuotedPrintableCodec.java#138#        if (b < 0) {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#139#            b = 256 + b;
+org/apache/commons/codec/net/QuotedPrintableCodec.java#140#        }
+org/apache/commons/codec/net/QuotedPrintableCodec.java#141#        return b;
+org/apache/commons/codec/net/QuotedPrintableCodec.java#142#    }
+org/apache/commons/codec/net/QuotedPrintableCodec.java#155#    private static int encodeByte(final int b, final boolean encode,
+org/apache/commons/codec/net/QuotedPrintableCodec.java#156#                                  final ByteArrayOutputStream buffer) {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#157#        if (encode) {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#158#            return encodeQuotedPrintable(b, buffer);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#159#        } else {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#160#            buffer.write(b);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#161#            return 1;
+org/apache/commons/codec/net/QuotedPrintableCodec.java#162#        }
+org/apache/commons/codec/net/QuotedPrintableCodec.java#163#    }
+org/apache/commons/codec/net/QuotedPrintableCodec.java#172#    private static boolean isWhitespace(final int b) {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#173#        return b == SPACE || b == TAB;
+org/apache/commons/codec/net/QuotedPrintableCodec.java#174#    }
+org/apache/commons/codec/net/QuotedPrintableCodec.java#198#        int pos = 1;
+org/apache/commons/codec/net/QuotedPrintableCodec.java#201#        for (int i = 0; i < bytes.length - 3; i++) {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#202#            int b = getUnsignedOctet(i, bytes);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#203#            if (pos < SAFE_LENGTH) {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#205#                pos += encodeByte(b, !printable.get(b), buffer);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#208#                encodeByte(b, !printable.get(b) || isWhitespace(b), buffer);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#211#                buffer.write(ESCAPE_CHAR);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#212#                buffer.write(CR);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#213#                buffer.write(LF);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#214#                pos = 1;
+org/apache/commons/codec/net/QuotedPrintableCodec.java#220#        int b = getUnsignedOctet(bytes.length - 3, bytes);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#221#        boolean encode = !printable.get(b) || (isWhitespace(b) && pos > SAFE_LENGTH - 5);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#222#        pos += encodeByte(b, encode, buffer);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#227#        if (pos > SAFE_LENGTH - 2) {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#228#            buffer.write(ESCAPE_CHAR);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#229#            buffer.write(CR);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#230#            buffer.write(LF);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#231#        }
+org/apache/commons/codec/net/QuotedPrintableCodec.java#232#        for (int i = bytes.length - 2; i < bytes.length; i++) {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#233#            b = getUnsignedOctet(i, bytes);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#235#            encode = !printable.get(b) || (i > bytes.length - 2 && isWhitespace(b));
+org/apache/commons/codec/net/QuotedPrintableCodec.java#236#            encodeByte(b, encode, buffer);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#237#        }
+org/apache/commons/codec/net/QuotedPrintableCodec.java#267#                    if (bytes[++i] == CR) {
+org/apache/commons/codec/net/QuotedPrintableCodec.java#268#                        continue;
+org/apache/commons/codec/net/QuotedPrintableCodec.java#269#                    }
+org/apache/commons/codec/net/QuotedPrintableCodec.java#270#                    int u = Utils.digit16(bytes[i]);
+org/apache/commons/codec/net/QuotedPrintableCodec.java#276#            } else if (b != CR && b != LF) {

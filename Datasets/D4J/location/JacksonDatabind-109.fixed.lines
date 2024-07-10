@@ -1,0 +1,51 @@
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#37#    protected final static int MAX_BIG_DECIMAL_SCALE = 9999;
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#59#                if (((Class<?>) handledType()) == BigDecimal.class) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#60#                    return bigDecimalAsStringSerializer();
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#61#                }
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#117#    public static JsonSerializer<?> bigDecimalAsStringSerializer() {
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#118#        return BigDecimalAsStringSerializer.BD_INSTANCE;
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#119#    }
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#121#    final static class BigDecimalAsStringSerializer
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#122#        extends ToStringSerializerBase
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#123#    {
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#124#        final static BigDecimalAsStringSerializer BD_INSTANCE = new BigDecimalAsStringSerializer();
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#125#        
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#126#        public BigDecimalAsStringSerializer() {
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#127#            super(BigDecimal.class);
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#128#        }
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#130#        @Override
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#131#        public boolean isEmpty(SerializerProvider prov, Object value) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#132#            return valueToString(value).isEmpty();
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#133#        }
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#135#        @Override
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#136#        public void serialize(Object value, JsonGenerator gen, SerializerProvider provider)
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#137#            throws IOException
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#138#        {
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#139#            final String text;
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#140#            if (gen.isEnabled(JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN)) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#141#                final BigDecimal bd = (BigDecimal) value;
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#143#                if (!_verifyBigDecimalRange(gen, bd)) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#146#                    final String errorMsg = String.format(
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#147#                            "Attempt to write plain `java.math.BigDecimal` (see JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN) with illegal scale (%d): needs to be between [-%d, %d]",
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#148#                            bd.scale(), MAX_BIG_DECIMAL_SCALE, MAX_BIG_DECIMAL_SCALE);
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#149#                    provider.reportMappingProblem(errorMsg);
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#150#                }
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#151#                text = bd.toPlainString();
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#152#            } else {
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#153#                text = value.toString();
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#154#            }
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#155#            gen.writeString(text);
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#156#        }
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#158#        @Override
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#159#        public String valueToString(Object value) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#161#            throw new IllegalStateException();
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#162#        }
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#165#        protected boolean _verifyBigDecimalRange(JsonGenerator gen, BigDecimal value) throws IOException {
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#166#            int scale = value.scale();
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#167#            return ((scale >= -MAX_BIG_DECIMAL_SCALE) && (scale <= MAX_BIG_DECIMAL_SCALE));
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#168#        }
+com/fasterxml/jackson/databind/ser/std/NumberSerializer.java#169#    }
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#5#import java.math.BigDecimal;
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#101#                    if (((Class<?>) handledType()) == BigDecimal.class) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#102#                        return NumberSerializer.bigDecimalAsStringSerializer();
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#103#                    }

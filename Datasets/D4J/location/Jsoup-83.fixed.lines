@@ -1,0 +1,8 @@
+org/jsoup/parser/CharacterReader.java#254#            if (c == '\t'|| c ==  '\n'|| c ==  '\r'|| c ==  '\f'|| c ==  ' '|| c ==  '/'|| c ==  '>'|| c == '<' || c ==  TokeniserState.nullChar)
+org/jsoup/parser/TokeniserState.java#161#                case '<': // NOTE: out of spec, but clear author intent
+org/jsoup/parser/TokeniserState.java#162#                    t.error(this);
+org/jsoup/parser/TokeniserState.java#163#                    r.unconsume();
+org/jsoup/parser/TokeniserState.java#567#                case '<': // NOTE: out of spec, but clear (spec has this as a part of the attribute name)
+org/jsoup/parser/TokeniserState.java#568#                    t.error(this);
+org/jsoup/parser/TokeniserState.java#569#                    r.unconsume();
+org/jsoup/parser/TokeniserState.java#587#FIX_OF_OMISSION

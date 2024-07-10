@@ -1,0 +1,7 @@
+org/apache/commons/csv/CSVFormat.java#316#        	Set<String> dupCheck = new HashSet<String>();
+org/apache/commons/csv/CSVFormat.java#317#        	for(String hdr : header) {
+org/apache/commons/csv/CSVFormat.java#318#        		if (!dupCheck.add(hdr)) {
+org/apache/commons/csv/CSVFormat.java#319#        			throw new IllegalArgumentException("The header contains a duplicate entry: '" + hdr + "' in " + Arrays.toString(header));
+org/apache/commons/csv/CSVFormat.java#320#        		}
+org/apache/commons/csv/CSVFormat.java#321#        	}
+org/apache/commons/csv/CSVFormat.java#671#FIX_OF_OMISSION

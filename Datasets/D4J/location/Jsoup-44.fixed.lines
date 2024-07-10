@@ -1,0 +1,9 @@
+org/jsoup/parser/TreeBuilder.java#61#        if (currentToken == start) { // don't recycle an in-use token
+org/jsoup/parser/TreeBuilder.java#62#            return process(new Token.StartTag().name(name));
+org/jsoup/parser/TreeBuilder.java#63#        }
+org/jsoup/parser/TreeBuilder.java#68#        if (currentToken == start) { // don't recycle an in-use token
+org/jsoup/parser/TreeBuilder.java#69#            return process(new Token.StartTag().nameAttr(name, attrs));
+org/jsoup/parser/TreeBuilder.java#70#        }
+org/jsoup/parser/TreeBuilder.java#77#        if (currentToken == end) { // don't recycle an in-use token
+org/jsoup/parser/TreeBuilder.java#78#            return process(new Token.EndTag().name(name));
+org/jsoup/parser/TreeBuilder.java#79#        }

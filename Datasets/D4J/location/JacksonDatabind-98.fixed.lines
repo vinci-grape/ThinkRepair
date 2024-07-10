@@ -1,0 +1,10 @@
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#298#                    final Object v;
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#299#                    if (typeProp.getType().hasRawClass(String.class)) {
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#300#                        v = typeId;
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#301#                    } else {
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#302#                        TokenBuffer tb = new TokenBuffer(p, ctxt);
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#303#                        tb.writeString(typeId);
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#304#                        v = typeProp.getValueDeserializer().deserialize(tb.asParserOnFirstToken(), ctxt);
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#305#                        tb.close();
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#306#                    }
+com/fasterxml/jackson/databind/deser/impl/ExternalTypeHandler.java#307#                    buffer.assignParameter(typeProp, v);

@@ -1,0 +1,2 @@
+org/apache/commons/cli/Option.java#72#    private Class type = String.class;
+org/apache/commons/cli/OptionBuilder.java#84#        type = String.class;

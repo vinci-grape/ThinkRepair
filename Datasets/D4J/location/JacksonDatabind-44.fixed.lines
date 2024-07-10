@@ -1,0 +1,26 @@
+com/fasterxml/jackson/databind/type/SimpleType.java#132#        if (!_class.isAssignableFrom(subclass)) {
+com/fasterxml/jackson/databind/type/SimpleType.java#139#        }
+com/fasterxml/jackson/databind/type/SimpleType.java#141#        Class<?> next = subclass.getSuperclass();
+com/fasterxml/jackson/databind/type/SimpleType.java#142#        if (next == _class) { // straight up parent class? Great.
+com/fasterxml/jackson/databind/type/SimpleType.java#143#            return new SimpleType(subclass, _bindings, this,
+com/fasterxml/jackson/databind/type/SimpleType.java#144#                    _superInterfaces, _valueHandler, _typeHandler, _asStatic);
+com/fasterxml/jackson/databind/type/SimpleType.java#145#        }
+com/fasterxml/jackson/databind/type/SimpleType.java#146#        if ((next != null) && _class.isAssignableFrom(next)) {
+com/fasterxml/jackson/databind/type/SimpleType.java#147#            JavaType superb = _narrow(next);
+com/fasterxml/jackson/databind/type/SimpleType.java#148#            return new SimpleType(subclass, _bindings, superb,
+com/fasterxml/jackson/databind/type/SimpleType.java#149#                    null, _valueHandler, _typeHandler, _asStatic);
+com/fasterxml/jackson/databind/type/SimpleType.java#150#        }
+com/fasterxml/jackson/databind/type/SimpleType.java#152#        Class<?>[] nextI = subclass.getInterfaces();
+com/fasterxml/jackson/databind/type/SimpleType.java#153#        for (Class<?> iface : nextI) {
+com/fasterxml/jackson/databind/type/SimpleType.java#154#            if (iface == _class) { // directly implemented
+com/fasterxml/jackson/databind/type/SimpleType.java#155#                return new SimpleType(subclass, _bindings, null,
+com/fasterxml/jackson/databind/type/SimpleType.java#156#                        new JavaType[] { this }, _valueHandler, _typeHandler, _asStatic);
+com/fasterxml/jackson/databind/type/SimpleType.java#157#            }
+com/fasterxml/jackson/databind/type/SimpleType.java#158#            if (_class.isAssignableFrom(iface)) { // indirect, so recurse
+com/fasterxml/jackson/databind/type/SimpleType.java#159#                JavaType superb = _narrow(iface);
+com/fasterxml/jackson/databind/type/SimpleType.java#160#                return new SimpleType(subclass, _bindings, null,
+com/fasterxml/jackson/databind/type/SimpleType.java#161#                        new JavaType[] { superb }, _valueHandler, _typeHandler, _asStatic);
+com/fasterxml/jackson/databind/type/SimpleType.java#162#            }
+com/fasterxml/jackson/databind/type/SimpleType.java#163#        }
+com/fasterxml/jackson/databind/type/SimpleType.java#165#        throw new IllegalArgumentException("Internal error: Can not resolve sub-type for Class "+subclass.getName()+" to "
+com/fasterxml/jackson/databind/type/SimpleType.java#166#                +_class.getName());

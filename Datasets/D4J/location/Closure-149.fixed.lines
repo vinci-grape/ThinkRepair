@@ -1,0 +1,19 @@
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#159#    options.outputCharset = getOutputCharset();
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#689#  private String getOutputCharset() throws FlagUsageException {
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#690#    if (!config.charset.isEmpty()) {
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#691#      if (!Charset.isSupported(config.charset)) {
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#692#        throw new FlagUsageException(config.charset +
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#693#            " is not a valid charset name.");
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#694#      }
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#695#      return config.charset;
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#696#    }
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#697#    return "US-ASCII";
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#698#  }
+com/google/javascript/jscomp/Compiler.java#1362#    Charset charset = options.outputCharset != null ?
+com/google/javascript/jscomp/Compiler.java#1363#        Charset.forName(options.outputCharset) : null;
+com/google/javascript/jscomp/CompilerOptions.java#588#  String outputCharset;
+com/google/javascript/jscomp/CompilerOptions.java#960#  public void setOutputCharset(String charsetName) {
+com/google/javascript/jscomp/CompilerOptions.java#961#    this.outputCharset = charsetName;
+com/google/javascript/jscomp/CompilerOptions.java#962#  }
+com/google/javascript/jscomp/AbstractCommandLineRunner.java#519#FIX_OF_OMISSION
+com/google/javascript/jscomp/CommandLineRunner.java#471#FIX_OF_OMISSION

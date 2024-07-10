@@ -1,0 +1,22 @@
+// Provide a fix for the buggy function
+
+// Buggy Function
+{example_bug_1}
+
+Let's think step by step. {example_cot_1}
+// End
+
+// Provide a fix for the buggy function
+
+// Buggy Function
+{example_bug_2}
+
+Let's think step by step. {example_cot_2}
+// End
+
+// Provide a fix for the buggy function
+
+// Buggy Function
+{bug}
+
+Let's think step by step. 

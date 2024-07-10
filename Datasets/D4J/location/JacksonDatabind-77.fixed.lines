@@ -1,0 +1,15 @@
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#143#        checkIllegalTypes(ctxt, type, beanDesc);
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#843#    protected void checkIllegalTypes(DeserializationContext ctxt, JavaType type,
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#844#            BeanDescription beanDesc)
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#845#        throws JsonMappingException
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#846#    {
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#849#        Class<?> raw = type.getRawClass();
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#850#        String name = raw.getSimpleName();
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#852#        if ("TemplatesImpl".equals(name)) { // [databind#1599] 
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#853#            if (raw.getName().startsWith("com.sun.org.apache.xalan")) {
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#854#                throw JsonMappingException.from(ctxt,
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#855#                        String.format("Illegal type (%s) to deserialize: prevented for security reasons",
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#856#                                name));
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#857#            }
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#858#        }
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#859#    }

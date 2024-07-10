@@ -1,0 +1,10 @@
+com/fasterxml/jackson/databind/deser/std/NullifyingDeserializer.java#35#        if (p.hasToken(JsonToken.FIELD_NAME)) {
+com/fasterxml/jackson/databind/deser/std/NullifyingDeserializer.java#36#            while (true) {
+com/fasterxml/jackson/databind/deser/std/NullifyingDeserializer.java#37#                JsonToken t = p.nextToken();
+com/fasterxml/jackson/databind/deser/std/NullifyingDeserializer.java#38#                if ((t == null) || (t == JsonToken.END_OBJECT)) {
+com/fasterxml/jackson/databind/deser/std/NullifyingDeserializer.java#39#                    break;
+com/fasterxml/jackson/databind/deser/std/NullifyingDeserializer.java#40#                }
+com/fasterxml/jackson/databind/deser/std/NullifyingDeserializer.java#41#                p.skipChildren();
+com/fasterxml/jackson/databind/deser/std/NullifyingDeserializer.java#42#            }
+com/fasterxml/jackson/databind/deser/std/NullifyingDeserializer.java#43#        } else {
+com/fasterxml/jackson/databind/deser/std/NullifyingDeserializer.java#45#        }

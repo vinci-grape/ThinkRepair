@@ -1,0 +1,7 @@
+com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java#11#import com.fasterxml.jackson.core.JsonParser;
+com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java#19#import com.fasterxml.jackson.databind.util.TokenBuffer;
+com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java#316#            TokenBuffer tb = new TokenBuffer(ctxt.getParser(), ctxt);
+com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java#317#            tb.writeString(key);
+com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java#320#                JsonParser p = tb.asParser();
+com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java#321#                p.nextToken();
+com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java#322#                Object result = _delegate.deserialize(p, ctxt);

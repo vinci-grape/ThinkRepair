@@ -1,0 +1,20 @@
+com/fasterxml/jackson/databind/util/TokenBuffer.java#783#        if (value == null) {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#784#            writeNull();
+com/fasterxml/jackson/databind/util/TokenBuffer.java#785#            return;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#786#        }
+com/fasterxml/jackson/databind/util/TokenBuffer.java#787#        Class<?> raw = value.getClass();
+com/fasterxml/jackson/databind/util/TokenBuffer.java#788#        if (raw == byte[].class) {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#790#            return;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#791#        } else if (_objectCodec == null) {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#796#            _append(JsonToken.VALUE_EMBEDDED_OBJECT, value);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#797#        } else {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#798#            _objectCodec.writeValue(this, value);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#799#        }
+com/fasterxml/jackson/databind/util/TokenBuffer.java#805#        if (node == null) {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#806#            writeNull();
+com/fasterxml/jackson/databind/util/TokenBuffer.java#807#            return;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#808#        }
+com/fasterxml/jackson/databind/util/TokenBuffer.java#810#        if (_objectCodec == null) {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#813#        } else {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#814#            _objectCodec.writeTree(this, node);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#815#        }

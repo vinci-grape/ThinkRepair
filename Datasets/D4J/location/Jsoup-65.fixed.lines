@@ -1,0 +1,8 @@
+org/jsoup/parser/HtmlTreeBuilder.java#360#        clearStackToContext("tbody", "tfoot", "thead", "template");
+org/jsoup/parser/HtmlTreeBuilder.java#364#        clearStackToContext("tr", "template");
+org/jsoup/parser/HtmlTreeBuilderState.java#1036#                    if (name.equals("template")) {
+org/jsoup/parser/HtmlTreeBuilderState.java#1037#                        tb.insert(startTag);
+org/jsoup/parser/HtmlTreeBuilderState.java#1038#                    } else if (name.equals("tr")) {
+org/jsoup/parser/HtmlTreeBuilderState.java#1098#                if (name.equals("template")) {
+org/jsoup/parser/HtmlTreeBuilderState.java#1099#                    tb.insert(startTag);
+org/jsoup/parser/HtmlTreeBuilderState.java#1100#                } else if (StringUtil.in(name, "th", "td")) {

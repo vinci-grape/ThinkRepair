@@ -1,0 +1,1 @@
+org/jsoup/parser/HtmlTreeBuilderState.java#382#                        tb.reader.matchConsume("\n"); // ignore LF if next token

@@ -1,0 +1,15 @@
+org/jsoup/select/Selector.java#139#        String subQuery = consumeSubQuery(); // support multi > childs
+org/jsoup/select/Selector.java#156#    private String consumeSubQuery() {
+org/jsoup/select/Selector.java#157#        StringBuilder sq = new StringBuilder();
+org/jsoup/select/Selector.java#158#        while (!tq.isEmpty()) {
+org/jsoup/select/Selector.java#159#            if (tq.matches("("))
+org/jsoup/select/Selector.java#160#                sq.append("(").append(tq.chompBalanced('(', ')')).append(")");
+org/jsoup/select/Selector.java#161#            else if (tq.matches("["))
+org/jsoup/select/Selector.java#162#                sq.append("[").append(tq.chompBalanced('[', ']')).append("]");
+org/jsoup/select/Selector.java#163#            else if (tq.matchesAny(combinators))
+org/jsoup/select/Selector.java#164#                break;
+org/jsoup/select/Selector.java#165#            else
+org/jsoup/select/Selector.java#166#                sq.append(tq.consume());
+org/jsoup/select/Selector.java#167#        }
+org/jsoup/select/Selector.java#168#        return sq.toString();
+org/jsoup/select/Selector.java#169#    }

@@ -1,0 +1,6 @@
+com/google/javascript/jscomp/CoalesceVariableNames.java#108#    if (scope.getRootNode().getFirstChild().getNext().getChildCount() == 2) {
+com/google/javascript/jscomp/CoalesceVariableNames.java#109#      liveness.markAllParametersEscaped();
+com/google/javascript/jscomp/CoalesceVariableNames.java#110#    }
+com/google/javascript/jscomp/parsing/JsDocInfoParser.java#1168#          if (!(option == WhitespaceOption.PRESERVE &&
+com/google/javascript/jscomp/parsing/JsDocInfoParser.java#1169#                token == JsDocToken.ANNOTATION)) {
+com/google/javascript/jscomp/parsing/JsDocInfoParser.java#1185#          }

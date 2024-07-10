@@ -1,0 +1,2 @@
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#63#                if ((shape == JsonFormat.Shape.STRING) || format.hasPattern()
+com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java#64#                                || format.hasLocale() || format.hasTimeZone()) {

@@ -1,0 +1,5 @@
+com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java#204#        QName rootName = _rootNameFromConfig();
+com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java#205#        if (rootName == null) {
+com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java#206#            rootName = ROOT_NAME_FOR_NULL;
+com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java#207#        }
+com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java#209#            _initWithRootName((ToXmlGenerator) jgen, rootName);

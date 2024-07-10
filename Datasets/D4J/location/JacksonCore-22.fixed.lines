@@ -1,0 +1,16 @@
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#417#                    if (_verifyAllowedMatches() && _includePath) {
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#440#                    if (_verifyAllowedMatches()) {
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#442#                    }
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#577#                        if (_verifyAllowedMatches() && _includePath) {
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#602#                        if (_verifyAllowedMatches()) {
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#604#                        }
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#721#                    if (f == TokenFilter.INCLUDE_ALL && _verifyAllowedMatches()) {
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#736#                        if (_verifyAllowedMatches()) {
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#738#                        }
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#777#    private final boolean _verifyAllowedMatches() throws IOException {
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#778#        if (_matchCount == 0 || _allowMultipleMatches) {
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#779#            ++_matchCount;
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#780#            return true;
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#781#        }
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#782#        return false;
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#783#    }

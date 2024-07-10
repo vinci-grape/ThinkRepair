@@ -1,0 +1,2 @@
+org/apache/commons/compress/archivers/zip/UnixStat.java#35#    int FILE_TYPE_FLAG = 0170000;
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#297#        return (getUnixMode() & UnixStat.FILE_TYPE_FLAG) == UnixStat.LINK_FLAG;

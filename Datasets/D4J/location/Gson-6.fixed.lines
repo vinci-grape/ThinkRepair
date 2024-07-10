@@ -1,0 +1,2 @@
+com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java#67#    if (typeAdapter != null) {
+com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java#69#    }

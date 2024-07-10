@@ -1,0 +1,9 @@
+org/jsoup/parser/Token.java#171#        boolean bogus = false;
+org/jsoup/parser/TokeniserState.java#1094#            comment.bogus = true;
+org/jsoup/parser/XmlTreeBuilder.java#67#        if (commentToken.bogus) { // xml declarations are emitted as bogus comments (which is right for html, but not xml)
+org/jsoup/parser/XmlTreeBuilder.java#68#            String data = comment.getData();
+org/jsoup/parser/XmlTreeBuilder.java#69#            if (data.length() > 1 && (data.startsWith("!") || data.startsWith("?"))) {
+org/jsoup/parser/XmlTreeBuilder.java#70#                String declaration = data.substring(1);
+org/jsoup/parser/XmlTreeBuilder.java#71#                insert = new XmlDeclaration(declaration, comment.baseUri(), data.startsWith("!"));
+org/jsoup/parser/XmlTreeBuilder.java#72#            }
+org/jsoup/parser/XmlTreeBuilder.java#73#        }

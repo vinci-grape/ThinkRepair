@@ -1,0 +1,12 @@
+com/fasterxml/jackson/databind/DeserializationConfig.java#780#        if (!isEnabled(MapperFeature.AUTO_DETECT_GETTERS)) {
+com/fasterxml/jackson/databind/DeserializationConfig.java#781#            vchecker = vchecker.withGetterVisibility(Visibility.NONE);
+com/fasterxml/jackson/databind/DeserializationConfig.java#782#        }
+com/fasterxml/jackson/databind/DeserializationConfig.java#783#        if (!isEnabled(MapperFeature.AUTO_DETECT_IS_GETTERS)) {
+com/fasterxml/jackson/databind/DeserializationConfig.java#784#            vchecker = vchecker.withIsGetterVisibility(Visibility.NONE);
+com/fasterxml/jackson/databind/DeserializationConfig.java#785#        }
+com/fasterxml/jackson/databind/SerializationConfig.java#865#        if (!isEnabled(MapperFeature.AUTO_DETECT_SETTERS)) {
+com/fasterxml/jackson/databind/SerializationConfig.java#866#            vchecker = vchecker.withSetterVisibility(Visibility.NONE);
+com/fasterxml/jackson/databind/SerializationConfig.java#867#        }
+com/fasterxml/jackson/databind/SerializationConfig.java#868#        if (!isEnabled(MapperFeature.AUTO_DETECT_CREATORS)) {
+com/fasterxml/jackson/databind/SerializationConfig.java#869#            vchecker = vchecker.withCreatorVisibility(Visibility.NONE);
+com/fasterxml/jackson/databind/SerializationConfig.java#870#        }

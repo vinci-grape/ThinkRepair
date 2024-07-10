@@ -1,0 +1,29 @@
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#54#        protected final static Integer EMPTY_INTEGER = Integer.valueOf(0);
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#121#        private final static Short EMPTY = (short) 0;
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#126#        @Override
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#127#        public boolean isEmpty(SerializerProvider prov, Short value) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#128#            return EMPTY.equals(value);
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#129#        }
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#165#        @Override
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#166#        public boolean isEmpty(SerializerProvider prov, Object value) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#167#            return EMPTY_INTEGER.equals(value);
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#168#        }
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#185#        @Override
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#186#        public boolean isEmpty(SerializerProvider prov, Number value) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#187#            return value.intValue() == 0;
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#188#        }
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#199#        private final static Long EMPTY = 0L;
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#205#        @Override
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#206#        public boolean isEmpty(SerializerProvider prov, Object value) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#207#            return EMPTY.equals(value);
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#208#        }
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#219#        private final static Float EMPTY = 0f;
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#225#        @Override
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#226#        public boolean isEmpty(SerializerProvider prov, Object value) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#227#            return EMPTY.equals(value);
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#228#        }
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#246#        private final static Double EMPTY = 0d;
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#252#        @Override
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#253#        public boolean isEmpty(SerializerProvider prov, Object value) {
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#254#            return EMPTY.equals(value);
+com/fasterxml/jackson/databind/ser/std/NumberSerializers.java#255#        }

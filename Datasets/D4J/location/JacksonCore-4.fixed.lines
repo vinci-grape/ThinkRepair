@@ -1,0 +1,4 @@
+com/fasterxml/jackson/core/util/TextBuffer.java#585#        int newLen = len + (len >> 1);
+com/fasterxml/jackson/core/util/TextBuffer.java#587#        if (newLen > MAX_SEGMENT_LEN) {
+com/fasterxml/jackson/core/util/TextBuffer.java#588#            newLen = len + (len >> 2);
+com/fasterxml/jackson/core/util/TextBuffer.java#589#        }

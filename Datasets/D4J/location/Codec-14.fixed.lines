@@ -1,0 +1,27 @@
+org/apache/commons/codec/language/bm/Lang.java#98#    private static final String LANGUAGE_RULES_RN = "org/apache/commons/codec/language/bm/%s_lang.txt";
+org/apache/commons/codec/language/bm/Lang.java#102#            Langs.put(s, loadFromResource(String.format(LANGUAGE_RULES_RN, s.getName()), Languages.getInstance(s)));
+org/apache/commons/codec/language/bm/PhoneticEngine.java#31#import java.util.TreeMap;
+org/apache/commons/codec/language/bm/PhoneticEngine.java#338#        final Map<Rule.Phoneme, Rule.Phoneme> phonemes =
+org/apache/commons/codec/language/bm/PhoneticEngine.java#339#            new TreeMap<Rule.Phoneme, Rule.Phoneme>(Rule.Phoneme.COMPARATOR);
+org/apache/commons/codec/language/bm/PhoneticEngine.java#362#            for (final Rule.Phoneme newPhoneme : subBuilder.getPhonemes()) {
+org/apache/commons/codec/language/bm/PhoneticEngine.java#363#                if (phonemes.containsKey(newPhoneme)) {
+org/apache/commons/codec/language/bm/PhoneticEngine.java#364#                    final Rule.Phoneme oldPhoneme = phonemes.remove(newPhoneme);
+org/apache/commons/codec/language/bm/PhoneticEngine.java#365#                    final Rule.Phoneme mergedPhoneme = oldPhoneme.mergeWithLanguage(newPhoneme.getLanguages());
+org/apache/commons/codec/language/bm/PhoneticEngine.java#366#                    phonemes.put(mergedPhoneme, mergedPhoneme);
+org/apache/commons/codec/language/bm/PhoneticEngine.java#367#                } else {
+org/apache/commons/codec/language/bm/PhoneticEngine.java#368#                    phonemes.put(newPhoneme, newPhoneme);
+org/apache/commons/codec/language/bm/PhoneticEngine.java#369#                }
+org/apache/commons/codec/language/bm/PhoneticEngine.java#370#            }
+org/apache/commons/codec/language/bm/PhoneticEngine.java#373#        return new PhonemeBuilder(phonemes.keySet());
+org/apache/commons/codec/language/bm/Rule.java#158#        public Phoneme mergeWithLanguage(final LanguageSet lang) {
+org/apache/commons/codec/language/bm/Rule.java#159#          return new Phoneme(this.phonemeText.toString(), this.languages.merge(lang));
+org/apache/commons/codec/language/bm/Rule.java#160#        }
+src/main/resources/org/apache/commons/codec/language/bm/ash_lang/txt.java#158#        public Phoneme mergeWithLanguage(final LanguageSet lang) {
+src/main/resources/org/apache/commons/codec/language/bm/ash_lang/txt.java#159#          return new Phoneme(this.phonemeText.toString(), this.languages.merge(lang));
+src/main/resources/org/apache/commons/codec/language/bm/ash_lang/txt.java#160#        }
+src/main/resources/org/apache/commons/codec/language/bm/gen_lang/txt.java#158#        public Phoneme mergeWithLanguage(final LanguageSet lang) {
+src/main/resources/org/apache/commons/codec/language/bm/gen_lang/txt.java#159#          return new Phoneme(this.phonemeText.toString(), this.languages.merge(lang));
+src/main/resources/org/apache/commons/codec/language/bm/gen_lang/txt.java#160#        }
+src/main/resources/org/apache/commons/codec/language/bm/sep_lang/txt.java#158#        public Phoneme mergeWithLanguage(final LanguageSet lang) {
+src/main/resources/org/apache/commons/codec/language/bm/sep_lang/txt.java#159#          return new Phoneme(this.phonemeText.toString(), this.languages.merge(lang));
+src/main/resources/org/apache/commons/codec/language/bm/sep_lang/txt.java#160#        }

@@ -1,0 +1,4 @@
+com/google/javascript/jscomp/TypeInference.java#731#    if (objectType == null || n.getBooleanProp(Node.REFLECTED_OBJECT)) {
+com/google/javascript/jscomp/TypedScopeCreator.java#1669#      if (qName != null && qName.endsWith(".prototype")) {
+com/google/javascript/jscomp/TypedScopeCreator.java#1670#        return false;
+com/google/javascript/jscomp/TypedScopeCreator.java#1671#      }

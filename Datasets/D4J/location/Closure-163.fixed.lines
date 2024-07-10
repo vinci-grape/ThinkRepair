@@ -1,0 +1,128 @@
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#203#      Node n = t.getCurrentNode();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#204#      if (n.isFunction()) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#205#        String propName = getPrototypePropertyNameFromRValue(n);
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#206#        if (propName != null) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#207#          symbolStack.push(
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#208#              new NameContext(
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#209#                  getNameInfoForName(propName, PROPERTY),
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#210#                  t.getScope()));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#211#        } else if (isGlobalFunctionDeclaration(t, n)) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#212#          Node parent = n.getParent();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#213#          String name = parent.isName() ?
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#214#              parent.getString() /* VAR */ :
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#215#              n.getFirstChild().getString() /* named function */;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#216#          symbolStack.push(
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#217#              new NameContext(getNameInfoForName(name, VAR), t.getScope()));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#218#        } else {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#224#          symbolStack.push(new NameContext(anonymousNode, t.getScope()));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#225#        }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#226#      } else {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#227#        Preconditions.checkState(t.inGlobalScope());
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#228#        symbolStack.push(new NameContext(globalNode, t.getScope()));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#229#      }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#234#      symbolStack.pop();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#240#      String propName = processNonFunctionPrototypeAssign(n, parent);
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#241#      if (propName != null) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#242#        symbolStack.push(
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#243#            new NameContext(
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#244#                getNameInfoForName(propName, PROPERTY), null));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#254#        if (n.isQualifiedName()) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#256#            if (processPrototypeRef(t, n)) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#257#              return;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#258#            }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#261#            return;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#264#            if (n.getParent().isAssign() && n.getNext() != null) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#265#              String rValueName = getPrototypePropertyNameFromRValue(n);
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#266#              if (rValueName != null) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#267#                return;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#268#              }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#269#            }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#270#          }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#273#        addSymbolUse(propName, t.getModule(), PROPERTY);
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#274#      } else if (n.isObjectLit()) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#278#        String lValueName = NodeUtil.getBestLValueName(
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#279#            NodeUtil.getBestLValue(n));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#280#        if (lValueName != null && lValueName.endsWith(".prototype")) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#281#          return;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#282#        }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#303#                if (!processGlobalFunctionDeclaration(t, n, var)) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#328#      if (processNonFunctionPrototypeAssign(n, parent) != null) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#352#    private String processNonFunctionPrototypeAssign(Node n, Node parent) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#353#      if (isAssignRValue(n, parent) && !n.isFunction()) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#354#        return getPrototypePropertyNameFromRValue(n);
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#355#      }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#356#      return null;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#357#    }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#366#      Scope s = t.getScope();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#367#      if (!(s.isGlobal() ||
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#368#            s.getDepth() == 1 && s.getRootNode() == n)) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#369#        return false;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#370#      }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#372#      return NodeUtil.isFunctionDeclaration(n) ||
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#373#          n.isFunction() && n.getParent().isName();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#379#    private boolean isAssignRValue(Node n, Node parent) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#380#      return parent != null && parent.isAssign() && parent.getFirstChild() != n;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#381#    }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#390#    private String getPrototypePropertyNameFromRValue(Node rValue) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#391#      Node lValue = NodeUtil.getBestLValue(rValue);
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#392#      if (lValue == null ||
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#393#          lValue.getParent() == null ||
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#394#          lValue.getParent().getParent() == null ||
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#395#          !(NodeUtil.isObjectLitKey(lValue, lValue.getParent()) ||
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#396#            NodeUtil.isExprAssign(lValue.getParent().getParent()))) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#397#        return null;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#398#      }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#400#      String lValueName =
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#401#          NodeUtil.getBestLValueName(NodeUtil.getBestLValue(rValue));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#402#      if (lValueName == null) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#403#        return null;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#404#      }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#405#      int lastDot = lValueName.lastIndexOf('.');
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#406#      if (lastDot == -1) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#407#        return null;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#410#      String firstPart = lValueName.substring(0, lastDot);
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#411#      if (!firstPart.endsWith(".prototype")) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#412#        return null;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#413#      }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#415#      return lValueName.substring(lastDot + 1);
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#423#        Node nameNode, Var v) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#425#      Node parent = nameNode.getParent();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#434#            new GlobalFunction(nameNode, v, t.getModule()));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#454#    private boolean processPrototypeRef(NodeTraversal t, Node ref) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#455#      Node root = NodeUtil.getRootOfQualifiedName(ref);
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#457#      Node n = ref.getParent();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#471#                t.getScope().getVar(root.getString()),
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#474#            return true;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#488#                  t.getScope().getVar(root.getString()),
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#492#            return true;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#496#      return false;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#548#    Var getRootVar();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#566#    private final Var var;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#569#    GlobalFunction(Node nameNode, Var var, JSModule module) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#570#      Node parent = nameNode.getParent();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#575#      this.var = var;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#580#    public Var getRootVar() {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#581#      return var;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#582#    }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#584#    @Override
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#633#    private final Var rootVar;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#639#    AssignmentProperty(Node node, Var rootVar, JSModule module) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#641#      this.rootVar = rootVar;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#646#    public Var getRootVar() {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#647#      return rootVar;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#648#    }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#650#    @Override
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#686#    private final Var rootVar;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#690#        Var rootVar, JSModule module) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#695#      this.rootVar = rootVar;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#700#    public Var getRootVar() {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#701#      return rootVar;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#702#    }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#704#    @Override
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#734#    final Scope scope;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#736#    NameContext(NameInfo name, Scope scope) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#738#      this.scope = scope;
+com/google/javascript/jscomp/CrossModuleMethodMotion.java#141#        if (!(prop.getRootVar() != null && prop.getRootVar().isGlobal())) {
+com/google/javascript/jscomp/CrossModuleMethodMotion.java#142#          continue;
+com/google/javascript/jscomp/CrossModuleMethodMotion.java#143#        }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#201#FIX_OF_OMISSION

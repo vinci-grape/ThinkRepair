@@ -1,0 +1,2 @@
+org/jsoup/parser/Parser.java#206#            if (value.length() == 0) // no key, no val; unknown char, keep popping so not get stuck
+org/jsoup/parser/Parser.java#207#                tq.advance();

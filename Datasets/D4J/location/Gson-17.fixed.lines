@@ -1,0 +1,3 @@
+com/google/gson/DefaultDateTypeAdapter.java#99#    if (in.peek() == JsonToken.NULL) {
+com/google/gson/DefaultDateTypeAdapter.java#100#      in.nextNull();
+com/google/gson/DefaultDateTypeAdapter.java#101#      return null;

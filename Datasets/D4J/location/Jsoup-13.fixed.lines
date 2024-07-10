@@ -1,0 +1,5 @@
+org/jsoup/nodes/Node.java#107#        if (attributeKey.toLowerCase().startsWith("abs:")) {
+org/jsoup/nodes/Node.java#108#            String key = attributeKey.substring("abs:".length());
+org/jsoup/nodes/Node.java#109#            if (attributes.hasKey(key) && !absUrl(key).equals(""))
+org/jsoup/nodes/Node.java#110#                return true;
+org/jsoup/nodes/Node.java#111#        }

@@ -1,0 +1,7 @@
+com/fasterxml/jackson/databind/type/ResolvedRecursiveType.java#29#    @Override
+com/fasterxml/jackson/databind/type/ResolvedRecursiveType.java#30#    public JavaType getSuperClass() {
+com/fasterxml/jackson/databind/type/ResolvedRecursiveType.java#31#    	if (_referencedType != null) {
+com/fasterxml/jackson/databind/type/ResolvedRecursiveType.java#32#    		return _referencedType.getSuperClass();
+com/fasterxml/jackson/databind/type/ResolvedRecursiveType.java#33#    	}
+com/fasterxml/jackson/databind/type/ResolvedRecursiveType.java#34#    	return super.getSuperClass();
+com/fasterxml/jackson/databind/type/ResolvedRecursiveType.java#35#    }

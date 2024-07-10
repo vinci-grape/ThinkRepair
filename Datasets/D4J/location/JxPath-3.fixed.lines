@@ -1,0 +1,15 @@
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#19#import org.apache.commons.jxpath.AbstractFactory;
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#20#import org.apache.commons.jxpath.JXPathAbstractFactoryException;
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#111#            if (parent instanceof NullPointer && parent.equals(newParent)) {
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#112#                throw createBadFactoryException(context.getFactory());
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#113#            }
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#143#            if (parent instanceof NullPointer && parent.equals(newParent)) {
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#144#                throw createBadFactoryException(context.getFactory());
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#145#            }
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#232#
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#233#    private JXPathAbstractFactoryException createBadFactoryException(AbstractFactory factory) {
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#234#        return new JXPathAbstractFactoryException("Factory " + factory
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#235#                + " reported success creating object for path: " + asPath()
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#236#                + " but object was null.  Terminating to avoid stack recursion.");
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#237#    }
+org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java#238#}

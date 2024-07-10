@@ -1,0 +1,8 @@
+com/google/gson/internal/$Gson$Types.java#79#    if (bound instanceof WildcardType) {
+com/google/gson/internal/$Gson$Types.java#80#      upperBounds = ((WildcardType) bound).getUpperBounds();
+com/google/gson/internal/$Gson$Types.java#81#    } else {
+com/google/gson/internal/$Gson$Types.java#83#    }
+com/google/gson/internal/$Gson$Types.java#94#    if (bound instanceof WildcardType) {
+com/google/gson/internal/$Gson$Types.java#95#      lowerBounds = ((WildcardType) bound).getLowerBounds();
+com/google/gson/internal/$Gson$Types.java#96#    } else {
+com/google/gson/internal/$Gson$Types.java#98#    }

@@ -1,0 +1,6 @@
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#64#        setName(name);
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#463#        String myName = getName();
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#464#        String otherName = other.getName();
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#465#        if (myName == null) {
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#466#            if (otherName != null) {
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#469#        } else if (!myName.equals(otherName)) {

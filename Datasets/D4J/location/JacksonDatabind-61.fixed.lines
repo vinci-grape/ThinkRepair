@@ -1,0 +1,9 @@
+com/fasterxml/jackson/databind/ObjectMapper.java#232#            if (t.isPrimitive()) {
+com/fasterxml/jackson/databind/ObjectMapper.java#233#                return false;
+com/fasterxml/jackson/databind/ObjectMapper.java#234#            }
+com/fasterxml/jackson/databind/jsontype/impl/StdTypeResolverBuilder.java#74#        if (baseType.isPrimitive()) {
+com/fasterxml/jackson/databind/jsontype/impl/StdTypeResolverBuilder.java#75#            return null;
+com/fasterxml/jackson/databind/jsontype/impl/StdTypeResolverBuilder.java#76#        }
+com/fasterxml/jackson/databind/jsontype/impl/StdTypeResolverBuilder.java#107#        if (baseType.isPrimitive()) {
+com/fasterxml/jackson/databind/jsontype/impl/StdTypeResolverBuilder.java#108#            return null;
+com/fasterxml/jackson/databind/jsontype/impl/StdTypeResolverBuilder.java#109#        }

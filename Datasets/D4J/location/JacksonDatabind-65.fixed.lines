@@ -1,0 +1,5 @@
+com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java#128#            return ctxt.handleWeirdKey(_keyClass, key, "not a valid representation, problem: (%s) %s",
+com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java#129#                    re.getClass().getName(), re.getMessage());
+com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java#525#            if (isFactoryMethod(am) && am.getParameterCount() == 1) {
+com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java#558#            if (am.getParameterCount() == 1) {
+com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java#560#            }

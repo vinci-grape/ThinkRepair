@@ -1,0 +1,15 @@
+com/fasterxml/jackson/databind/deser/CreatorProperty.java#135#        NullValueProvider nvp = (_valueDeserializer == _nullProvider) ? deser : _nullProvider;
+com/fasterxml/jackson/databind/deser/CreatorProperty.java#136#        return new CreatorProperty(this, deser, nvp);
+com/fasterxml/jackson/databind/deser/impl/FieldProperty.java#93#        NullValueProvider nvp = (_valueDeserializer == _nullProvider) ? deser : _nullProvider;
+com/fasterxml/jackson/databind/deser/impl/FieldProperty.java#94#        return new FieldProperty(this, deser, nvp);
+com/fasterxml/jackson/databind/deser/impl/FieldProperty.java#218#}
+com/fasterxml/jackson/databind/deser/impl/MethodProperty.java#84#        NullValueProvider nvp = (_valueDeserializer == _nullProvider) ? deser : _nullProvider;
+com/fasterxml/jackson/databind/deser/impl/MethodProperty.java#85#        return new MethodProperty(this, deser, nvp);
+com/fasterxml/jackson/databind/deser/impl/ObjectIdReferenceProperty.java#54#        NullValueProvider nvp = (_valueDeserializer == _nullProvider) ? deser : _nullProvider;
+com/fasterxml/jackson/databind/deser/impl/ObjectIdReferenceProperty.java#55#        return new ObjectIdReferenceProperty(this, deser, nvp);
+com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java#55#        NullValueProvider nvp = (_valueDeserializer == _nullProvider) ? deser : _nullProvider;
+com/fasterxml/jackson/databind/deser/impl/ObjectIdValueProperty.java#56#        return new ObjectIdValueProperty(this, deser, nvp);
+com/fasterxml/jackson/databind/deser/impl/SetterlessProperty.java#68#        NullValueProvider nvp = (_valueDeserializer == _nullProvider) ? deser : _nullProvider;
+com/fasterxml/jackson/databind/deser/impl/SetterlessProperty.java#69#        return new SetterlessProperty(this, deser, nvp);
+com/fasterxml/jackson/databind/deser/impl/SetterlessProperty.java#157#}
+com/fasterxml/jackson/databind/deser/std/AtomicReferenceDeserializer.java#43#        return new AtomicReference<Object>(_valueDeserializer.getNullValue(ctxt));

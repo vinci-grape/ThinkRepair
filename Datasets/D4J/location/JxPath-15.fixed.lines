@@ -1,0 +1,9 @@
+org/apache/commons/jxpath/ri/axes/UnionContext.java#20#import java.util.Iterator;
+org/apache/commons/jxpath/ri/axes/UnionContext.java#23#import org.apache.commons.jxpath.Pointer;
+org/apache/commons/jxpath/ri/axes/UnionContext.java#63#            sortPointers(pointers);
+org/apache/commons/jxpath/ri/axes/UnionContext.java#64#
+org/apache/commons/jxpath/ri/axes/UnionContext.java#65#            for (Iterator it = pointers.iterator(); it.hasNext();) {
+org/apache/commons/jxpath/ri/axes/UnionContext.java#66#                nodeSet.add((Pointer) it.next());
+org/apache/commons/jxpath/ri/axes/UnionContext.java#67#            }
+org/apache/commons/jxpath/ri/axes/UnionContext.java#71#}
+org/apache/commons/jxpath/ri/axes/UnionContext.java#58#FIX_OF_OMISSION

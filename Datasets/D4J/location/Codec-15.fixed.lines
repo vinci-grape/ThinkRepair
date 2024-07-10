@@ -1,0 +1,6 @@
+org/apache/commons/codec/language/Soundex.java#188#            for (int i=index-1 ; i>=0 ; i--) {
+org/apache/commons/codec/language/Soundex.java#189#                final char prevChar = str.charAt(i);
+org/apache/commons/codec/language/Soundex.java#190#                if (this.map(prevChar)==mappedChar) {
+org/apache/commons/codec/language/Soundex.java#192#                }
+org/apache/commons/codec/language/Soundex.java#193#                if ('H'!=prevChar && 'W'!=prevChar) {
+org/apache/commons/codec/language/Soundex.java#194#                    break;

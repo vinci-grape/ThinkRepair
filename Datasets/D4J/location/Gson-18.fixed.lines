@@ -1,0 +1,3 @@
+com/google/gson/internal/$Gson$Types.java#278#    if (context instanceof WildcardType) {
+com/google/gson/internal/$Gson$Types.java#280#      context = ((WildcardType)context).getUpperBounds()[0];
+com/google/gson/internal/$Gson$Types.java#281#    }

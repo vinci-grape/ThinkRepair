@@ -1,0 +1,8 @@
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1418#            if (outPtr >= outBuf.length) {
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1419#                outBuf = _textBuffer.finishCurrentSegment();
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1420#                outPtr = 0;
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#1421#            }
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1544#            if (outPtr >= outBuf.length) {
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1545#                outBuf = _textBuffer.finishCurrentSegment();
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1546#                outPtr = 0;
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#1547#            }

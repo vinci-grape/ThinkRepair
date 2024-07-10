@@ -1,0 +1,17 @@
+com/google/javascript/rhino/jstype/ArrowType.java#128#      boolean thisIsOptional = thisIsVarArgs || thisParam.isOptionalArg();
+com/google/javascript/rhino/jstype/ArrowType.java#129#      boolean thatIsOptional = thatIsVarArgs || thatParam.isOptionalArg();
+com/google/javascript/rhino/jstype/ArrowType.java#132#      if (!thisIsOptional && thatIsOptional) {
+com/google/javascript/rhino/jstype/ArrowType.java#138#        boolean isTopFunction =
+com/google/javascript/rhino/jstype/ArrowType.java#139#            thatIsVarArgs &&
+com/google/javascript/rhino/jstype/ArrowType.java#140#            (thatParamType == null ||
+com/google/javascript/rhino/jstype/ArrowType.java#141#             thatParamType.isUnknownType() ||
+com/google/javascript/rhino/jstype/ArrowType.java#142#             thatParamType.isNoType());
+com/google/javascript/rhino/jstype/ArrowType.java#143#        if (!isTopFunction) {
+com/google/javascript/rhino/jstype/ArrowType.java#144#          return false;
+com/google/javascript/rhino/jstype/ArrowType.java#145#        }
+com/google/javascript/rhino/jstype/ArrowType.java#146#      }
+com/google/javascript/rhino/jstype/ArrowType.java#164#    if (thisParam != null
+com/google/javascript/rhino/jstype/ArrowType.java#165#        && !thisParam.isOptionalArg() && !thisParam.isVarArgs()
+com/google/javascript/rhino/jstype/ArrowType.java#166#        && thatParam == null) {
+com/google/javascript/rhino/jstype/ArrowType.java#167#      return false;
+com/google/javascript/rhino/jstype/ArrowType.java#168#    }

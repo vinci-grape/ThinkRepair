@@ -1,0 +1,6 @@
+org/apache/commons/compress/utils/ChecksumCalculatingInputStream.java#35#        if ( checksum == null ){
+org/apache/commons/compress/utils/ChecksumCalculatingInputStream.java#36#            throw new NullPointerException("Parameter checksum must not be null");
+org/apache/commons/compress/utils/ChecksumCalculatingInputStream.java#37#        }
+org/apache/commons/compress/utils/ChecksumCalculatingInputStream.java#39#        if ( in == null ){
+org/apache/commons/compress/utils/ChecksumCalculatingInputStream.java#40#            throw new NullPointerException("Parameter in must not be null");
+org/apache/commons/compress/utils/ChecksumCalculatingInputStream.java#41#        }

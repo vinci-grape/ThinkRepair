@@ -1,0 +1,6 @@
+org/apache/commons/cli/GnuParser.java#81#                    if (opt.indexOf('=') != -1 && options.hasOption(opt.substring(0, opt.indexOf('='))))
+org/apache/commons/cli/GnuParser.java#84#                        tokens.add(arg.substring(0, arg.indexOf('='))); // --foo
+org/apache/commons/cli/GnuParser.java#85#                        tokens.add(arg.substring(arg.indexOf('=') + 1)); // value
+org/apache/commons/cli/GnuParser.java#86#                    }
+org/apache/commons/cli/GnuParser.java#87#                    else if (options.hasOption(arg.substring(0, 2)))
+org/apache/commons/cli/GnuParser.java#88#                    {

@@ -1,0 +1,4 @@
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#689#                        uri = attr.getValue();
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#690#                        break;
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#696#        return "".equals(uri) ? null : uri;
+org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java#695#FIX_OF_OMISSION

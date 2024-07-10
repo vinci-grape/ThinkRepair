@@ -1,0 +1,3 @@
+com/fasterxml/jackson/databind/deser/std/MapDeserializer.java#303#        return (_valueDeserializer == null)
+com/fasterxml/jackson/databind/deser/std/MapDeserializer.java#304#                && (_keyDeserializer == null)
+com/fasterxml/jackson/databind/deser/std/MapDeserializer.java#305#                && (_valueTypeDeserializer == null)

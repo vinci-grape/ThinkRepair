@@ -1,0 +1,6 @@
+com/google/javascript/rhino/jstype/PrototypeObjectType.java#573#    } else if (constraint.isUnionType()) {
+com/google/javascript/rhino/jstype/PrototypeObjectType.java#574#      for (JSType alt : constraint.toMaybeUnionType().getAlternates()) {
+com/google/javascript/rhino/jstype/PrototypeObjectType.java#575#        if (alt.isRecordType()) {
+com/google/javascript/rhino/jstype/PrototypeObjectType.java#576#          matchRecordTypeConstraint(alt.toObjectType());
+com/google/javascript/rhino/jstype/PrototypeObjectType.java#577#        }
+com/google/javascript/rhino/jstype/PrototypeObjectType.java#578#      }

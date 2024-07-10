@@ -1,0 +1,23 @@
+org/jsoup/nodes/Element.java#434#        if (parentNode == null)
+org/jsoup/nodes/Element.java#435#            return new Elements(0);
+org/jsoup/nodes/Element.java#437#        List<Element> elements = parent().children();
+org/jsoup/nodes/Element.java#438#        Elements siblings = new Elements(elements.size() - 1);
+org/jsoup/nodes/Element.java#439#        for (Element el: elements)
+org/jsoup/nodes/Element.java#440#            if (el != this)
+org/jsoup/nodes/Element.java#441#                siblings.add(el);
+org/jsoup/nodes/Element.java#442#        return siblings;
+org/jsoup/nodes/Element.java#454#        if (parentNode == null) return null;
+org/jsoup/nodes/Element.java#470#        if (parentNode == null) return null;
+org/jsoup/nodes/Node.java#444#        if (parentNode == null)
+org/jsoup/nodes/Node.java#445#            return Collections.emptyList();
+org/jsoup/nodes/Node.java#447#        List<Node> nodes = parentNode.childNodes;
+org/jsoup/nodes/Node.java#448#        List<Node> siblings = new ArrayList<Node>(nodes.size() - 1);
+org/jsoup/nodes/Node.java#449#        for (Node node: nodes)
+org/jsoup/nodes/Node.java#450#            if (node != this)
+org/jsoup/nodes/Node.java#451#                siblings.add(node);
+org/jsoup/nodes/Node.java#452#        return siblings;
+org/jsoup/nodes/Node.java#477#        if (parentNode == null)
+org/jsoup/nodes/Node.java#478#            return null; // root
+org/jsoup/select/Elements.java#22#    public Elements(int initialCapacity) {
+org/jsoup/select/Elements.java#23#        contents = new ArrayList<Element>(initialCapacity);
+org/jsoup/select/Elements.java#24#    }

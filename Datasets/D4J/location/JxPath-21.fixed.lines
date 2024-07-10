@@ -1,0 +1,2 @@
+org/apache/commons/jxpath/ri/model/beans/PropertyPointer.java#152#        Object baseValue = getBaseValue();
+org/apache/commons/jxpath/ri/model/beans/PropertyPointer.java#153#        return baseValue == null ? 1 : ValueUtils.getLength(baseValue);

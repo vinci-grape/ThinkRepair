@@ -1,0 +1,7 @@
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#198#        try {
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#199#            currEntry = new TarArchiveEntry(headerBuf);
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#200#        } catch (IllegalArgumentException e) {
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#201#            IOException ioe = new IOException("Error detected parsing the header");
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#202#            ioe.initCause(e);
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#203#            throw ioe;
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#204#        }

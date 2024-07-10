@@ -1,0 +1,5 @@
+com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java#23#    protected final static String PREFIX_C3P0 = "com.mchange.v2.c3p0.";
+com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java#99#                }
+com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java#100#            } else if (full.startsWith(PREFIX_C3P0)) {
+com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java#107#                if (full.endsWith("DataSource")) {
+com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java#108#                    break main_check;

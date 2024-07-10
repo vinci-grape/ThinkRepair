@@ -1,0 +1,15 @@
+org/apache/commons/compress/compressors/CompressorStreamFactory.java#240#            if (DeflateCompressorInputStream.matches(signature, signatureLength)) {
+org/apache/commons/compress/compressors/CompressorStreamFactory.java#241#                return new DeflateCompressorInputStream(in);
+org/apache/commons/compress/compressors/CompressorStreamFactory.java#242#            }
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#33#    private static final int MAGIC_1 = 0x78;
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#34#    private static final int MAGIC_2a = 0x01;
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#35#    private static final int MAGIC_2b = 0x5e;
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#36#    private static final int MAGIC_2c = 0x9c;
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#37#    private static final int MAGIC_2d = 0xda;
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#111#    public static boolean matches(byte[] signature, int length) {
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#112#        return length > 3 && signature[0] == MAGIC_1 && (
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#113#                signature[1] == (byte) MAGIC_2a ||
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#114#                signature[1] == (byte) MAGIC_2b ||
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#115#                signature[1] == (byte) MAGIC_2c ||
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#116#                signature[1] == (byte) MAGIC_2d);
+org/apache/commons/compress/compressors/deflate/DeflateCompressorInputStream.java#117#    }

@@ -1,0 +1,13 @@
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#202#            return setupBlock();
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#208#            return setupRandPartB();
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#211#            return setupRandPartC();
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#217#            return setupNoRandPartB();
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#220#            return setupNoRandPartC();
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#67#FIX_OF_OMISSION
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#134#FIX_OF_OMISSION
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#197#FIX_OF_OMISSION
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#225#FIX_OF_OMISSION
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#845#FIX_OF_OMISSION
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#862#FIX_OF_OMISSION
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#903#FIX_OF_OMISSION
+org/apache/commons/compress/compressors/bzip2/BZip2CompressorInputStream.java#931#FIX_OF_OMISSION

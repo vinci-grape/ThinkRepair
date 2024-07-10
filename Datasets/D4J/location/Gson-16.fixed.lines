@@ -1,0 +1,5 @@
+com/google/gson/internal/$Gson$Types.java#342#        if (visitedTypeVariables.contains(typeVariable)) {
+com/google/gson/internal/$Gson$Types.java#344#          return toResolve;
+com/google/gson/internal/$Gson$Types.java#345#        } else {
+com/google/gson/internal/$Gson$Types.java#346#          visitedTypeVariables.add(typeVariable);
+com/google/gson/internal/$Gson$Types.java#347#        }

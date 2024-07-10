@@ -1,0 +1,5 @@
+org/jsoup/helper/DataUtil.java#3#import org.jsoup.UncheckedIOException;
+org/jsoup/helper/DataUtil.java#152#            try {
+org/jsoup/helper/DataUtil.java#154#            } catch (UncheckedIOException e) {
+org/jsoup/helper/DataUtil.java#156#                throw e.ioException();
+org/jsoup/helper/DataUtil.java#157#            }

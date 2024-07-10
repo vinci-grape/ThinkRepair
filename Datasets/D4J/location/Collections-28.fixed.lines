@@ -1,0 +1,10 @@
+org/apache/commons/collections4/trie/AbstractPatriciaTrie.java#2262#        @Override
+org/apache/commons/collections4/trie/AbstractPatriciaTrie.java#2263#        public void clear() {
+org/apache/commons/collections4/trie/AbstractPatriciaTrie.java#2264#            Iterator<Map.Entry<K, V>> it = AbstractPatriciaTrie.this.entrySet().iterator();
+org/apache/commons/collections4/trie/AbstractPatriciaTrie.java#2265#            Set<K> currentKeys = keySet();
+org/apache/commons/collections4/trie/AbstractPatriciaTrie.java#2266#            while (it.hasNext()) {
+org/apache/commons/collections4/trie/AbstractPatriciaTrie.java#2267#                if (currentKeys.contains(it.next().getKey())) {
+org/apache/commons/collections4/trie/AbstractPatriciaTrie.java#2268#                    it.remove();
+org/apache/commons/collections4/trie/AbstractPatriciaTrie.java#2269#                }
+org/apache/commons/collections4/trie/AbstractPatriciaTrie.java#2270#            }
+org/apache/commons/collections4/trie/AbstractPatriciaTrie.java#2271#        }

@@ -1,0 +1,10 @@
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#108#    @Deprecated
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#109#    @Override
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#110#    public int getCount() {
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#111#        return (int) getBytesWritten();
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#112#    }
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#114#    @Override
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#115#    public long getBytesWritten() {
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#116#        return ((CountingOutputStream) out).getBytesWritten();
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#117#    }
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#339#FIX_OF_OMISSION

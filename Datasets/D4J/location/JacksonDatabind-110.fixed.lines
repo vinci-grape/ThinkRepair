@@ -1,0 +1,3 @@
+com/fasterxml/jackson/databind/deser/impl/JavaUtilCollectionsDeserializers.java#47#    private final static Class<?> CLASS_UNMODIFIABLE_LIST_ALIAS;
+com/fasterxml/jackson/databind/deser/impl/JavaUtilCollectionsDeserializers.java#59#        CLASS_UNMODIFIABLE_LIST_ALIAS = Collections.unmodifiableList(new LinkedList<Object>()).getClass();
+com/fasterxml/jackson/databind/deser/impl/JavaUtilCollectionsDeserializers.java#80#        } else if (type.hasRawClass(CLASS_UNMODIFIABLE_LIST) || type.hasRawClass(CLASS_UNMODIFIABLE_LIST_ALIAS)) {

@@ -1,0 +1,10 @@
+org/apache/commons/jxpath/ri/compiler/Expression.java#19#import org.apache.commons.jxpath.NodeSet;
+org/apache/commons/jxpath/ri/compiler/Expression.java#78#        if (result instanceof NodeSet) {
+org/apache/commons/jxpath/ri/compiler/Expression.java#79#            return new ValueIterator(((NodeSet) result).getPointers().iterator());
+org/apache/commons/jxpath/ri/compiler/Expression.java#80#        }
+org/apache/commons/jxpath/ri/compiler/Expression.java#92#        if (result instanceof NodeSet) {
+org/apache/commons/jxpath/ri/compiler/Expression.java#93#            return new PointerIterator(((NodeSet) result).getPointers().iterator(),
+org/apache/commons/jxpath/ri/compiler/Expression.java#94#                    new QName(null, "value"),
+org/apache/commons/jxpath/ri/compiler/Expression.java#95#                    context.getRootContext().getCurrentNodePointer().getLocale());
+org/apache/commons/jxpath/ri/compiler/Expression.java#96#        }
+org/apache/commons/jxpath/ri/compiler/Expression.java#154#}

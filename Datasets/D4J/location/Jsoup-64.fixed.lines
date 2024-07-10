@@ -1,0 +1,2 @@
+org/jsoup/parser/HtmlTreeBuilderState.java#1492#        tb.insert(startTag);
+org/jsoup/parser/HtmlTreeBuilderState.java#1489#FIX_OF_OMISSION

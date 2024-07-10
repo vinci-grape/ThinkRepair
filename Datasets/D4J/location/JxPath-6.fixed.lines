@@ -1,0 +1,10 @@
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#57#        if (l instanceof InitialContext) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#58#            ((EvalContext) l).reset();
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#59#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#60#
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#61#        if (l instanceof SelfContext) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#65#        if (r instanceof InitialContext) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#66#            ((EvalContext) r).reset();
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#67#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#68#
+org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java#69#        if (r instanceof SelfContext) {

@@ -1,0 +1,18 @@
+org/jsoup/helper/DataUtil.java#10#import java.nio.charset.IllegalCharsetNameException;
+org/jsoup/helper/DataUtil.java#20#    private static final Pattern charsetPattern = Pattern.compile("(?i)\\bcharset=\\s*(?:\"|')?([^\\s,;\"']*)");
+org/jsoup/helper/DataUtil.java#88#                    if (foundCharset == null && meta.hasAttr("charset")) {
+org/jsoup/helper/DataUtil.java#89#                        try {
+org/jsoup/helper/DataUtil.java#90#                            if (Charset.isSupported(meta.attr("charset"))) {
+org/jsoup/helper/DataUtil.java#91#                                foundCharset = meta.attr("charset");
+org/jsoup/helper/DataUtil.java#92#                            }
+org/jsoup/helper/DataUtil.java#93#                        } catch (IllegalCharsetNameException e) {
+org/jsoup/helper/DataUtil.java#94#                            foundCharset = null;
+org/jsoup/helper/DataUtil.java#95#                        }
+org/jsoup/helper/DataUtil.java#96#                    }
+org/jsoup/helper/DataUtil.java#102#                    foundCharset = foundCharset.trim().replaceAll("[\"']", "");
+org/jsoup/helper/DataUtil.java#172#            charset = charset.replace("charset=", "");
+org/jsoup/helper/DataUtil.java#173#            if (charset.isEmpty()) return null;
+org/jsoup/helper/DataUtil.java#174#            try {
+org/jsoup/helper/DataUtil.java#178#            } catch (IllegalCharsetNameException e) {
+org/jsoup/helper/DataUtil.java#180#                return null;
+org/jsoup/helper/DataUtil.java#181#            }

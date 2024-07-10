@@ -1,0 +1,31 @@
+com/fasterxml/jackson/databind/ObjectReader.java#1169#        return (T) _bindAsTreeOrNull(p);
+com/fasterxml/jackson/databind/ObjectReader.java#1707#    protected final JsonNode _bindAsTreeOrNull(JsonParser p) throws IOException
+com/fasterxml/jackson/databind/ObjectReader.java#1708#    {
+com/fasterxml/jackson/databind/ObjectReader.java#1709#        _config.initialize(p);
+com/fasterxml/jackson/databind/ObjectReader.java#1710#        if (_schema != null) {
+com/fasterxml/jackson/databind/ObjectReader.java#1711#            p.setSchema(_schema);
+com/fasterxml/jackson/databind/ObjectReader.java#1712#        }
+com/fasterxml/jackson/databind/ObjectReader.java#1713#        JsonToken t = p.getCurrentToken();
+com/fasterxml/jackson/databind/ObjectReader.java#1714#        if (t == null) {
+com/fasterxml/jackson/databind/ObjectReader.java#1715#            t = p.nextToken();
+com/fasterxml/jackson/databind/ObjectReader.java#1716#            if (t == null) {
+com/fasterxml/jackson/databind/ObjectReader.java#1717#                return null;
+com/fasterxml/jackson/databind/ObjectReader.java#1718#            }
+com/fasterxml/jackson/databind/ObjectReader.java#1719#        }
+com/fasterxml/jackson/databind/ObjectReader.java#1720#        final JsonNode resultNode;
+com/fasterxml/jackson/databind/ObjectReader.java#1721#        if (t == JsonToken.VALUE_NULL) {
+com/fasterxml/jackson/databind/ObjectReader.java#1722#            resultNode = _config.getNodeFactory().nullNode();
+com/fasterxml/jackson/databind/ObjectReader.java#1723#        } else {
+com/fasterxml/jackson/databind/ObjectReader.java#1724#            final DeserializationContext ctxt = createDeserializationContext(p);
+com/fasterxml/jackson/databind/ObjectReader.java#1725#            final JsonDeserializer<Object> deser = _findTreeDeserializer(ctxt);
+com/fasterxml/jackson/databind/ObjectReader.java#1726#            if (_unwrapRoot) {
+com/fasterxml/jackson/databind/ObjectReader.java#1727#                resultNode = (JsonNode) _unwrapAndDeserialize(p, ctxt, JSON_NODE_TYPE, deser);
+com/fasterxml/jackson/databind/ObjectReader.java#1728#            } else {
+com/fasterxml/jackson/databind/ObjectReader.java#1729#                resultNode = (JsonNode) deser.deserialize(p, ctxt);
+com/fasterxml/jackson/databind/ObjectReader.java#1730#                if (_config.isEnabled(DeserializationFeature.FAIL_ON_TRAILING_TOKENS)) {
+com/fasterxml/jackson/databind/ObjectReader.java#1731#                    _verifyNoTrailingTokens(p, ctxt, JSON_NODE_TYPE);
+com/fasterxml/jackson/databind/ObjectReader.java#1732#                }
+com/fasterxml/jackson/databind/ObjectReader.java#1733#            }
+com/fasterxml/jackson/databind/ObjectReader.java#1734#        }
+com/fasterxml/jackson/databind/ObjectReader.java#1735#        return resultNode;
+com/fasterxml/jackson/databind/ObjectReader.java#1736#    }

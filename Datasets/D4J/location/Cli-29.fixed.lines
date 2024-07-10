@@ -1,0 +1,3 @@
+org/apache/commons/cli/Util.java#66#        if (length > 1 && str.startsWith("\"") && str.endsWith("\"") && str.substring(1, length - 1).indexOf('"') == -1)
+org/apache/commons/cli/Util.java#68#            str = str.substring(1, length - 1);
+org/apache/commons/cli/Util.java#65#FIX_OF_OMISSION

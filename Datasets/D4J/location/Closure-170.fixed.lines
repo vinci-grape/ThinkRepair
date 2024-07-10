@@ -1,0 +1,14 @@
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#482#          if (n.isName() && n.getString().equals(varName)) {
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#488#            if (parent.isAssign() && (parent.getFirstChild() == n)
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#489#                && isAssignChain(parent, cfgNode)) {
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#491#              return;
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#492#            } else {
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#494#            }
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#498#        private boolean isAssignChain(Node child, Node ancestor) {
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#499#          for (Node n = child; n != ancestor; n = n.getParent()) {
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#500#            if (!n.isAssign()) {
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#501#              return false;
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#502#            }
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#503#          }
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#504#          return true;
+com/google/javascript/jscomp/FlowSensitiveInlineVariables.java#505#        }

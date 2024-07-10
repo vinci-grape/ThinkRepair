@@ -1,0 +1,5 @@
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#669#            myComment = "";
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#670#        }
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#671#        if (otherComment == null) {
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#672#            otherComment = "";
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#675#            && myComment.equals(otherComment)

@@ -1,0 +1,13 @@
+com/google/javascript/jscomp/CommandLineRunner.java#301#    @Option(name = "--version",
+com/google/javascript/jscomp/CommandLineRunner.java#302#        usage = "Prints the compiler version to stderr.")
+com/google/javascript/jscomp/CommandLineRunner.java#303#    private boolean version = false;
+com/google/javascript/jscomp/CommandLineRunner.java#370#  private static final String configResource =
+com/google/javascript/jscomp/CommandLineRunner.java#371#      "com.google.javascript.jscomp.parsing.ParserConfig";
+com/google/javascript/jscomp/CommandLineRunner.java#423#    if (flags.version) {
+com/google/javascript/jscomp/CommandLineRunner.java#424#      ResourceBundle config = ResourceBundle.getBundle(configResource);
+com/google/javascript/jscomp/CommandLineRunner.java#425#      err.println(
+com/google/javascript/jscomp/CommandLineRunner.java#426#          "Closure Compiler (http://code.google.com/p/closure/compiler)\n" +
+com/google/javascript/jscomp/CommandLineRunner.java#427#          "Version: " + config.getString("compiler.version") + "\n" +
+com/google/javascript/jscomp/CommandLineRunner.java#428#          "Built on: " + config.getString("compiler.date"));
+com/google/javascript/jscomp/CommandLineRunner.java#429#      err.flush();
+com/google/javascript/jscomp/CommandLineRunner.java#430#    }

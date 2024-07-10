@@ -1,0 +1,2 @@
+org/jsoup/nodes/Document.java#125#            body().prependChild(node);
+org/jsoup/nodes/Document.java#126#            body().prependChild(new TextNode(" ", ""));

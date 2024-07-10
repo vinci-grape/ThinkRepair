@@ -1,0 +1,43 @@
+org/jsoup/nodes/Element.java#270#        Element fragment = Parser.parseBodyFragmentRelaxed(html, baseUri()).body();
+org/jsoup/nodes/Element.java#287#        Element fragment = Parser.parseBodyFragmentRelaxed(html, baseUri()).body();
+org/jsoup/nodes/Element.java#314#        Element wrapBody = Parser.parseBodyFragmentRelaxed(html, baseUri).body();
+org/jsoup/parser/Parser.java#26#    private boolean relaxed = false;
+org/jsoup/parser/Parser.java#74#    public static Document parseBodyFragmentRelaxed(String bodyHtml, String baseUri) {
+org/jsoup/parser/Parser.java#75#        Parser parser = new Parser(bodyHtml, baseUri, true);
+org/jsoup/parser/Parser.java#76#        parser.relaxed = true;
+org/jsoup/parser/Parser.java#77#        return parser.parse();
+org/jsoup/parser/Parser.java#78#    }
+org/jsoup/parser/Parser.java#230#        if (!validAncestor && !relaxed) {
+org/jsoup/parser/Parser.java#259#        if (childTag.requiresSpecificParent())
+org/jsoup/parser/Parser.java#260#            return stack.getLast().tag().isValidParent(childTag);
+org/jsoup/parser/Parser.java#266#            if (parent2.isValidAncestor(childTag)) {
+org/jsoup/parser/Tag.java#28#    private Tag parent; // if not null, elements must be a direct child of parent
+org/jsoup/parser/Tag.java#100#        if (this.requiresSpecificParent() && this.getImplicitParent().equals(child))
+org/jsoup/parser/Tag.java#101#            return false;
+org/jsoup/parser/Tag.java#158#    boolean requiresSpecificParent() {
+org/jsoup/parser/Tag.java#159#        return this.parent != null;
+org/jsoup/parser/Tag.java#160#    }
+org/jsoup/parser/Tag.java#163#        return this.equals(child.parent);
+org/jsoup/parser/Tag.java#164#    }
+org/jsoup/parser/Tag.java#166#    boolean isValidAncestor(Tag child) {
+org/jsoup/parser/Tag.java#233#        createBlock("FRAME").setParent("FRAMESET").setEmpty();
+org/jsoup/parser/Tag.java#234#        createBlock("NOFRAMES").setParent("FRAMESET").setContainDataOnly();
+org/jsoup/parser/Tag.java#297#        createInline("OPTGROUP").setParent("SELECT"); //  only contain option
+org/jsoup/parser/Tag.java#298#        createInline("OPTION").setParent("SELECT").setContainDataOnly();
+org/jsoup/parser/Tag.java#304#        createInline("PARAM").setParent("OBJECT").setEmpty();
+org/jsoup/parser/Tag.java#309#        createInline("DT").setParent("DL").setOptionalClosing(); // only within DL.
+org/jsoup/parser/Tag.java#310#        createInline("DD").setParent("DL").setOptionalClosing(); // only within DL.
+org/jsoup/parser/Tag.java#316#        createBlock("CAPTION").setParent("TABLE");
+org/jsoup/parser/Tag.java#317#        createBlock("THEAD").setParent("TABLE").setOptionalClosing(); // just TR
+org/jsoup/parser/Tag.java#318#        createBlock("TFOOT").setParent("TABLE").setOptionalClosing(); // just TR
+org/jsoup/parser/Tag.java#319#        createBlock("TBODY").setParent("TABLE").setOptionalClosing(); // optional / implicit open too. just TR
+org/jsoup/parser/Tag.java#320#        createBlock("COLGROUP").setParent("TABLE").setOptionalClosing(); // just COL
+org/jsoup/parser/Tag.java#321#        createBlock("COL").setParent("COLGROUP").setEmpty();
+org/jsoup/parser/Tag.java#322#        createBlock("TR").setParent("TABLE").setOptionalClosing(); // just TH, TD
+org/jsoup/parser/Tag.java#323#        createBlock("TH").setParent("TR").setOptionalClosing();
+org/jsoup/parser/Tag.java#324#        createBlock("TD").setParent("TR").setOptionalClosing();
+org/jsoup/parser/Tag.java#388#    private Tag setParent(String tagName) {
+org/jsoup/parser/Tag.java#389#        parent = Tag.valueOf(tagName);
+org/jsoup/parser/Tag.java#390#        setAncestor(tagName);
+org/jsoup/parser/Tag.java#391#        return this;
+org/jsoup/parser/Tag.java#392#    }

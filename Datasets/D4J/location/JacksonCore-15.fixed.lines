@@ -1,0 +1,9 @@
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#227#    	if(!_allowMultipleMatches && _currToken != null && _exposedContext == null){
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#229#    		if((_currToken.isStructEnd()  && _headContext.isStartHandled()) ){
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#230#    			return (_currToken = null);
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#231#    		}
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#234#    		else if(_currToken.isScalarValue() && !_headContext.isStartHandled() && !_includePath 
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#235#    				&& _itemFilter == TokenFilter.INCLUDE_ALL) {
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#236#    			return (_currToken = null);
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#237#    		}
+com/fasterxml/jackson/core/filter/FilteringParserDelegate.java#238#    	}

@@ -1,0 +1,20 @@
+com/google/javascript/jscomp/AmbiguateProperties.java#355#      return !prop.relatedTypesSet.intersects(typesInSet);
+com/google/javascript/jscomp/AmbiguateProperties.java#365#      typesRelatedToSet.or(prop.relatedTypesSet);
+com/google/javascript/jscomp/AmbiguateProperties.java#556#    JSTypeBitSet relatedTypesSet = new JSTypeBitSet(intForType.size());
+com/google/javascript/jscomp/AmbiguateProperties.java#593#      int typeInt = getIntForType(newType);
+com/google/javascript/jscomp/AmbiguateProperties.java#594#      if (!typesSet.get(typeInt)) {
+com/google/javascript/jscomp/AmbiguateProperties.java#595#        computeRelatedTypes(newType);
+com/google/javascript/jscomp/AmbiguateProperties.java#596#        typesSet.set(typeInt);
+com/google/javascript/jscomp/AmbiguateProperties.java#597#        relatedTypesSet.or(getRelatedTypesOnNonUnion(newType));
+com/google/javascript/jscomp/TypedScopeCreator.java#560#      } else {
+com/google/javascript/jscomp/TypedScopeCreator.java#563#        for (ObjectType iface :
+com/google/javascript/jscomp/TypedScopeCreator.java#564#                 ownerType.getCtorImplementedInterfaces()) {
+com/google/javascript/jscomp/TypedScopeCreator.java#565#          propType = iface.getPropertyType(propName);
+com/google/javascript/jscomp/TypedScopeCreator.java#566#          if (propType instanceof FunctionType) {
+com/google/javascript/jscomp/TypedScopeCreator.java#567#            return (FunctionType) propType;
+com/google/javascript/jscomp/TypedScopeCreator.java#568#          }
+com/google/javascript/jscomp/TypedScopeCreator.java#569#        }
+com/google/javascript/jscomp/TypedScopeCreator.java#570#      }
+com/google/javascript/jscomp/AmbiguateProperties.java#210#FIX_OF_OMISSION
+com/google/javascript/jscomp/AmbiguateProperties.java#552#FIX_OF_OMISSION
+com/google/javascript/jscomp/AmbiguateProperties.java#599#FIX_OF_OMISSION

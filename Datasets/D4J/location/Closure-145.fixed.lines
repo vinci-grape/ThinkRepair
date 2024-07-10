@@ -1,0 +1,13 @@
+com/google/javascript/jscomp/CodeGenerator.java#709#    if (n.getType() == Token.LABEL) {
+com/google/javascript/jscomp/CodeGenerator.java#710#      Node labeledStatement = n.getLastChild();
+com/google/javascript/jscomp/CodeGenerator.java#711#      if (labeledStatement.getType() != Token.BLOCK) {
+com/google/javascript/jscomp/CodeGenerator.java#712#        return isOneExactlyFunctionOrDo(labeledStatement);
+com/google/javascript/jscomp/CodeGenerator.java#713#      } else {
+com/google/javascript/jscomp/CodeGenerator.java#717#        if (getNonEmptyChildCount(n, 2) == 1) { 
+com/google/javascript/jscomp/CodeGenerator.java#718#          return isOneExactlyFunctionOrDo(getFirstNonEmptyChild(n));
+com/google/javascript/jscomp/CodeGenerator.java#719#        } else {
+com/google/javascript/jscomp/CodeGenerator.java#722#          return false;
+com/google/javascript/jscomp/CodeGenerator.java#723#        }
+com/google/javascript/jscomp/CodeGenerator.java#724#      }
+com/google/javascript/jscomp/CodeGenerator.java#725#    } else {
+com/google/javascript/jscomp/CodeGenerator.java#727#    }

@@ -1,0 +1,32 @@
+org/apache/commons/compress/archivers/tar/TarUtils.java#56#        if (length < 2){
+org/apache/commons/compress/archivers/tar/TarUtils.java#57#            throw new IllegalArgumentException("Length "+length+" must be at least 2");
+org/apache/commons/compress/archivers/tar/TarUtils.java#58#        }
+org/apache/commons/compress/archivers/tar/TarUtils.java#59#
+org/apache/commons/compress/archivers/tar/TarUtils.java#60#        boolean allNUL = true;
+org/apache/commons/compress/archivers/tar/TarUtils.java#62#            if (buffer[i] != 0){
+org/apache/commons/compress/archivers/tar/TarUtils.java#63#                allNUL = false;
+org/apache/commons/compress/archivers/tar/TarUtils.java#66#        }
+org/apache/commons/compress/archivers/tar/TarUtils.java#67#        if (allNUL) {
+org/apache/commons/compress/archivers/tar/TarUtils.java#68#            return 0L;
+org/apache/commons/compress/archivers/tar/TarUtils.java#69#        }
+org/apache/commons/compress/archivers/tar/TarUtils.java#72#        while (start < end){
+org/apache/commons/compress/archivers/tar/TarUtils.java#73#            if (buffer[start] == ' '){
+org/apache/commons/compress/archivers/tar/TarUtils.java#74#                start++;
+org/apache/commons/compress/archivers/tar/TarUtils.java#75#            } else {
+org/apache/commons/compress/archivers/tar/TarUtils.java#78#        }
+org/apache/commons/compress/archivers/tar/TarUtils.java#81#        byte trailer;
+org/apache/commons/compress/archivers/tar/TarUtils.java#82#        trailer = buffer[end-1];
+org/apache/commons/compress/archivers/tar/TarUtils.java#83#        if (trailer == 0 || trailer == ' '){
+org/apache/commons/compress/archivers/tar/TarUtils.java#84#            end--;
+org/apache/commons/compress/archivers/tar/TarUtils.java#85#        } else {
+org/apache/commons/compress/archivers/tar/TarUtils.java#86#            throw new IllegalArgumentException(
+org/apache/commons/compress/archivers/tar/TarUtils.java#87#                    exceptionMessage(buffer, offset, length, end-1, trailer));
+org/apache/commons/compress/archivers/tar/TarUtils.java#88#        }
+org/apache/commons/compress/archivers/tar/TarUtils.java#90#        trailer = buffer[end-1];
+org/apache/commons/compress/archivers/tar/TarUtils.java#91#        if (trailer == 0 || trailer == ' '){
+org/apache/commons/compress/archivers/tar/TarUtils.java#92#            end--;
+org/apache/commons/compress/archivers/tar/TarUtils.java#93#        }
+org/apache/commons/compress/archivers/tar/TarUtils.java#95#        for ( ;start < end; start++) {
+org/apache/commons/compress/archivers/tar/TarUtils.java#96#            final byte currentByte = buffer[start];
+org/apache/commons/compress/archivers/tar/TarUtils.java#53#FIX_OF_OMISSION
+org/apache/commons/compress/archivers/tar/TarUtils.java#77#FIX_OF_OMISSION

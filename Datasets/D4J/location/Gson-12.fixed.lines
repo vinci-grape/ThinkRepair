@@ -1,0 +1,4 @@
+com/google/gson/internal/bind/JsonTreeReader.java#262#      if (stackSize > 0) {
+com/google/gson/internal/bind/JsonTreeReader.java#264#      }
+com/google/gson/internal/bind/JsonTreeReader.java#266#    if (stackSize > 0) {
+com/google/gson/internal/bind/JsonTreeReader.java#268#    }

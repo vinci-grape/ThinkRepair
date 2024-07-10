@@ -1,0 +1,18 @@
+org/apache/commons/cli/HelpFormatter.java#730#        renderWrappedTextBlock(sb, width, nextLineTabStop, text);
+org/apache/commons/cli/HelpFormatter.java#900#    private StringBuffer renderWrappedTextBlock(StringBuffer sb, int width, int nextLineTabStop, String text) {
+org/apache/commons/cli/HelpFormatter.java#901#        try {
+org/apache/commons/cli/HelpFormatter.java#902#            BufferedReader in = new BufferedReader(new StringReader(text));
+org/apache/commons/cli/HelpFormatter.java#903#            String line;
+org/apache/commons/cli/HelpFormatter.java#904#            boolean firstLine = true;
+org/apache/commons/cli/HelpFormatter.java#905#            while ((line = in.readLine()) != null) {
+org/apache/commons/cli/HelpFormatter.java#906#                if (!firstLine) {
+org/apache/commons/cli/HelpFormatter.java#907#                    sb.append(getNewLine());
+org/apache/commons/cli/HelpFormatter.java#908#                } else {
+org/apache/commons/cli/HelpFormatter.java#909#                    firstLine = false;
+org/apache/commons/cli/HelpFormatter.java#910#                }
+org/apache/commons/cli/HelpFormatter.java#911#                renderWrappedText(sb, width, nextLineTabStop, line);
+org/apache/commons/cli/HelpFormatter.java#912#            }
+org/apache/commons/cli/HelpFormatter.java#913#        } catch (IOException e) {
+org/apache/commons/cli/HelpFormatter.java#915#        }
+org/apache/commons/cli/HelpFormatter.java#917#        return sb;
+org/apache/commons/cli/HelpFormatter.java#918#    }

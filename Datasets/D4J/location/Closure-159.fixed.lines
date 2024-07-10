@@ -1,0 +1,3 @@
+com/google/javascript/jscomp/InlineFunctions.java#777#    if (node.getType() == Token.NAME) {
+com/google/javascript/jscomp/InlineFunctions.java#778#      if (isCandidateUsage(node)) {
+com/google/javascript/jscomp/InlineFunctions.java#779#        changed.add(node.getString());

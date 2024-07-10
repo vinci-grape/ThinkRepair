@@ -1,0 +1,29 @@
+com/google/javascript/jscomp/CodeGenerator.java#130#      if (NodeUtil.isAssignmentOp(n) && NodeUtil.isAssignmentOp(last)) {
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#102#      case Token.MUL:
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#103#      case Token.AND:
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#104#      case Token.OR:
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#105#      case Token.BITOR:
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#106#      case Token.BITXOR:
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#107#      case Token.BITAND:
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#108#        return tryRotateAssociativeOperator(node);
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#115#  private Node tryRotateAssociativeOperator(Node n) {
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#116#    if (!late) {
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#117#      return n;
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#118#    }
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#119#    Preconditions.checkArgument(NodeUtil.isAssociative(n.getType()));
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#120#    Node rhs = n.getLastChild();
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#121#    if (n.getType() == rhs.getType()) {
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#122#      Node parent = n.getParent();
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#123#      Node first = n.getFirstChild().detachFromParent();
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#124#      Node second = rhs.getFirstChild().detachFromParent();
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#125#      Node third = rhs.getLastChild().detachFromParent();
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#126#      Node newLhs = new Node(n.getType(), first, second)
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#127#          .copyInformationFrom(n);
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#128#      Node newRoot = new Node(rhs.getType(), newLhs, third)
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#129#          .copyInformationFrom(rhs);
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#130#      parent.replaceChild(n, newRoot);
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#131#      reportCodeChange();
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#132#      return newRoot;
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#133#    }
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#134#    return n;
+com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java#135#  }

@@ -1,0 +1,40 @@
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#580#                return buildMapSerializer(prov, (MapType) mlt, beanDesc, staticTyping,
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#585#            MapLikeType mlType = (MapLikeType) type;
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#589#                if (ser != null) {
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#590#                    break;
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#591#                }
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#592#            }
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#593#            if (ser == null) { // (2) Annotations-based ones:
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#594#                ser = findSerializerByAnnotations(prov, type, beanDesc);
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#595#            }
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#603#            return ser;
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#608#                return buildCollectionSerializer(prov,  (CollectionType) clt, beanDesc, staticTyping,
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#617#                if (ser != null) {
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#618#                    break;
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#619#                }
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#620#            }
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#621#            if (ser == null) { // (2) Annotations-based ones:
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#622#                ser = findSerializerByAnnotations(prov, type, beanDesc);
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#623#            }
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#631#            return ser;
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#634#            return buildArraySerializer(prov, (ArrayType) type, beanDesc, staticTyping,
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#646#    protected JsonSerializer<?> buildCollectionSerializer(SerializerProvider prov,
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#651#        SerializationConfig config = prov.getConfig();
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#666#            ser = findSerializerByAnnotations(prov, type, beanDesc); // (2) Annotations
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#667#            if (ser == null) {
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#704#                    }
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#751#    protected JsonSerializer<?> buildMapSerializer(SerializerProvider prov,
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#757#        final SerializationConfig config = prov.getConfig();
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#771#            ser = findSerializerByAnnotations(prov, type, beanDesc); // (2) Annotations
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#772#            if (ser == null) {
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#801#        }
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#849#    protected JsonSerializer<?> buildArraySerializer(SerializerProvider prov,
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#859#        SerializationConfig config = prov.getConfig();
+com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java#174#        JsonSerializer<?> ser = null;
+com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java#209#            if (ser == null) {
+com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java#210#                ser = findSerializerByAnnotations(prov, type, beanDesc);
+com/fasterxml/jackson/databind/ser/BeanSerializerFactory.java#211#            }
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#587#FIX_OF_OMISSION
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#601#FIX_OF_OMISSION
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#628#FIX_OF_OMISSION
+com/fasterxml/jackson/databind/ser/BasicSerializerFactory.java#629#FIX_OF_OMISSION

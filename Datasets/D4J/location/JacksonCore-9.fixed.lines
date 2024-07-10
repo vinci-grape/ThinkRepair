@@ -1,0 +1,18 @@
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#392#        if (_currToken == JsonToken.FIELD_NAME) {
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#393#            return getCurrentName();
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#394#        }
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#402#        }
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#403#        if (_currToken == JsonToken.FIELD_NAME) {
+com/fasterxml/jackson/core/base/ParserMinimalBase.java#404#            return getCurrentName();
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#253#        if (_currToken == JsonToken.FIELD_NAME) {
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#254#            return getCurrentName();
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#255#        }
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#268#        }
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#269#        if (_currToken == JsonToken.FIELD_NAME) {
+com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java#270#            return getCurrentName();
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#305#        if (_currToken == JsonToken.FIELD_NAME) {
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#306#            return getCurrentName();
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#307#        }
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#321#        }
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#322#        if (_currToken == JsonToken.FIELD_NAME) {
+com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java#323#            return getCurrentName();

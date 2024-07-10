@@ -1,0 +1,1 @@
+org/apache/commons/codec/binary/StringUtils.java#81#        return cs1.length() == cs2.length() && CharSequenceUtils.regionMatches(cs1, false, 0, cs2, 0, cs1.length());

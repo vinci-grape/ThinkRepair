@@ -1,0 +1,20 @@
+org/apache/commons/compress/archivers/ArchiveStreamFactory.java#297#            if (entryEncoding != null) {
+org/apache/commons/compress/archivers/ArchiveStreamFactory.java#298#                return new JarArchiveOutputStream(out, entryEncoding);
+org/apache/commons/compress/archivers/ArchiveStreamFactory.java#299#            } else {
+org/apache/commons/compress/archivers/ArchiveStreamFactory.java#301#            }
+org/apache/commons/compress/archivers/ArchiveStreamFactory.java#364#                if (entryEncoding != null) {
+org/apache/commons/compress/archivers/ArchiveStreamFactory.java#365#                    return new ArjArchiveInputStream(in, entryEncoding);
+org/apache/commons/compress/archivers/ArchiveStreamFactory.java#366#                } else {
+org/apache/commons/compress/archivers/ArchiveStreamFactory.java#368#                }
+org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.java#97#    final String encoding;
+org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.java#156#        this.encoding = encoding;
+org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream.java#98#    final String encoding;
+org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream.java#163#        this.encoding = encoding;
+org/apache/commons/compress/archivers/dump/DumpArchiveInputStream.java#80#    final String encoding;
+org/apache/commons/compress/archivers/dump/DumpArchiveInputStream.java#105#        this.encoding = encoding;
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#79#    final String encoding;
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#143#        this.encoding = encoding;
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#90#    final String encoding;
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#156#        this.encoding = encoding;
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#65#    final String encoding;
+org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java#185#        this.encoding = encoding;

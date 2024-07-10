@@ -1,0 +1,32 @@
+com/fasterxml/jackson/databind/DatabindContext.java#195#                        ClassUtil.exceptionMessage(e)));
+com/fasterxml/jackson/databind/DeserializationContext.java#714#                    ClassUtil.exceptionMessage(e)));
+com/fasterxml/jackson/databind/DeserializationContext.java#1603#        } else if ((excMsg = ClassUtil.exceptionMessage(cause)) == null) {
+com/fasterxml/jackson/databind/JsonMappingException.java#10#import com.fasterxml.jackson.databind.util.ClassUtil;
+com/fasterxml/jackson/databind/JsonMappingException.java#340#                        ClassUtil.exceptionMessage(src)));
+com/fasterxml/jackson/databind/JsonMappingException.java#381#            String msg = ClassUtil.exceptionMessage(src);
+com/fasterxml/jackson/databind/SerializerProvider.java#1341#            reportMappingProblem(iae, ClassUtil.exceptionMessage(iae));
+com/fasterxml/jackson/databind/SerializerProvider.java#1361#            reportMappingProblem(iae, ClassUtil.exceptionMessage(iae));
+com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java#1589#                    ClassUtil.exceptionMessage(e0), baseType);
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#222#                    ClassUtil.exceptionMessage(e),
+com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java#281#                    ClassUtil.exceptionMessage(e),
+com/fasterxml/jackson/databind/deser/DeserializerCache.java#268#            throw JsonMappingException.from(ctxt, ClassUtil.exceptionMessage(iae), iae);
+com/fasterxml/jackson/databind/deser/SettableAnyProperty.java#202#            String origMsg = ClassUtil.exceptionMessage(e);
+com/fasterxml/jackson/databind/deser/SettableAnyProperty.java#214#        throw new JsonMappingException(null, ClassUtil.exceptionMessage(t), t);
+com/fasterxml/jackson/databind/deser/SettableBeanProperty.java#590#            String origMsg = ClassUtil.exceptionMessage(e);
+com/fasterxml/jackson/databind/deser/SettableBeanProperty.java#611#        throw JsonMappingException.from(p, ClassUtil.exceptionMessage(th), th);
+com/fasterxml/jackson/databind/deser/std/StdDeserializer.java#526#                    ClassUtil.exceptionMessage(iae));
+com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java#135#                    ClassUtil.exceptionMessage(re));
+com/fasterxml/jackson/databind/deser/std/StdKeyDeserializer.java#262#                ClassUtil.exceptionMessage(e));
+com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java#456#                "Instantiation of "+getValueTypeDesc()+" value failed: "+ClassUtil.exceptionMessage(t), t);
+com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java#364#                    +ClassUtil.exceptionMessage(t), t);
+com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java#171#filter.getClass().getName(), t.getClass().getName(), ClassUtil.exceptionMessage(t));
+com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java#505#        String msg = ClassUtil.exceptionMessage(e);
+com/fasterxml/jackson/databind/ser/PropertyBuilder.java#103#                return prov.reportBadDefinition(declaredType, ClassUtil.exceptionMessage(e));
+com/fasterxml/jackson/databind/ser/PropertyBuilder.java#105#            return prov.reportBadPropertyDefinition(_beanDesc, propDef, ClassUtil.exceptionMessage(e));
+com/fasterxml/jackson/databind/util/ClassUtil.java#10#import com.fasterxml.jackson.core.JsonProcessingException;
+com/fasterxml/jackson/databind/util/ClassUtil.java#753#    public static String exceptionMessage(Throwable t) {
+com/fasterxml/jackson/databind/util/ClassUtil.java#754#        if (t instanceof JsonProcessingException) {
+com/fasterxml/jackson/databind/util/ClassUtil.java#755#            return ((JsonProcessingException) t).getOriginalMessage();
+com/fasterxml/jackson/databind/util/ClassUtil.java#756#        }
+com/fasterxml/jackson/databind/util/ClassUtil.java#757#        return t.getMessage();
+com/fasterxml/jackson/databind/util/ClassUtil.java#758#    }

@@ -1,0 +1,3 @@
+org/apache/commons/cli/Util.java#36#        if (str == null) {
+org/apache/commons/cli/Util.java#37#            return null;
+org/apache/commons/cli/Util.java#38#        }

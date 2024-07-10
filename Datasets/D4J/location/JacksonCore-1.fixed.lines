@@ -1,0 +1,13 @@
+com/fasterxml/jackson/core/io/NumberInput.java#295#        try {
+com/fasterxml/jackson/core/io/NumberInput.java#297#        } catch (NumberFormatException e) {
+com/fasterxml/jackson/core/io/NumberInput.java#298#            throw _badBigDecimal(numStr);
+com/fasterxml/jackson/core/io/NumberInput.java#299#        }
+com/fasterxml/jackson/core/io/NumberInput.java#309#        try {
+com/fasterxml/jackson/core/io/NumberInput.java#311#        } catch (NumberFormatException e) {
+com/fasterxml/jackson/core/io/NumberInput.java#312#            throw _badBigDecimal(new String(buffer, offset, len));
+com/fasterxml/jackson/core/io/NumberInput.java#313#        }
+com/fasterxml/jackson/core/io/NumberInput.java#316#    private static NumberFormatException _badBigDecimal(String str) {
+com/fasterxml/jackson/core/io/NumberInput.java#317#        return new NumberFormatException("Value \""+str+"\" can not be represented as BigDecimal");
+com/fasterxml/jackson/core/io/NumberInput.java#318#    }
+com/fasterxml/jackson/core/util/TextBuffer.java#390#        if ((_inputStart >= 0) && (_inputBuffer != null)) {
+com/fasterxml/jackson/core/util/TextBuffer.java#394#        if ((_segmentSize == 0) && (_currentSegment != null)) {

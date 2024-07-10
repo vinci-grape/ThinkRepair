@@ -1,0 +1,11 @@
+org/apache/commons/compress/utils/IOUtils.java#104#        if (numToSkip > 0) {
+org/apache/commons/compress/utils/IOUtils.java#105#            byte[] skipBuf = new byte[SKIP_BUF_SIZE];
+org/apache/commons/compress/utils/IOUtils.java#106#            while (numToSkip > 0) {
+org/apache/commons/compress/utils/IOUtils.java#107#                int read = readFully(input, skipBuf, 0,
+org/apache/commons/compress/utils/IOUtils.java#108#                                     (int) Math.min(numToSkip, SKIP_BUF_SIZE));
+org/apache/commons/compress/utils/IOUtils.java#109#                if (read < 1) {
+org/apache/commons/compress/utils/IOUtils.java#110#                    break;
+org/apache/commons/compress/utils/IOUtils.java#111#                }
+org/apache/commons/compress/utils/IOUtils.java#112#                numToSkip -= read;
+org/apache/commons/compress/utils/IOUtils.java#113#            }
+org/apache/commons/compress/utils/IOUtils.java#114#        }

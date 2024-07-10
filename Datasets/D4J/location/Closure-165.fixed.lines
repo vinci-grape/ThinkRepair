@@ -1,0 +1,29 @@
+com/google/javascript/rhino/jstype/JSTypeRegistry.java#698#          RecordType maybeRecordType = greatestSubtype.toMaybeRecordType();
+com/google/javascript/rhino/jstype/JSTypeRegistry.java#699#          if (maybeRecordType != null && maybeRecordType.isSynthetic()) {
+com/google/javascript/rhino/jstype/JSTypeRegistry.java#700#            continue;
+com/google/javascript/rhino/jstype/JSTypeRegistry.java#701#          }
+com/google/javascript/rhino/jstype/ObjectType.java#290#  public final boolean defineSynthesizedProperty(String propertyName,
+com/google/javascript/rhino/jstype/ObjectType.java#291#      JSType type, Node propertyNode) {
+com/google/javascript/rhino/jstype/ObjectType.java#292#    return defineProperty(propertyName, type, false, propertyNode);
+com/google/javascript/rhino/jstype/ObjectType.java#293#  }
+com/google/javascript/rhino/jstype/RecordType.java#68#  private final boolean declared;
+com/google/javascript/rhino/jstype/RecordType.java#71#  RecordType(JSTypeRegistry registry, Map<String, RecordProperty> properties) {
+com/google/javascript/rhino/jstype/RecordType.java#72#    this(registry, properties, true);
+com/google/javascript/rhino/jstype/RecordType.java#73#  }
+com/google/javascript/rhino/jstype/RecordType.java#87#  RecordType(JSTypeRegistry registry, Map<String, RecordProperty> properties,
+com/google/javascript/rhino/jstype/RecordType.java#88#      boolean declared) {
+com/google/javascript/rhino/jstype/RecordType.java#91#    this.declared = declared;
+com/google/javascript/rhino/jstype/RecordType.java#99#      if (declared) {
+com/google/javascript/rhino/jstype/RecordType.java#102#      } else {
+com/google/javascript/rhino/jstype/RecordType.java#103#        defineSynthesizedProperty(
+com/google/javascript/rhino/jstype/RecordType.java#104#            property, prop.getType(), prop.getPropertyNode());
+com/google/javascript/rhino/jstype/RecordType.java#105#      }
+com/google/javascript/rhino/jstype/RecordType.java#113#  boolean isSynthetic() {
+com/google/javascript/rhino/jstype/RecordType.java#114#    return !declared;
+com/google/javascript/rhino/jstype/RecordType.java#115#  }
+com/google/javascript/rhino/jstype/RecordType.java#166#      builder.setSynthesized(true);
+com/google/javascript/rhino/jstype/RecordTypeBuilder.java#54#  private boolean isDeclared = true;
+com/google/javascript/rhino/jstype/RecordTypeBuilder.java#63#  void setSynthesized(boolean synthesized) {
+com/google/javascript/rhino/jstype/RecordTypeBuilder.java#64#    isDeclared = !synthesized;
+com/google/javascript/rhino/jstype/RecordTypeBuilder.java#65#  }
+com/google/javascript/rhino/jstype/RecordTypeBuilder.java#96#        registry, Collections.unmodifiableMap(properties), isDeclared);

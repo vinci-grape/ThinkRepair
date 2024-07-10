@@ -1,0 +1,17 @@
+com/google/gson/internal/ConstructorConstructor.java#36#import java.util.concurrent.ConcurrentHashMap;
+com/google/gson/internal/ConstructorConstructor.java#37#import java.util.concurrent.ConcurrentMap;
+com/google/gson/internal/ConstructorConstructor.java#38#import java.util.concurrent.ConcurrentNavigableMap;
+com/google/gson/internal/ConstructorConstructor.java#39#import java.util.concurrent.ConcurrentSkipListMap;
+com/google/gson/internal/ConstructorConstructor.java#179#      if (ConcurrentNavigableMap.class.isAssignableFrom(rawType)) {
+com/google/gson/internal/ConstructorConstructor.java#180#        return new ObjectConstructor<T>() {
+com/google/gson/internal/ConstructorConstructor.java#181#          @Override public T construct() {
+com/google/gson/internal/ConstructorConstructor.java#182#            return (T) new ConcurrentSkipListMap<Object, Object>();
+com/google/gson/internal/ConstructorConstructor.java#183#          }
+com/google/gson/internal/ConstructorConstructor.java#184#        };
+com/google/gson/internal/ConstructorConstructor.java#185#      } else if (ConcurrentMap.class.isAssignableFrom(rawType)) {
+com/google/gson/internal/ConstructorConstructor.java#186#        return new ObjectConstructor<T>() {
+com/google/gson/internal/ConstructorConstructor.java#187#          @Override public T construct() {
+com/google/gson/internal/ConstructorConstructor.java#188#            return (T) new ConcurrentHashMap<Object, Object>();
+com/google/gson/internal/ConstructorConstructor.java#189#          }
+com/google/gson/internal/ConstructorConstructor.java#190#        };
+com/google/gson/internal/ConstructorConstructor.java#191#      } else if (SortedMap.class.isAssignableFrom(rawType)) {

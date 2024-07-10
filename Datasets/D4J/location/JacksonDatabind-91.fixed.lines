@@ -1,0 +1,9 @@
+com/fasterxml/jackson/databind/deser/DeserializerCache.java#541#                if ((ct.getValueHandler() != null) || (ct.getTypeHandler() != null)) {
+com/fasterxml/jackson/databind/deser/DeserializerCache.java#542#                    return true;
+com/fasterxml/jackson/databind/deser/DeserializerCache.java#543#                }
+com/fasterxml/jackson/databind/deser/DeserializerCache.java#544#            }
+com/fasterxml/jackson/databind/deser/DeserializerCache.java#546#            if (t.isMapLikeType()) {
+com/fasterxml/jackson/databind/deser/DeserializerCache.java#547#                JavaType kt = t.getKeyType();
+com/fasterxml/jackson/databind/deser/DeserializerCache.java#548#                if (kt.getValueHandler() != null) {
+com/fasterxml/jackson/databind/deser/DeserializerCache.java#549#                    return true;
+com/fasterxml/jackson/databind/deser/DeserializerCache.java#550#                }

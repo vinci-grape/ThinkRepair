@@ -1,0 +1,6 @@
+com/fasterxml/jackson/databind/ser/std/EnumSerializer.java#86#        Boolean serializeAsIndex = _isShapeWrittenUsingIndex(enumClass, format, true, null);
+com/fasterxml/jackson/databind/ser/std/EnumSerializer.java#104#                        format, false, _serializeAsIndex);
+com/fasterxml/jackson/databind/ser/std/EnumSerializer.java#217#            JsonFormat.Value format, boolean fromClass,
+com/fasterxml/jackson/databind/ser/std/EnumSerializer.java#218#            Boolean defaultValue)
+com/fasterxml/jackson/databind/ser/std/EnumSerializer.java#222#            return defaultValue;
+com/fasterxml/jackson/databind/ser/std/EnumSerializer.java#226#            return defaultValue;

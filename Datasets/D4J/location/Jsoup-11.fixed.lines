@@ -1,0 +1,25 @@
+org/jsoup/select/Selector.java#110#        } else if (tq.matches(":has(")) {
+org/jsoup/select/Selector.java#111#            elements.addAll(root.getAllElements());
+org/jsoup/select/Selector.java#183#        } else if (tq.matches(":not(")) {
+org/jsoup/select/Selector.java#184#            return not();
+org/jsoup/select/Selector.java#309#    private Elements not() {
+org/jsoup/select/Selector.java#310#        tq.consume(":not");
+org/jsoup/select/Selector.java#311#        String subQuery = tq.chompBalanced('(', ')');
+org/jsoup/select/Selector.java#312#        Validate.notEmpty(subQuery, ":not(selector) subselect must not be empty");
+org/jsoup/select/Selector.java#314#        return filterOut(root.getAllElements(), select(subQuery, root));
+org/jsoup/select/Selector.java#315#    }
+org/jsoup/select/Selector.java#409#    static Elements filterOut(Collection<Element> elements, Collection<Element> outs) {
+org/jsoup/select/Selector.java#410#        Elements output = new Elements();
+org/jsoup/select/Selector.java#411#        for (Element el: elements) {
+org/jsoup/select/Selector.java#412#            boolean found = false;
+org/jsoup/select/Selector.java#413#            for (Element out: outs) {
+org/jsoup/select/Selector.java#414#                if (el.equals(out)) {
+org/jsoup/select/Selector.java#415#                    found = true;
+org/jsoup/select/Selector.java#416#                    break;
+org/jsoup/select/Selector.java#417#                }
+org/jsoup/select/Selector.java#418#            }
+org/jsoup/select/Selector.java#419#            if (!found)
+org/jsoup/select/Selector.java#420#                output.add(el);
+org/jsoup/select/Selector.java#421#        }
+org/jsoup/select/Selector.java#422#        return output;
+org/jsoup/select/Selector.java#423#    }

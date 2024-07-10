@@ -1,0 +1,3 @@
+com/fasterxml/jackson/databind/ser/BeanPropertyWriter.java#39#    implements BeanProperty,
+com/fasterxml/jackson/databind/ser/BeanPropertyWriter.java#40#        java.io.Serializable // since 2.6.2
+com/fasterxml/jackson/databind/ser/BeanPropertyWriter.java#43#    private static final long serialVersionUID = 4603296144163950020L;

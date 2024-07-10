@@ -1,0 +1,1 @@
+com/google/gson/stream/JsonWriter.java#495#    if (!lenient && (Double.isNaN(value) || Double.isInfinite(value))) {

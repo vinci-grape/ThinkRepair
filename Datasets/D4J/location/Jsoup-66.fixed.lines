@@ -1,0 +1,8 @@
+org/jsoup/nodes/Element.java#89#            childNodes = new NodeList(this, 4);
+org/jsoup/nodes/Element.java#1402#        clone.childNodes = new NodeList(clone, childNodes.size());
+org/jsoup/nodes/Element.java#1408#    private static final class NodeList extends ChangeNotifyingArrayList<Node> {
+org/jsoup/nodes/Element.java#1409#        private final Element owner;
+org/jsoup/nodes/Element.java#1410#
+org/jsoup/nodes/Element.java#1411#        NodeList(Element owner, int initialCapacity) {
+org/jsoup/nodes/Element.java#1413#            this.owner = owner;
+org/jsoup/nodes/Element.java#1417#            owner.nodelistChanged();

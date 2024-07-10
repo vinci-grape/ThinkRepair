@@ -1,0 +1,12 @@
+com/fasterxml/jackson/databind/util/TokenBuffer.java#405#        if (jp.getCurrentTokenId() != JsonToken.FIELD_NAME.id()) {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#407#            return this;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#408#        }
+com/fasterxml/jackson/databind/util/TokenBuffer.java#413#        JsonToken t;
+com/fasterxml/jackson/databind/util/TokenBuffer.java#414#        writeStartObject();
+com/fasterxml/jackson/databind/util/TokenBuffer.java#415#        do {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#416#            copyCurrentStructure(jp);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#417#        } while ((t = jp.nextToken()) == JsonToken.FIELD_NAME);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#418#        if (t != JsonToken.END_OBJECT) {
+com/fasterxml/jackson/databind/util/TokenBuffer.java#419#            throw ctxt.mappingException("Expected END_OBJECT after copying contents of a JsonParser into TokenBuffer, got "+t);
+com/fasterxml/jackson/databind/util/TokenBuffer.java#420#        }
+com/fasterxml/jackson/databind/util/TokenBuffer.java#421#        writeEndObject();

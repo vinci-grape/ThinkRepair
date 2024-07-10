@@ -1,0 +1,44 @@
+com/google/javascript/jscomp/Scope.java#568#  Iterable<Var> getVarIterable() {
+com/google/javascript/jscomp/Scope.java#569#    return vars.values();
+com/google/javascript/jscomp/Scope.java#570#  }
+com/google/javascript/jscomp/ScopedAliases.java#226#        findAliases(t);
+com/google/javascript/jscomp/ScopedAliases.java#272#    private void findAliases(NodeTraversal t) {
+com/google/javascript/jscomp/ScopedAliases.java#273#      Scope scope = t.getScope();
+com/google/javascript/jscomp/ScopedAliases.java#274#      for (Var v : scope.getVarIterable()) {
+com/google/javascript/jscomp/ScopedAliases.java#275#        Node n = v.getNode();
+com/google/javascript/jscomp/ScopedAliases.java#276#        int type = n.getType();
+com/google/javascript/jscomp/ScopedAliases.java#277#        Node parent = n.getParent();
+com/google/javascript/jscomp/ScopedAliases.java#278#        if (parent.getType() == Token.VAR) {
+com/google/javascript/jscomp/ScopedAliases.java#279#          if (n.hasChildren() && n.getFirstChild().isQualifiedName()) {
+com/google/javascript/jscomp/ScopedAliases.java#280#            String name = n.getString();
+com/google/javascript/jscomp/ScopedAliases.java#281#            Var aliasVar = scope.getVar(name);
+com/google/javascript/jscomp/ScopedAliases.java#282#            aliases.put(name, aliasVar);
+com/google/javascript/jscomp/ScopedAliases.java#284#            String qualifiedName =
+com/google/javascript/jscomp/ScopedAliases.java#285#                aliasVar.getInitialValue().getQualifiedName();
+com/google/javascript/jscomp/ScopedAliases.java#286#            transformation.addAlias(name, qualifiedName);
+com/google/javascript/jscomp/ScopedAliases.java#287#          } else {
+com/google/javascript/jscomp/ScopedAliases.java#289#            report(t, n, GOOG_SCOPE_NON_ALIAS_LOCAL, n.getString());
+com/google/javascript/jscomp/ScopedAliases.java#290#          }
+com/google/javascript/jscomp/ScopedAliases.java#291#        }
+com/google/javascript/jscomp/ScopedAliases.java#292#      }
+com/google/javascript/jscomp/ScopedAliases.java#293#    }
+com/google/javascript/jscomp/ScopedAliases.java#324#      if (t.getScopeDepth() < 2) {
+com/google/javascript/jscomp/ScopedAliases.java#325#        return;
+com/google/javascript/jscomp/ScopedAliases.java#326#      }
+com/google/javascript/jscomp/ScopedAliases.java#328#      int type = n.getType();
+com/google/javascript/jscomp/ScopedAliases.java#329#      Var aliasVar = null;
+com/google/javascript/jscomp/ScopedAliases.java#330#      if (type == Token.NAME) {
+com/google/javascript/jscomp/ScopedAliases.java#331#        String name = n.getString();
+com/google/javascript/jscomp/ScopedAliases.java#332#        Var lexicalVar = t.getScope().getVar(n.getString());
+com/google/javascript/jscomp/ScopedAliases.java#333#        if (lexicalVar != null && lexicalVar == aliases.get(name)) {
+com/google/javascript/jscomp/ScopedAliases.java#334#          aliasVar = lexicalVar;
+com/google/javascript/jscomp/ScopedAliases.java#335#        }
+com/google/javascript/jscomp/ScopedAliases.java#336#      }
+com/google/javascript/jscomp/ScopedAliases.java#340#        if (aliasVar != null && NodeUtil.isLValue(n)) {
+com/google/javascript/jscomp/ScopedAliases.java#341#          if (aliasVar.getNode() == n) {
+com/google/javascript/jscomp/ScopedAliases.java#342#            aliasDefinitionsInOrder.add(n);
+com/google/javascript/jscomp/ScopedAliases.java#348#            report(t, n, GOOG_SCOPE_ALIAS_REDEFINED, n.getString());
+com/google/javascript/jscomp/ScopedAliases.java#364#        if (aliasVar != null) {
+com/google/javascript/jscomp/ScopedAliases.java#344#FIX_OF_OMISSION
+com/google/javascript/jscomp/ScopedAliases.java#351#FIX_OF_OMISSION
+com/google/javascript/jscomp/ScopedAliases.java#373#FIX_OF_OMISSION

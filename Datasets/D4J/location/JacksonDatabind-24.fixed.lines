@@ -1,0 +1,2 @@
+com/fasterxml/jackson/databind/cfg/BaseSettings.java#236#                _timeZone, _defaultBase64);
+com/fasterxml/jackson/databind/cfg/BaseSettings.java#234#FIX_OF_OMISSION

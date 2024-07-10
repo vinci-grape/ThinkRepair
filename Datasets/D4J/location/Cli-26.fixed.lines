@@ -1,0 +1,5 @@
+org/apache/commons/cli/OptionBuilder.java#348#        Option option = null;
+org/apache/commons/cli/OptionBuilder.java#349#        try {
+org/apache/commons/cli/OptionBuilder.java#351#            option = new Option(opt, description);
+org/apache/commons/cli/OptionBuilder.java#361#        } finally {
+org/apache/commons/cli/OptionBuilder.java#364#        }

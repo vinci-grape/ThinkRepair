@@ -1,0 +1,15 @@
+com/google/javascript/jscomp/JsAst.java#82#    int startErrorCount = compiler.getErrorManager().getErrorCount();
+com/google/javascript/jscomp/JsAst.java#96#    if (root == null ||
+com/google/javascript/jscomp/JsAst.java#100#        (compiler.getErrorManager().getErrorCount() > startErrorCount && !compiler.isIdeMode())) {
+com/google/javascript/jscomp/NodeUtil.java#2367#    } else if (value != null) {
+com/google/javascript/jscomp/NodeUtil.java#2368#      result = IR.exprResult(IR.assign(nameNode, value));
+com/google/javascript/jscomp/NodeUtil.java#2369#      result.getFirstChild().setJSDocInfo(info);
+com/google/javascript/jscomp/NodeUtil.java#2371#      result = IR.exprResult(nameNode);
+com/google/javascript/jscomp/ScopedAliases.java#356#        boolean isVar = parent.isVar();
+com/google/javascript/jscomp/ScopedAliases.java#357#        if (isVar && n.getFirstChild() != null && n.getFirstChild().isQualifiedName()) {
+com/google/javascript/jscomp/ScopedAliases.java#365#        } else if (isVar) {
+com/google/javascript/jscomp/ScopedAliases.java#366#          Node value = n.hasChildren() ?
+com/google/javascript/jscomp/ScopedAliases.java#367#              v.getInitialValue().detachFromParent() :
+com/google/javascript/jscomp/ScopedAliases.java#368#              null;
+com/google/javascript/jscomp/ScopedAliases.java#379#          if (value != null || v.getJSDocInfo() != null) {
+com/google/javascript/jscomp/ScopedAliases.java#389#          }

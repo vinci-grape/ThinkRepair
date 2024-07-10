@@ -1,0 +1,19 @@
+org/jsoup/parser/CharacterReader.java#118#    String consumeLetterThenDigitSequence() {
+org/jsoup/parser/CharacterReader.java#119#        int start = pos;
+org/jsoup/parser/CharacterReader.java#120#        while (!isEmpty()) {
+org/jsoup/parser/CharacterReader.java#121#            char c = input.charAt(pos);
+org/jsoup/parser/CharacterReader.java#122#            if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+org/jsoup/parser/CharacterReader.java#123#                pos++;
+org/jsoup/parser/CharacterReader.java#124#            else
+org/jsoup/parser/CharacterReader.java#125#                break;
+org/jsoup/parser/CharacterReader.java#126#        }
+org/jsoup/parser/CharacterReader.java#127#        while (!isEmpty()) {
+org/jsoup/parser/CharacterReader.java#128#            char c = input.charAt(pos);
+org/jsoup/parser/CharacterReader.java#129#            if (c >= '0' && c <= '9')
+org/jsoup/parser/CharacterReader.java#130#                pos++;
+org/jsoup/parser/CharacterReader.java#131#            else
+org/jsoup/parser/CharacterReader.java#132#                break;
+org/jsoup/parser/CharacterReader.java#133#        }
+org/jsoup/parser/CharacterReader.java#135#        return input.substring(start, pos);
+org/jsoup/parser/CharacterReader.java#136#    }
+org/jsoup/parser/Tokeniser.java#135#            String nameRef = reader.consumeLetterThenDigitSequence();

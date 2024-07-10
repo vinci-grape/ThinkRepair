@@ -1,0 +1,2 @@
+org/apache/commons/compress/archivers/tar/TarUtils.java#594#        long storedSum = parseOctal(header, CHKSUM_OFFSET, CHKSUMLEN);
+org/apache/commons/compress/archivers/tar/TarUtils.java#602#FIX_OF_OMISSION

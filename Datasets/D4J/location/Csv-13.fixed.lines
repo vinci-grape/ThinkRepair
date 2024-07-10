@@ -1,0 +1,4 @@
+org/apache/commons/csv/CSVFormat.java#319#            .withQuote(null).withRecordSeparator(LF).withNullString("\\N");
+org/apache/commons/csv/CSVPrinter.java#139#        if (object == null) {
+org/apache/commons/csv/CSVPrinter.java#140#            out.append(value);
+org/apache/commons/csv/CSVPrinter.java#141#        } else if (format.isQuoteCharacterSet()) {

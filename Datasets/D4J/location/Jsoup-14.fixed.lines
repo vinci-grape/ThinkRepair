@@ -1,0 +1,8 @@
+org/jsoup/parser/Tokeniser.java#197#    String appropriateEndTagName() {
+org/jsoup/parser/Tokeniser.java#198#        return lastStartTag.tagName;
+org/jsoup/parser/Tokeniser.java#199#    }
+org/jsoup/parser/TokeniserState.java#218#            } else if (r.matchesLetter() && !r.containsIgnoreCase("</" + t.appropriateEndTagName())) {
+org/jsoup/parser/TokeniserState.java#221#                t.tagPending = new Token.EndTag(t.appropriateEndTagName());
+org/jsoup/parser/TokeniserState.java#222#                t.emitTagPending();
+org/jsoup/parser/TokeniserState.java#223#                r.unconsume(); // undo "<"
+org/jsoup/parser/TokeniserState.java#224#                t.transition(Data);

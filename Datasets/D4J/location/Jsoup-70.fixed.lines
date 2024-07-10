@@ -1,0 +1,5 @@
+org/jsoup/nodes/Element.java#1091#            int i = 0;
+org/jsoup/nodes/Element.java#1092#            do {
+org/jsoup/nodes/Element.java#1095#                el = el.parent();
+org/jsoup/nodes/Element.java#1096#                i++;
+org/jsoup/nodes/Element.java#1097#            } while (i < 6 && el != null);

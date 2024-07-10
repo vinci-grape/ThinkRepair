@@ -1,0 +1,12 @@
+org/apache/commons/cli/TypeHandler.java#161#            if( str != null )
+org/apache/commons/cli/TypeHandler.java#162#            {
+org/apache/commons/cli/TypeHandler.java#163#                if( str.indexOf('.') != -1 )
+org/apache/commons/cli/TypeHandler.java#164#                {
+org/apache/commons/cli/TypeHandler.java#165#                    return Double.valueOf(str);
+org/apache/commons/cli/TypeHandler.java#166#                }
+org/apache/commons/cli/TypeHandler.java#167#                else
+org/apache/commons/cli/TypeHandler.java#168#                {
+org/apache/commons/cli/TypeHandler.java#169#                    return Long.valueOf(str);
+org/apache/commons/cli/TypeHandler.java#170#                }
+org/apache/commons/cli/TypeHandler.java#171#            }
+org/apache/commons/cli/TypeHandler.java#25#FIX_OF_OMISSION

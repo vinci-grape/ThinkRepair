@@ -1,0 +1,3 @@
+org/jsoup/helper/DataUtil.java#171#            if (!charset.canEncode()) {
+org/jsoup/helper/DataUtil.java#173#                doc.charset(Charset.forName(defaultCharset));
+org/jsoup/helper/DataUtil.java#174#            }

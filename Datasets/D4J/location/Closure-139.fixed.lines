@@ -1,0 +1,32 @@
+com/google/javascript/jscomp/Normalize.java#281#        case Token.FUNCTION:
+com/google/javascript/jscomp/Normalize.java#282#          normalizeFunctionDeclaration(n);
+com/google/javascript/jscomp/Normalize.java#283#          break;
+com/google/javascript/jscomp/Normalize.java#295#    private void normalizeFunctionDeclaration(Node n) {
+com/google/javascript/jscomp/Normalize.java#296#      Preconditions.checkState(n.getType() == Token.FUNCTION);
+com/google/javascript/jscomp/Normalize.java#297#      if (!NodeUtil.isFunctionAnonymous(n)
+com/google/javascript/jscomp/Normalize.java#298#          && !NodeUtil.isHoistedFunctionDeclaration(n)) {
+com/google/javascript/jscomp/Normalize.java#299#        rewriteFunctionDeclaration(n);
+com/google/javascript/jscomp/Normalize.java#300#      }
+com/google/javascript/jscomp/Normalize.java#301#    }
+com/google/javascript/jscomp/Normalize.java#319#    private void rewriteFunctionDeclaration(Node n) {
+com/google/javascript/jscomp/Normalize.java#321#      Node oldNameNode = n.getFirstChild();
+com/google/javascript/jscomp/Normalize.java#322#      Node fnNameNode = oldNameNode.cloneNode();
+com/google/javascript/jscomp/Normalize.java#323#      Node var = new Node(Token.VAR, fnNameNode, n.getLineno(), n.getCharno());
+com/google/javascript/jscomp/Normalize.java#324#      var.copyInformationFrom(n);
+com/google/javascript/jscomp/Normalize.java#327#      oldNameNode.setString("");
+com/google/javascript/jscomp/Normalize.java#330#      Node parent = n.getParent();
+com/google/javascript/jscomp/Normalize.java#331#      parent.replaceChild(n, var);
+com/google/javascript/jscomp/Normalize.java#332#      fnNameNode.addChildToFront(n);
+com/google/javascript/jscomp/Normalize.java#334#      reportCodeChange("Function declaration");
+com/google/javascript/jscomp/Normalize.java#335#    }
+com/google/javascript/jscomp/Normalize.java#542#      Var v = s.getVar(name);
+com/google/javascript/jscomp/Normalize.java#544#      Preconditions.checkState(
+com/google/javascript/jscomp/Normalize.java#545#          v == null || v.getParentNode().getType() != Token.CATCH);
+com/google/javascript/jscomp/Normalize.java#546#      if (v != null && parent.getType() == Token.FUNCTION) {
+com/google/javascript/jscomp/Normalize.java#547#        if (v.getParentNode().getType() == Token.VAR) {
+com/google/javascript/jscomp/Normalize.java#548#          s.undeclare(v);
+com/google/javascript/jscomp/Normalize.java#549#          s.declare(name, n, n.getJSType(), v.input);
+com/google/javascript/jscomp/Normalize.java#550#          replaceVarWithAssignment(v.getNameNode(), v.getParentNode(),
+com/google/javascript/jscomp/Normalize.java#551#              v.getParentNode().getParent());
+com/google/javascript/jscomp/Normalize.java#552#        }
+com/google/javascript/jscomp/Normalize.java#553#      } else if (parent.getType() == Token.VAR) {

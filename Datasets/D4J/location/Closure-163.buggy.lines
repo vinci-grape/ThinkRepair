@@ -1,0 +1,82 @@
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#201#    private ProcessProperties() {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#202#      symbolStack.push(new NameContext(globalNode));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#203#    }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#206#      symbolStack.peek().scope = t.getScope();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#216#
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#222#      if (isPrototypePropertyAssign(n)) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#223#        symbolStack.push(new NameContext(getNameInfoForName(
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#224#                n.getFirstChild().getLastChild().getString(), PROPERTY)));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#225#      } else if (isGlobalFunctionDeclaration(t, n)) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#226#        String name = parent.isName() ?
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#227#            parent.getString() /* VAR */ :
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#228#            n.getFirstChild().getString() /* named function */;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#229#        symbolStack.push(new NameContext(getNameInfoForName(name, VAR)));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#230#      } else if (n.isFunction()) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#231#        symbolStack.push(new NameContext(anonymousNode));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#242#          processPrototypeParent(t, parent);
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#247#          addSymbolUse(propName, t.getModule(), PROPERTY);
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#250#      } else if (n.isObjectLit() &&
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#254#          !(parent.isAssign() &&
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#255#            parent.getFirstChild().isGetProp() &&
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#256#            parent.getFirstChild().getLastChild().getString().equals(
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#257#                "prototype"))) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#278#                if (!processGlobalFunctionDeclaration(t, n, parent,
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#279#                        parent.getParent())) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#304#      if (isPrototypePropertyAssign(n) ||
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#305#          isGlobalFunctionDeclaration(t, n) ||
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#306#          n.isFunction()) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#339#      return t.inGlobalScope() &&
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#340#          (NodeUtil.isFunctionDeclaration(n) ||
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#341#           n.isFunction() &&
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#342#           n.getParent().isName());
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#348#    private boolean isPrototypePropertyAssign(Node assign) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#349#      Node n = assign.getFirstChild();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#350#      if (n != null && NodeUtil.isVarOrSimpleAssignLhs(n, assign)
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#351#          && n.isGetProp()
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#352#          && assign.getParent().isExprResult()) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#353#        boolean isChainedProperty =
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#354#            n.getFirstChild().isGetProp();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#363#        if (isChainedProperty) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#364#          Node child = n.getFirstChild().getFirstChild().getNext();
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#366#          if (child.isString() &&
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#367#              child.getString().equals("prototype")) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#368#            return true;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#369#          }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#370#        }
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#374#      return false;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#382#        Node nameNode, Node parent, Node gramps) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#392#            new GlobalFunction(nameNode, parent, gramps, t.getModule()));
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#412#    private void processPrototypeParent(NodeTraversal t, Node n) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#518#    GlobalFunction(Node nameNode, Node parent, Node gramps, JSModule module) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#581#    AssignmentProperty(Node node, JSModule module) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#626#        JSModule module) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#665#    Scope scope;
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#667#    NameContext(NameInfo name) {
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#212#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#241#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#245#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#330#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#338#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#373#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#384#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#414#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#427#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#429#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#442#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#445#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#448#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#499#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#516#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#523#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#527#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#528#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#576#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#583#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#587#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#588#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#623#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#631#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#635#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#636#FAULT_OF_OMISSION
+com/google/javascript/jscomp/AnalyzePrototypeProperties.java#669#FAULT_OF_OMISSION
+com/google/javascript/jscomp/CrossModuleMethodMotion.java#141#FAULT_OF_OMISSION

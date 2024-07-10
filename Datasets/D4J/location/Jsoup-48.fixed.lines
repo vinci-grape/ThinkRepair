@@ -1,0 +1,11 @@
+org/jsoup/helper/HttpConnection.java#773#                    if (values.size() == 1)
+org/jsoup/helper/HttpConnection.java#775#                    else if (values.size() > 1) {
+org/jsoup/helper/HttpConnection.java#776#                        StringBuilder accum = new StringBuilder();
+org/jsoup/helper/HttpConnection.java#777#                        for (int i = 0; i < values.size(); i++) {
+org/jsoup/helper/HttpConnection.java#778#                            final String val = values.get(i);
+org/jsoup/helper/HttpConnection.java#779#                            if (i != 0)
+org/jsoup/helper/HttpConnection.java#780#                                accum.append(", ");
+org/jsoup/helper/HttpConnection.java#781#                            accum.append(val);
+org/jsoup/helper/HttpConnection.java#782#                        }
+org/jsoup/helper/HttpConnection.java#783#                        header(name, accum.toString());
+org/jsoup/helper/HttpConnection.java#784#                    }

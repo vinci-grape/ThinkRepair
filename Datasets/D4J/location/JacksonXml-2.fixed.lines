@@ -1,0 +1,27 @@
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#62#    protected boolean _mixedText;
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#325#            final boolean startElementNext = _xmlReader.getEventType() == XMLStreamReader.START_ELEMENT;
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#327#            if (startElementNext) {
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#328#                if (text == null || _allWs(text)) {
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#329#                    _mixedText = false;
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#331#                }
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#332#                _mixedText = true;
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#333#                _textValue = text;
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#334#                return (_currentState = XML_TEXT);
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#338#                _mixedText = false;
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#342#            _mixedText = false;
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#350#            if (_mixedText){
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#351#                _mixedText = false;
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#352#                return _initStartElement();
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#353#            }
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#520#    protected boolean _allWs(String str)
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#521#    {
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#522#        final int len = (str == null) ? 0 : str.length();
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#523#        if (len > 0) {
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#524#            for (int i = 0; i < len; ++i) {
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#525#                if (str.charAt(i) > ' ') {
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#526#                    return false;
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#527#                }
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#528#            }
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#529#        }
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#530#        return true;
+com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java#531#    }

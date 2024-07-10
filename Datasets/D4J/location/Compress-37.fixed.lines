@@ -1,0 +1,3 @@
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#462#                if (ch == '\n') { // blank line in header
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#463#                    break;
+org/apache/commons/compress/archivers/tar/TarArchiveInputStream.java#464#                } else if (ch == ' '){ // End of length string

@@ -1,0 +1,15 @@
+org/apache/commons/cli2/Option.java#206#    Option getParent();
+org/apache/commons/cli2/Option.java#217#    void setParent(Option parent);
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#74#        Option parent = option.getParent();
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#75#        while (parent != null && !options.contains(parent)) {
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#76#            options.add(parent);
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#77#            parent = parent.getParent();
+org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java#78#        }
+org/apache/commons/cli2/option/GroupImpl.java#92#            option.setParent(this);
+org/apache/commons/cli2/option/OptionImpl.java#36#    private Option parent;
+org/apache/commons/cli2/option/OptionImpl.java#129#    public Option getParent() {
+org/apache/commons/cli2/option/OptionImpl.java#130#        return parent;
+org/apache/commons/cli2/option/OptionImpl.java#131#    }
+org/apache/commons/cli2/option/OptionImpl.java#133#    public void setParent(Option parent) {
+org/apache/commons/cli2/option/OptionImpl.java#134#        this.parent = parent;
+org/apache/commons/cli2/option/OptionImpl.java#135#    }

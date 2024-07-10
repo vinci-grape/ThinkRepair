@@ -1,0 +1,4 @@
+com/fasterxml/jackson/core/util/DefaultPrettyPrinter.java#255#        if (getClass() != DefaultPrettyPrinter.class) { // since 2.10
+com/fasterxml/jackson/core/util/DefaultPrettyPrinter.java#256#            throw new IllegalStateException("Failed `createInstance()`: "+getClass().getName()
+com/fasterxml/jackson/core/util/DefaultPrettyPrinter.java#257#                    +" does not override method; it has to");
+com/fasterxml/jackson/core/util/DefaultPrettyPrinter.java#258#        }

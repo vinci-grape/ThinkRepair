@@ -1,0 +1,26 @@
+com/google/javascript/jscomp/NodeUtil.java#602#      case Token.FUNCTION:
+com/google/javascript/jscomp/NodeUtil.java#605#        Preconditions.checkState(NodeUtil.isAnonymousFunction(n));
+com/google/javascript/jscomp/NodeUtil.java#606#        return false;
+com/google/javascript/jscomp/PureFunctionIdentifier.java#177#    if (NodeUtil.isGetProp(name) || NodeUtil.isName(name)) {
+com/google/javascript/jscomp/PureFunctionIdentifier.java#196#    } else if (name.getType() == Token.OR || name.getType() == Token.HOOK) {
+com/google/javascript/jscomp/PureFunctionIdentifier.java#197#      Node firstVal;
+com/google/javascript/jscomp/PureFunctionIdentifier.java#198#      if (name.getType() == Token.HOOK) {
+com/google/javascript/jscomp/PureFunctionIdentifier.java#199#        firstVal = name.getFirstChild().getNext();
+com/google/javascript/jscomp/PureFunctionIdentifier.java#200#      } else {
+com/google/javascript/jscomp/PureFunctionIdentifier.java#201#        firstVal = name.getFirstChild();
+com/google/javascript/jscomp/PureFunctionIdentifier.java#202#      }
+com/google/javascript/jscomp/PureFunctionIdentifier.java#203#
+com/google/javascript/jscomp/PureFunctionIdentifier.java#204#      Collection<Definition> defs1 = getCallableDefinitions(definitionProvider,
+com/google/javascript/jscomp/PureFunctionIdentifier.java#205#                                                            firstVal);
+com/google/javascript/jscomp/PureFunctionIdentifier.java#206#      Collection<Definition> defs2 = getCallableDefinitions(definitionProvider,
+com/google/javascript/jscomp/PureFunctionIdentifier.java#207#                                                            firstVal.getNext());
+com/google/javascript/jscomp/PureFunctionIdentifier.java#208#      if (defs1 != null && defs2 != null) {
+com/google/javascript/jscomp/PureFunctionIdentifier.java#209#        defs1.addAll(defs2);
+com/google/javascript/jscomp/PureFunctionIdentifier.java#210#        return defs1;
+com/google/javascript/jscomp/PureFunctionIdentifier.java#211#      } else {
+com/google/javascript/jscomp/PureFunctionIdentifier.java#212#        return null;
+com/google/javascript/jscomp/PureFunctionIdentifier.java#213#      }
+com/google/javascript/jscomp/PureFunctionIdentifier.java#214#    } else {
+com/google/javascript/jscomp/PureFunctionIdentifier.java#215#      return null;
+com/google/javascript/jscomp/PureFunctionIdentifier.java#216#    }
+com/google/javascript/jscomp/PureFunctionIdentifier.java#180#FIX_OF_OMISSION

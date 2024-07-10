@@ -1,0 +1,4 @@
+com/google/javascript/rhino/jstype/FunctionType.java#871#    JSType maybeTypeOfThis = safeResolve(typeOfThis, t, scope);
+com/google/javascript/rhino/jstype/FunctionType.java#872#    if (maybeTypeOfThis instanceof ObjectType) {
+com/google/javascript/rhino/jstype/FunctionType.java#873#      typeOfThis = (ObjectType) maybeTypeOfThis;
+com/google/javascript/rhino/jstype/FunctionType.java#874#    }

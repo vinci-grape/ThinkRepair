@@ -1,0 +1,15 @@
+org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java#22#import org.apache.commons.jxpath.ri.NamespaceResolver;
+org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java#112#            NamespaceResolver nsr = parent.getNamespaceResolver();
+org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java#113#            testNS = nsr == null ? null : nsr.getNamespaceURI(testPrefix);
+org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java#114#            testNS = testNS == null ? parent.getNamespaceURI(testPrefix) : testNS;
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#23#import org.apache.commons.jxpath.ri.NamespaceResolver;
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#53#                    NamespaceResolver nsr = parent.getNamespaceResolver();
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#54#                    if (nsr != null) {
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#55#                        String uri = nsr.getNamespaceURI(prefix);
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#56#                        if (uri != null) {
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#57#                            ns = Namespace.getNamespace(prefix, uri);
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#58#                        }
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#59#                    }
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#60#                    if (ns == null) {
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#67#                    }
+org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java#124#}

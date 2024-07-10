@@ -1,0 +1,12 @@
+com/google/javascript/jscomp/TypeInference.java#632#      if (var != null) {
+com/google/javascript/jscomp/TypeInference.java#638#        boolean isInferred = var.isTypeInferred();
+com/google/javascript/jscomp/TypeInference.java#639#        boolean unflowable =
+com/google/javascript/jscomp/TypeInference.java#640#            isInferred && unflowableVarNames.contains(varName);
+com/google/javascript/jscomp/TypeInference.java#645#        boolean nonLocalInferredSlot =
+com/google/javascript/jscomp/TypeInference.java#646#            isInferred &&
+com/google/javascript/jscomp/TypeInference.java#647#            syntacticScope.getParent() != null &&
+com/google/javascript/jscomp/TypeInference.java#648#            var == syntacticScope.getParent().getSlot(varName);
+com/google/javascript/jscomp/TypeInference.java#650#        if (!unflowable && !nonLocalInferredSlot) {
+com/google/javascript/jscomp/TypeInference.java#654#          }
+com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java#208#FIX_OF_OMISSION
+com/google/javascript/jscomp/ClosureReverseAbstractInterpreter.java#217#FIX_OF_OMISSION

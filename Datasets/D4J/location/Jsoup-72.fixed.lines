@@ -1,0 +1,2 @@
+org/jsoup/parser/CharacterReader.java#427#        if (count < 1)
+org/jsoup/parser/CharacterReader.java#428#            return "";

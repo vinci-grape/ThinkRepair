@@ -1,0 +1,2 @@
+org/apache/commons/csv/CSVPrinter.java#325#        if (recordSeparator != null) {
+org/apache/commons/csv/CSVPrinter.java#327#        }

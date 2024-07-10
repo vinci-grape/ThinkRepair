@@ -1,0 +1,3 @@
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#457#        while (name.endsWith("/")) {
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#460#            name = name.substring(0, name.length() - 1);
+org/apache/commons/compress/archivers/tar/TarArchiveOutputStream.java#461#        }

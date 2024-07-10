@@ -1,0 +1,10 @@
+com/google/javascript/jscomp/Compiler.java#264#    fillEmptyModules(modules);
+com/google/javascript/jscomp/Compiler.java#329#  private void fillEmptyModules(JSModule[] modules) {
+com/google/javascript/jscomp/Compiler.java#330#    for (int i = 1; i < modules.length; i ++) {
+com/google/javascript/jscomp/Compiler.java#331#      JSModule module = modules[i];
+com/google/javascript/jscomp/Compiler.java#332#      if (module.getInputs().isEmpty()) {
+com/google/javascript/jscomp/Compiler.java#333#        module.add(JSSourceFile.fromCode("[" + module.getName() + "]", ""));
+com/google/javascript/jscomp/Compiler.java#334#      }
+com/google/javascript/jscomp/Compiler.java#335#    }
+com/google/javascript/jscomp/Compiler.java#336#  }
+com/google/javascript/jscomp/Compiler.java#1590#FIX_OF_OMISSION

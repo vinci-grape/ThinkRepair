@@ -1,0 +1,13 @@
+com/google/gson/internal/bind/TypeAdapters.java#833#        return (TypeAdapter<T2>) new TypeAdapter<T1>() {
+com/google/gson/internal/bind/TypeAdapters.java#834#          @Override public void write(JsonWriter out, T1 value) throws IOException {
+com/google/gson/internal/bind/TypeAdapters.java#835#            typeAdapter.write(out, value);
+com/google/gson/internal/bind/TypeAdapters.java#836#          }
+com/google/gson/internal/bind/TypeAdapters.java#838#          @Override public T1 read(JsonReader in) throws IOException {
+com/google/gson/internal/bind/TypeAdapters.java#839#            T1 result = typeAdapter.read(in);
+com/google/gson/internal/bind/TypeAdapters.java#840#            if (result != null && !requestedType.isInstance(result)) {
+com/google/gson/internal/bind/TypeAdapters.java#841#              throw new JsonSyntaxException("Expected a " + requestedType.getName()
+com/google/gson/internal/bind/TypeAdapters.java#842#                  + " but was " + result.getClass().getName());
+com/google/gson/internal/bind/TypeAdapters.java#843#            }
+com/google/gson/internal/bind/TypeAdapters.java#844#            return result;
+com/google/gson/internal/bind/TypeAdapters.java#845#          }
+com/google/gson/internal/bind/TypeAdapters.java#846#        };

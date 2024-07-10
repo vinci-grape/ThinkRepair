@@ -1,0 +1,15 @@
+org/jsoup/UncheckedIOException.java#10#    public UncheckedIOException(String message) {
+org/jsoup/UncheckedIOException.java#11#        super(new IOException(message));
+org/jsoup/UncheckedIOException.java#12#    }
+org/jsoup/parser/CharacterReader.java#37#        if (isBinary()) {
+org/jsoup/parser/CharacterReader.java#38#            throw new UncheckedIOException("Input is binary and unsupported");
+org/jsoup/parser/CharacterReader.java#39#        }
+org/jsoup/parser/CharacterReader.java#455#    private static final int numNullsConsideredBinary = 10; // conservative
+org/jsoup/parser/CharacterReader.java#461#    boolean isBinary() {
+org/jsoup/parser/CharacterReader.java#462#        int nullsSeen = 0;
+org/jsoup/parser/CharacterReader.java#464#        for (int i = bufPos; i < bufLength; i++) {
+org/jsoup/parser/CharacterReader.java#465#            if (charBuf[i] == '\0')
+org/jsoup/parser/CharacterReader.java#466#                nullsSeen++;
+org/jsoup/parser/CharacterReader.java#467#        }
+org/jsoup/parser/CharacterReader.java#469#        return nullsSeen >= numNullsConsideredBinary;
+org/jsoup/parser/CharacterReader.java#470#    }

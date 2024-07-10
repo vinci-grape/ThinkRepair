@@ -1,0 +1,12 @@
+org/apache/commons/cli/TypeHandler.java#92#            return openFile(str);
+org/apache/commons/cli/TypeHandler.java#234#    public static FileInputStream openFile(String str) throws ParseException
+org/apache/commons/cli/TypeHandler.java#235#    {
+org/apache/commons/cli/TypeHandler.java#236#        try
+org/apache/commons/cli/TypeHandler.java#237#        {
+org/apache/commons/cli/TypeHandler.java#238#            return new FileInputStream(str);
+org/apache/commons/cli/TypeHandler.java#239#        }
+org/apache/commons/cli/TypeHandler.java#240#        catch (FileNotFoundException e)
+org/apache/commons/cli/TypeHandler.java#241#        {
+org/apache/commons/cli/TypeHandler.java#242#            throw new ParseException("Unable to find file: " + str);
+org/apache/commons/cli/TypeHandler.java#243#        }
+org/apache/commons/cli/TypeHandler.java#244#    }

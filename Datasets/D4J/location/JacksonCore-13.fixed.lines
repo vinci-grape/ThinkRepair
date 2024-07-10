@@ -1,0 +1,8 @@
+com/fasterxml/jackson/core/json/JsonGeneratorImpl.java#127#    @Override
+com/fasterxml/jackson/core/json/JsonGeneratorImpl.java#128#    public JsonGenerator disable(Feature f) {
+com/fasterxml/jackson/core/json/JsonGeneratorImpl.java#129#        super.disable(f);
+com/fasterxml/jackson/core/json/JsonGeneratorImpl.java#130#        if (f == Feature.QUOTE_FIELD_NAMES) {
+com/fasterxml/jackson/core/json/JsonGeneratorImpl.java#131#            _cfgUnqNames = true;
+com/fasterxml/jackson/core/json/JsonGeneratorImpl.java#132#        }
+com/fasterxml/jackson/core/json/JsonGeneratorImpl.java#133#        return this;
+com/fasterxml/jackson/core/json/JsonGeneratorImpl.java#134#    }

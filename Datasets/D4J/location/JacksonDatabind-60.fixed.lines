@@ -1,0 +1,88 @@
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#9#import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#18#import com.fasterxml.jackson.databind.jsontype.TypeIdResolver;
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#228#            TypeSerializerRerouter rr = new TypeSerializerRerouter(typeSer0, bean);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#229#            ser.serializeWithType(value, gen, provider, rr);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#366#    static class TypeSerializerRerouter
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#367#        extends TypeSerializer
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#368#    {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#369#        protected final TypeSerializer _typeSerializer;
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#370#        protected final Object _forObject;
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#372#        public TypeSerializerRerouter(TypeSerializer ts, Object ob) {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#373#            _typeSerializer = ts;
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#374#            _forObject = ob;
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#375#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#377#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#378#        public TypeSerializer forProperty(BeanProperty prop) { // should never get called
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#379#            throw new UnsupportedOperationException();
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#380#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#382#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#383#        public As getTypeInclusion() {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#384#            return _typeSerializer.getTypeInclusion();
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#385#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#387#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#388#        public String getPropertyName() {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#389#            return _typeSerializer.getPropertyName();
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#390#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#392#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#393#        public TypeIdResolver getTypeIdResolver() {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#394#            return _typeSerializer.getTypeIdResolver();
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#395#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#397#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#398#        public void writeTypePrefixForScalar(Object value, JsonGenerator gen) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#399#            _typeSerializer.writeTypePrefixForScalar(_forObject, gen);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#400#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#402#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#403#        public void writeTypePrefixForObject(Object value, JsonGenerator gen) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#404#            _typeSerializer.writeTypePrefixForObject(_forObject, gen);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#405#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#407#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#408#        public void writeTypePrefixForArray(Object value, JsonGenerator gen) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#409#            _typeSerializer.writeTypePrefixForArray(_forObject, gen);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#410#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#412#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#413#        public void writeTypeSuffixForScalar(Object value, JsonGenerator gen) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#414#            _typeSerializer.writeTypeSuffixForScalar(_forObject, gen);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#415#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#417#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#418#        public void writeTypeSuffixForObject(Object value, JsonGenerator gen) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#419#            _typeSerializer.writeTypeSuffixForObject(_forObject, gen);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#420#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#422#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#423#        public void writeTypeSuffixForArray(Object value, JsonGenerator gen) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#424#            _typeSerializer.writeTypeSuffixForArray(_forObject, gen);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#425#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#427#        public void writeTypePrefixForScalar(Object value, JsonGenerator gen, Class<?> type) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#428#            _typeSerializer.writeTypePrefixForScalar(_forObject, gen, type);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#429#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#431#        public void writeTypePrefixForObject(Object value, JsonGenerator gen, Class<?> type) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#432#            _typeSerializer.writeTypePrefixForObject(_forObject, gen, type);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#433#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#435#        public void writeTypePrefixForArray(Object value, JsonGenerator gen, Class<?> type) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#436#            _typeSerializer.writeTypePrefixForArray(_forObject, gen, type);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#437#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#439#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#440#        public void writeCustomTypePrefixForScalar(Object value, JsonGenerator gen, String typeId)
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#441#                throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#442#            _typeSerializer.writeCustomTypePrefixForScalar(_forObject, gen, typeId);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#443#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#445#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#446#        public void writeCustomTypePrefixForObject(Object value, JsonGenerator gen, String typeId) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#447#            _typeSerializer.writeCustomTypePrefixForObject(_forObject, gen, typeId);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#448#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#450#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#451#        public void writeCustomTypePrefixForArray(Object value, JsonGenerator gen, String typeId) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#452#            _typeSerializer.writeCustomTypePrefixForArray(_forObject, gen, typeId);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#453#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#455#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#456#        public void writeCustomTypeSuffixForScalar(Object value, JsonGenerator gen, String typeId) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#457#            _typeSerializer.writeCustomTypeSuffixForScalar(_forObject, gen, typeId);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#458#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#460#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#461#        public void writeCustomTypeSuffixForObject(Object value, JsonGenerator gen, String typeId) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#462#            _typeSerializer.writeCustomTypeSuffixForObject(_forObject, gen, typeId);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#463#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#465#        @Override
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#466#        public void writeCustomTypeSuffixForArray(Object value, JsonGenerator gen, String typeId) throws IOException {
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#467#            _typeSerializer.writeCustomTypeSuffixForArray(_forObject, gen, typeId);
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#468#        }
+com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.java#469#    }

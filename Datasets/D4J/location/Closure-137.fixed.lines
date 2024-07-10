@@ -1,0 +1,75 @@
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#26#import com.google.javascript.jscomp.NodeTraversal.ScopedCallback;
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#48#  public static final String ARGUMENTS = "arguments";
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#236#  static class ContextualRenameInverter
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#237#      implements ScopedCallback, CompilerPass {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#241#    private Set<String> referencedNames = ImmutableSet.of();
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#244#    private Deque<Set<String>> referenceStack = new ArrayDeque<Set<String>>();
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#247#    private Map<String, List<Node>> nameMap = Maps.newHashMap();
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#273#    public void enterScope(NodeTraversal t) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#274#      if (t.inGlobalScope()) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#275#        return;
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#276#      }
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#278#      referenceStack.push(referencedNames);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#279#      referencedNames = Sets.newHashSet();
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#286#    public void exitScope(NodeTraversal t) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#287#      if (t.inGlobalScope()) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#291#      for (Iterator<Var> it = t.getScope().getVars(); it.hasNext();) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#292#        Var v = it.next();
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#293#        handleScopeVar(v);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#294#      }
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#298#      Set<String> current = referencedNames;
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#299#      referencedNames = referenceStack.pop();
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#303#      if (!referenceStack.isEmpty()) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#304#        referencedNames.addAll(current);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#305#      }
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#306#    }
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#313#    void handleScopeVar(Var v) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#314#      String name  = v.getName();
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#315#      if (containsSeparator(name)) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#316#        String newName = getOrginalName(name);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#318#        if (TokenStream.isJSIdentifier(newName) &&
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#319#            !referencedNames.contains(newName) && 
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#320#            !newName.equals(ARGUMENTS)) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#321#          referencedNames.remove(name);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#324#          referencedNames.add(newName);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#325#          List<Node> references = nameMap.get(name);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#326#          Preconditions.checkState(references != null);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#327#          for (Node n : references) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#328#            Preconditions.checkState(n.getType() == Token.NAME);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#329#            n.setString(newName);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#330#          }
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#333#        nameMap.remove(name);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#334#      }
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#335#    }
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#337#    @Override
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#338#    public boolean shouldTraverse(NodeTraversal t, Node n, Node parent) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#339#      return true;
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#340#    }
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#342#    @Override
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#343#    public void visit(NodeTraversal t, Node node, Node parent) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#344#      if (t.inGlobalScope()) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#345#        return;
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#348#      if (NodeUtil.isReferenceName(node)) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#349#        String name = node.getString();
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#352#        referencedNames.add(name);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#354#        if (containsSeparator(name)) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#355#          addCandidateNameReference(name, node);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#360#    private void addCandidateNameReference(String name, Node n) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#361#      List<Node> nodes = nameMap.get(name);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#362#      if (null == nodes) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#363#        nodes = Lists.newLinkedList();
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#364#        nameMap.put(name, nodes);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#365#      }
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#366#      nodes.add(n);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#367#    }
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#414#      if (!name.equals(ARGUMENTS)) {
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#424#            }
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#425#            declarations.put(name, newName);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#486#      Preconditions.checkState(!name.equals(ARGUMENTS));
+com/google/javascript/jscomp/NodeUtil.java#1043#  static boolean isReferenceName(Node n) {
+com/google/javascript/jscomp/NodeUtil.java#1044#    return isName(n) && !n.getString().isEmpty() && !isLabelName(n);
+com/google/javascript/jscomp/NodeUtil.java#1045#  }
+com/google/javascript/jscomp/Normalize.java#101#    removeDuplicateDeclarations(root);
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#269#FIX_OF_OMISSION
+com/google/javascript/jscomp/MakeDeclaredNamesUnique.java#427#FIX_OF_OMISSION
+com/google/javascript/jscomp/Normalize.java#82#FIX_OF_OMISSION

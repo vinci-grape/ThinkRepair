@@ -1,0 +1,7 @@
+org/apache/commons/cli/HelpFormatter.java#832#            }
+org/apache/commons/cli/HelpFormatter.java#833#            
+org/apache/commons/cli/HelpFormatter.java#834#            if ( (text.length() > width) && (pos == nextLineTabStop - 1) ) {
+org/apache/commons/cli/HelpFormatter.java#835#                sb.append(text);
+org/apache/commons/cli/HelpFormatter.java#836#
+org/apache/commons/cli/HelpFormatter.java#837#                return sb;
+org/apache/commons/cli/HelpFormatter.java#824#FIX_OF_OMISSION

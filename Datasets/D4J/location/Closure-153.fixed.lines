@@ -1,0 +1,26 @@
+com/google/javascript/jscomp/Normalize.java#631#    private Set<Var> hasOkDuplicateDeclaration = Sets.newHashSet();
+com/google/javascript/jscomp/Normalize.java#639#        Scope s, String name, Node n, CompilerInput input) {
+com/google/javascript/jscomp/Normalize.java#641#      Node parent = n.getParent();
+com/google/javascript/jscomp/Normalize.java#644#      if (v != null && s.isGlobal()) {
+com/google/javascript/jscomp/Normalize.java#649#        if (v.isExtern() && !input.isExtern()) {
+com/google/javascript/jscomp/Normalize.java#650#          if (hasOkDuplicateDeclaration.add(v)) {
+com/google/javascript/jscomp/Normalize.java#651#            return;
+com/google/javascript/jscomp/Normalize.java#652#          }
+com/google/javascript/jscomp/Normalize.java#653#        }
+com/google/javascript/jscomp/Normalize.java#654#      }
+com/google/javascript/jscomp/Normalize.java#677#                input.getName(), n,
+com/google/javascript/jscomp/Normalize.java#689#        replaceVarWithAssignment(n, parent, parent.getParent());
+com/google/javascript/jscomp/SyntacticScopeCreator.java#94#        declareVar(fnNameNode);
+com/google/javascript/jscomp/SyntacticScopeCreator.java#102#        declareVar(a);
+com/google/javascript/jscomp/SyntacticScopeCreator.java#124#          declareVar(child);
+com/google/javascript/jscomp/SyntacticScopeCreator.java#139#        declareVar(n.getFirstChild());
+com/google/javascript/jscomp/SyntacticScopeCreator.java#151#        declareVar(var);
+com/google/javascript/jscomp/SyntacticScopeCreator.java#177#        Scope s, String name, Node n, CompilerInput input);
+com/google/javascript/jscomp/SyntacticScopeCreator.java#185#        Scope s, String name, Node n, CompilerInput input) {
+com/google/javascript/jscomp/SyntacticScopeCreator.java#186#      Node parent = n.getParent();
+com/google/javascript/jscomp/SyntacticScopeCreator.java#231#  private void declareVar(Node n) {
+com/google/javascript/jscomp/SyntacticScopeCreator.java#232#    Preconditions.checkState(n.getType() == Token.NAME);
+com/google/javascript/jscomp/SyntacticScopeCreator.java#234#    CompilerInput input = compiler.getInput(sourceName);
+com/google/javascript/jscomp/SyntacticScopeCreator.java#235#    String name = n.getString();
+com/google/javascript/jscomp/SyntacticScopeCreator.java#239#          scope, name, n, input);
+com/google/javascript/jscomp/SyntacticScopeCreator.java#241#      scope.declare(name, n, null, input);

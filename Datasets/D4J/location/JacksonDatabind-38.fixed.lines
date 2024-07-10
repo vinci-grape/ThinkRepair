@@ -1,0 +1,33 @@
+com/fasterxml/jackson/databind/type/CollectionType.java#3#import java.lang.reflect.TypeVariable;
+com/fasterxml/jackson/databind/type/CollectionType.java#51#        TypeVariable<?>[] vars = rawType.getTypeParameters();
+com/fasterxml/jackson/databind/type/CollectionType.java#52#        TypeBindings bindings;
+com/fasterxml/jackson/databind/type/CollectionType.java#53#        if ((vars == null) || (vars.length != 1)) {
+com/fasterxml/jackson/databind/type/CollectionType.java#54#            bindings = TypeBindings.emptyBindings();
+com/fasterxml/jackson/databind/type/CollectionType.java#55#        } else {
+com/fasterxml/jackson/databind/type/CollectionType.java#56#            bindings = TypeBindings.create(rawType, elemT);
+com/fasterxml/jackson/databind/type/CollectionType.java#57#        }
+com/fasterxml/jackson/databind/type/CollectionType.java#58#        return new CollectionType(rawType, bindings,
+com/fasterxml/jackson/databind/type/MapType.java#3#import java.lang.reflect.TypeVariable;
+com/fasterxml/jackson/databind/type/MapType.java#48#        TypeVariable<?>[] vars = rawType.getTypeParameters();
+com/fasterxml/jackson/databind/type/MapType.java#49#        TypeBindings bindings;
+com/fasterxml/jackson/databind/type/MapType.java#50#        if ((vars == null) || (vars.length != 2)) {
+com/fasterxml/jackson/databind/type/MapType.java#51#            bindings = TypeBindings.emptyBindings();
+com/fasterxml/jackson/databind/type/MapType.java#52#        } else {
+com/fasterxml/jackson/databind/type/MapType.java#53#            bindings = TypeBindings.create(rawType, keyT, valueT);
+com/fasterxml/jackson/databind/type/MapType.java#54#        }
+com/fasterxml/jackson/databind/type/MapType.java#56#        return new MapType(rawType, bindings, _bogusSuperClass(rawType), null,
+com/fasterxml/jackson/databind/type/SimpleType.java#116#        TypeBindings b = TypeBindings.emptyBindings();
+com/fasterxml/jackson/databind/type/SimpleType.java#117#        return new SimpleType(cls, b,
+com/fasterxml/jackson/databind/type/SimpleType.java#118#                _buildSuperClass(cls.getSuperclass(), b), null, null, null, false);
+com/fasterxml/jackson/databind/type/SimpleType.java#252#    private static JavaType _buildSuperClass(Class<?> superClass, TypeBindings b)
+com/fasterxml/jackson/databind/type/SimpleType.java#253#    {
+com/fasterxml/jackson/databind/type/SimpleType.java#254#        if (superClass == null) {
+com/fasterxml/jackson/databind/type/SimpleType.java#255#            return null;
+com/fasterxml/jackson/databind/type/SimpleType.java#256#        }
+com/fasterxml/jackson/databind/type/SimpleType.java#257#        if (superClass == Object.class) {
+com/fasterxml/jackson/databind/type/SimpleType.java#258#            return TypeFactory.unknownType();
+com/fasterxml/jackson/databind/type/SimpleType.java#259#        }
+com/fasterxml/jackson/databind/type/SimpleType.java#260#        JavaType superSuper = _buildSuperClass(superClass.getSuperclass(), b);
+com/fasterxml/jackson/databind/type/SimpleType.java#261#        return new SimpleType(superClass, b,
+com/fasterxml/jackson/databind/type/SimpleType.java#262#                superSuper, null, null, null, false);
+com/fasterxml/jackson/databind/type/SimpleType.java#263#    }

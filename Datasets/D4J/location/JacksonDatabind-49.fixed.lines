@@ -1,0 +1,2 @@
+com/fasterxml/jackson/databind/ser/impl/WritableObjectId.java#50#        if (id == null) {
+com/fasterxml/jackson/databind/ser/impl/WritableObjectId.java#52#        }

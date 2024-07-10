@@ -1,0 +1,27 @@
+com/fasterxml/jackson/databind/util/StdDateFormat.java#406#                int timeLen = len - dateStr.lastIndexOf('T') - 6;
+com/fasterxml/jackson/databind/util/StdDateFormat.java#407#                if (timeLen < 12) { // 8 for hh:mm:ss, 4 for .sss
+com/fasterxml/jackson/databind/util/StdDateFormat.java#408#                    int offset = len - 5; // insertion offset, before tz-offset
+com/fasterxml/jackson/databind/util/StdDateFormat.java#410#                    switch (timeLen) {
+com/fasterxml/jackson/databind/util/StdDateFormat.java#411#                    case 11:
+com/fasterxml/jackson/databind/util/StdDateFormat.java#412#                        sb.insert(offset, '0'); break;
+com/fasterxml/jackson/databind/util/StdDateFormat.java#413#                    case 10:
+com/fasterxml/jackson/databind/util/StdDateFormat.java#414#                        sb.insert(offset, "00"); break;
+com/fasterxml/jackson/databind/util/StdDateFormat.java#415#                    case 9: // is this legal? (just second fraction marker)
+com/fasterxml/jackson/databind/util/StdDateFormat.java#416#                        sb.insert(offset, "000"); break;
+com/fasterxml/jackson/databind/util/StdDateFormat.java#417#                    case 8:
+com/fasterxml/jackson/databind/util/StdDateFormat.java#418#                        sb.insert(offset, ".000"); break;
+com/fasterxml/jackson/databind/util/StdDateFormat.java#419#                    case 7: // not legal to have single-digit second
+com/fasterxml/jackson/databind/util/StdDateFormat.java#420#                        break;
+com/fasterxml/jackson/databind/util/StdDateFormat.java#421#                    case 6: // probably not legal, but let's allow
+com/fasterxml/jackson/databind/util/StdDateFormat.java#422#                        sb.insert(offset, "00.000");
+com/fasterxml/jackson/databind/util/StdDateFormat.java#423#                    case 5: // is legal to omit seconds
+com/fasterxml/jackson/databind/util/StdDateFormat.java#424#                        sb.insert(offset, ":00.000");
+com/fasterxml/jackson/databind/util/StdDateFormat.java#425#                    }
+com/fasterxml/jackson/databind/util/StdDateFormat.java#437#                if (timeLen < 12) { // missing, or partial
+com/fasterxml/jackson/databind/util/StdDateFormat.java#438#                    switch (timeLen) {
+com/fasterxml/jackson/databind/util/StdDateFormat.java#439#                    case 11: sb.append('0');
+com/fasterxml/jackson/databind/util/StdDateFormat.java#440#                    case 10: sb.append('0');
+com/fasterxml/jackson/databind/util/StdDateFormat.java#441#                    case 9: sb.append('0');
+com/fasterxml/jackson/databind/util/StdDateFormat.java#442#                        break;
+com/fasterxml/jackson/databind/util/StdDateFormat.java#443#                    default:
+com/fasterxml/jackson/databind/util/StdDateFormat.java#445#                    }

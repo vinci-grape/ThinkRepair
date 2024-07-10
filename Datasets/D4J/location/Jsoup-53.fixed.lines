@@ -1,0 +1,5 @@
+org/jsoup/parser/TokenQueue.java#265#        boolean inQuote = false;
+org/jsoup/parser/TokenQueue.java#271#                if (c.equals('\'') || c.equals('"') && c != open)
+org/jsoup/parser/TokenQueue.java#272#                    inQuote = !inQuote;
+org/jsoup/parser/TokenQueue.java#273#                if (inQuote)
+org/jsoup/parser/TokenQueue.java#274#                    continue;

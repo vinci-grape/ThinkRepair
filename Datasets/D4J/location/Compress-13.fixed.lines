@@ -1,0 +1,4 @@
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#512#        if (name != null && getPlatform() == PLATFORM_FAT
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#513#            && name.indexOf("/") == -1) {
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#514#            name = name.replace('\\', '/');
+org/apache/commons/compress/archivers/zip/ZipArchiveEntry.java#515#        }

@@ -1,0 +1,14 @@
+com/fasterxml/jackson/databind/ObjectReader.java#1476#            JsonDeserializer<Object> deser = _findTreeDeserializer(ctxt);
+com/fasterxml/jackson/databind/ObjectReader.java#1577#    protected JsonDeserializer<Object> _findTreeDeserializer(DeserializationContext ctxt)
+com/fasterxml/jackson/databind/ObjectReader.java#1578#        throws JsonMappingException
+com/fasterxml/jackson/databind/ObjectReader.java#1579#    {
+com/fasterxml/jackson/databind/ObjectReader.java#1580#        JsonDeserializer<Object> deser = _rootDeserializers.get(JSON_NODE_TYPE);
+com/fasterxml/jackson/databind/ObjectReader.java#1581#        if (deser == null) {
+com/fasterxml/jackson/databind/ObjectReader.java#1583#            deser = ctxt.findRootValueDeserializer(JSON_NODE_TYPE);
+com/fasterxml/jackson/databind/ObjectReader.java#1584#            if (deser == null) { // can this happen?
+com/fasterxml/jackson/databind/ObjectReader.java#1585#                throw new JsonMappingException("Can not find a deserializer for type "+JSON_NODE_TYPE);
+com/fasterxml/jackson/databind/ObjectReader.java#1586#            }
+com/fasterxml/jackson/databind/ObjectReader.java#1587#            _rootDeserializers.put(JSON_NODE_TYPE, deser);
+com/fasterxml/jackson/databind/ObjectReader.java#1588#        }
+com/fasterxml/jackson/databind/ObjectReader.java#1589#        return deser;
+com/fasterxml/jackson/databind/ObjectReader.java#1590#    }

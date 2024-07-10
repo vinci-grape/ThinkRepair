@@ -1,0 +1,70 @@
+com/google/javascript/jscomp/InlineVariables.java#199#      boolean maybeModifiedArguments =
+com/google/javascript/jscomp/InlineVariables.java#200#          maybeEscapedOrModifiedArguments(t.getScope(), referenceMap);
+com/google/javascript/jscomp/InlineVariables.java#222#          inlineNonConstants(v, referenceInfo, maybeModifiedArguments);
+com/google/javascript/jscomp/InlineVariables.java#227#    private boolean maybeEscapedOrModifiedArguments(
+com/google/javascript/jscomp/InlineVariables.java#228#        Scope scope, Map<Var, ReferenceCollection> referenceMap) {
+com/google/javascript/jscomp/InlineVariables.java#229#      if (scope.isLocal()) {
+com/google/javascript/jscomp/InlineVariables.java#230#        Var arguments = scope.getArgumentsVar();
+com/google/javascript/jscomp/InlineVariables.java#231#        ReferenceCollection refs = referenceMap.get(arguments);
+com/google/javascript/jscomp/InlineVariables.java#232#        if (refs != null && !refs.references.isEmpty()) {
+com/google/javascript/jscomp/InlineVariables.java#233#          for (Reference ref : refs.references) {
+com/google/javascript/jscomp/InlineVariables.java#234#            Node refNode = ref.getNameNode();
+com/google/javascript/jscomp/InlineVariables.java#235#            Node refParent = ref.getParent();
+com/google/javascript/jscomp/InlineVariables.java#238#            if (!(NodeUtil.isGet(refParent)
+com/google/javascript/jscomp/InlineVariables.java#239#                && refNode == ref.getParent().getFirstChild()
+com/google/javascript/jscomp/InlineVariables.java#240#                && !isLValue(refParent))) {
+com/google/javascript/jscomp/InlineVariables.java#241#              return true;
+com/google/javascript/jscomp/InlineVariables.java#242#            }
+com/google/javascript/jscomp/InlineVariables.java#243#          }
+com/google/javascript/jscomp/InlineVariables.java#244#        }
+com/google/javascript/jscomp/InlineVariables.java#245#      }
+com/google/javascript/jscomp/InlineVariables.java#246#      return false;
+com/google/javascript/jscomp/InlineVariables.java#247#    }
+com/google/javascript/jscomp/InlineVariables.java#249#    private boolean isLValue(Node n) {
+com/google/javascript/jscomp/InlineVariables.java#250#      Node parent = n.getParent();
+com/google/javascript/jscomp/InlineVariables.java#251#      return (parent.getType() == Token.INC
+com/google/javascript/jscomp/InlineVariables.java#252#          || parent.getType() == Token.DEC
+com/google/javascript/jscomp/InlineVariables.java#253#          || (NodeUtil.isAssignmentOp(parent)
+com/google/javascript/jscomp/InlineVariables.java#254#          && parent.getFirstChild() == n));
+com/google/javascript/jscomp/InlineVariables.java#255#    }
+com/google/javascript/jscomp/InlineVariables.java#258#        Var v, ReferenceCollection referenceInfo,
+com/google/javascript/jscomp/InlineVariables.java#259#        boolean maybeModifiedArguments) {
+com/google/javascript/jscomp/InlineVariables.java#304#      if (!maybeModifiedArguments &&
+com/google/javascript/jscomp/ReferenceCollectingCallback.java#123#      Var v;
+com/google/javascript/jscomp/ReferenceCollectingCallback.java#124#      if (n.getString().equals("arguments")) {
+com/google/javascript/jscomp/ReferenceCollectingCallback.java#125#        v = t.getScope().getArgumentsVar();
+com/google/javascript/jscomp/ReferenceCollectingCallback.java#126#      } else {
+com/google/javascript/jscomp/ReferenceCollectingCallback.java#127#        v = t.getScope().getVar(n.getString());
+com/google/javascript/jscomp/ReferenceCollectingCallback.java#128#      }
+com/google/javascript/jscomp/Scope.java#63#  private Var arguments;
+com/google/javascript/jscomp/Scope.java#291#  public static class Arguments extends Var {
+com/google/javascript/jscomp/Scope.java#292#    Arguments(Scope scope) {
+com/google/javascript/jscomp/Scope.java#293#      super(
+com/google/javascript/jscomp/Scope.java#294#        false, // no inferred
+com/google/javascript/jscomp/Scope.java#295#        "arguments", // always arguments
+com/google/javascript/jscomp/Scope.java#296#        null,  // no declaration node
+com/google/javascript/jscomp/Scope.java#298#        null,  // no type info
+com/google/javascript/jscomp/Scope.java#299#        scope,
+com/google/javascript/jscomp/Scope.java#300#        -1,    // no variable index
+com/google/javascript/jscomp/Scope.java#301#        null,  // input,
+com/google/javascript/jscomp/Scope.java#302#        false, // not a define
+com/google/javascript/jscomp/Scope.java#303#        null   // no jsdoc
+com/google/javascript/jscomp/Scope.java#304#        );
+com/google/javascript/jscomp/Scope.java#305#    }
+com/google/javascript/jscomp/Scope.java#307#    @Override public boolean equals(Object other) {
+com/google/javascript/jscomp/Scope.java#308#      if (!(other instanceof Arguments)) {
+com/google/javascript/jscomp/Scope.java#309#        return false;
+com/google/javascript/jscomp/Scope.java#310#      }
+com/google/javascript/jscomp/Scope.java#312#      Arguments otherVar = (Arguments) other;
+com/google/javascript/jscomp/Scope.java#313#      return otherVar.scope.getRootNode() == scope.getRootNode();
+com/google/javascript/jscomp/Scope.java#314#    }
+com/google/javascript/jscomp/Scope.java#316#    @Override public int hashCode() {
+com/google/javascript/jscomp/Scope.java#317#      return System.identityHashCode(this);
+com/google/javascript/jscomp/Scope.java#318#    }
+com/google/javascript/jscomp/Scope.java#319#  }
+com/google/javascript/jscomp/Scope.java#485#  public Var getArgumentsVar() {
+com/google/javascript/jscomp/Scope.java#486#    if (arguments == null) {
+com/google/javascript/jscomp/Scope.java#487#      arguments = new Arguments(this);
+com/google/javascript/jscomp/Scope.java#488#    }
+com/google/javascript/jscomp/Scope.java#489#    return arguments;
+com/google/javascript/jscomp/Scope.java#490#  }

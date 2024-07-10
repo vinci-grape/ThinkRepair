@@ -1,0 +1,2 @@
+org/jsoup/nodes/Node.java#173#                if (relUrl.startsWith("?"))
+org/jsoup/nodes/Node.java#174#                    relUrl = base.getPath() + relUrl;

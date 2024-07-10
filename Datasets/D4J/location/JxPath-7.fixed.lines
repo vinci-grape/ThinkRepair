@@ -1,0 +1,89 @@
+org/apache/commons/jxpath/ri/compiler/CoreOperationGreaterThan.java#31#    protected boolean evaluateCompare(int compare) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationGreaterThan.java#32#        return compare > 0;
+org/apache/commons/jxpath/ri/compiler/CoreOperationGreaterThanOrEqual.java#32#    protected boolean evaluateCompare(int compare) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationGreaterThanOrEqual.java#33#        return compare >= 0;
+org/apache/commons/jxpath/ri/compiler/CoreOperationLessThan.java#31#    protected boolean evaluateCompare(int compare) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationLessThan.java#32#        return compare < 0;
+org/apache/commons/jxpath/ri/compiler/CoreOperationLessThanOrEqual.java#32#    protected boolean evaluateCompare(int compare) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationLessThanOrEqual.java#33#        return compare <= 0;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#19#import java.util.Collection;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#20#import java.util.HashSet;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#21#import java.util.Iterator;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#22#
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#23#import org.apache.commons.jxpath.ri.EvalContext;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#24#import org.apache.commons.jxpath.ri.InfoSetUtil;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#25#import org.apache.commons.jxpath.ri.axes.InitialContext;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#26#import org.apache.commons.jxpath.ri.axes.SelfContext;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#27#
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#40#    public final Object computeValue(EvalContext context) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#41#        return compute(args[0].computeValue(context), args[1]
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#42#                .computeValue(context)) ? Boolean.TRUE : Boolean.FALSE;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#43#    }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#44#
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#51#    }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#52#
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#53#    protected abstract boolean evaluateCompare(int compare);
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#54#
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#55#    private boolean compute(Object left, Object right) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#56#        left = reduce(left);
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#57#        right = reduce(right);
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#58#
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#59#        if (left instanceof InitialContext) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#60#            ((InitialContext) left).reset();
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#61#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#62#        if (right instanceof InitialContext) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#63#            ((InitialContext) right).reset();
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#64#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#65#        if (left instanceof Iterator && right instanceof Iterator) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#66#            return findMatch((Iterator) left, (Iterator) right);
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#67#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#68#        if (left instanceof Iterator) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#69#            return containsMatch((Iterator) left, right);
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#70#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#71#        if (right instanceof Iterator) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#72#            return containsMatch((Iterator) right, left);
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#73#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#74#        return evaluateCompare(compare(left, right));
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#75#    }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#76#
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#77#    private Object reduce(Object o) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#78#        if (o instanceof SelfContext) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#79#            o = ((EvalContext) o).getSingleNodePointer();
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#80#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#81#        if (o instanceof Collection) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#82#            o = ((Collection) o).iterator();
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#83#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#84#        return o;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#85#    }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#86#
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#87#    private boolean containsMatch(Iterator it, Object value) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#88#        while (it.hasNext()) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#89#            Object element = it.next();
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#90#            if (evaluateCompare(compare(element, value))) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#91#                return true;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#92#            }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#93#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#94#        return false;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#95#    }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#96#
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#97#    private boolean findMatch(Iterator lit, Iterator rit) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#98#        HashSet left = new HashSet();
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#99#        while (lit.hasNext()) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#100#            left.add(lit.next());
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#101#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#102#        while (rit.hasNext()) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#103#            if (containsMatch(left.iterator(), rit.next())) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#104#                return true;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#105#            }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#106#        }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#107#        return false;
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#108#    }
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#109#
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#110#    private int compare(Object l, Object r) {
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#111#        double ld = InfoSetUtil.doubleValue(l);
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#112#        double rd = InfoSetUtil.doubleValue(r);
+org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java#113#        return ld == rd ? 0 : ld < rd ? -1 : 1;
+org/apache/commons/jxpath/ri/compiler/CoreOperationGreaterThan.java#19#FIX_OF_OMISSION
+org/apache/commons/jxpath/ri/compiler/CoreOperationGreaterThanOrEqual.java#19#FIX_OF_OMISSION
+org/apache/commons/jxpath/ri/compiler/CoreOperationLessThan.java#19#FIX_OF_OMISSION
+org/apache/commons/jxpath/ri/compiler/CoreOperationLessThanOrEqual.java#19#FIX_OF_OMISSION

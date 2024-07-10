@@ -1,0 +1,6 @@
+com/fasterxml/jackson/databind/ser/std/StdKeySerializer.java#27#        Class<?> cls = value.getClass();
+com/fasterxml/jackson/databind/ser/std/StdKeySerializer.java#29#        if (cls == String.class) {
+com/fasterxml/jackson/databind/ser/std/StdKeySerializer.java#30#            str = (String) value;
+com/fasterxml/jackson/databind/ser/std/StdKeySerializer.java#31#        } else if (Date.class.isAssignableFrom(cls)) {
+com/fasterxml/jackson/databind/ser/std/StdKeySerializer.java#34#        } else if (cls == Class.class) {
+com/fasterxml/jackson/databind/ser/std/StdKeySerializer.java#35#            str = ((Class<?>) value).getName();

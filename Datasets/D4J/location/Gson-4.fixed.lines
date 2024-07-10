@@ -1,0 +1,12 @@
+com/google/gson/stream/JsonWriter.java#325#    beforeValue();
+com/google/gson/stream/JsonWriter.java#418#    beforeValue();
+com/google/gson/stream/JsonWriter.java#435#    beforeValue();
+com/google/gson/stream/JsonWriter.java#454#    beforeValue();
+com/google/gson/stream/JsonWriter.java#466#    beforeValue();
+com/google/gson/stream/JsonWriter.java#483#    beforeValue();
+com/google/gson/stream/JsonWriter.java#495#    beforeValue();
+com/google/gson/stream/JsonWriter.java#518#    beforeValue();
+com/google/gson/stream/JsonWriter.java#613#  private void beforeValue() throws IOException {
+com/google/gson/stream/JsonReader.java#574#FIX_OF_OMISSION
+com/google/gson/stream/JsonReader.java#581#FIX_OF_OMISSION
+com/google/gson/stream/JsonWriter.java#622#FIX_OF_OMISSION

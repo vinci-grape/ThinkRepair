@@ -1,0 +1,7 @@
+com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java#156#        } else if (p.getCurrentToken() == JsonToken.VALUE_STRING) {
+com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java#157#            if (ctxt.isEnabled(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT)) {
+com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java#158#                String str = p.getText().trim();
+com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java#159#                if (str.isEmpty()) {
+com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java#160#                    return null;
+com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java#161#                }
+com/fasterxml/jackson/databind/jsontype/impl/AsPropertyTypeDeserializer.java#162#            }

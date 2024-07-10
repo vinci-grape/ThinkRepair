@@ -1,0 +1,297 @@
+com/google/javascript/rhino/jstype/ArrowType.java#177#  boolean hasEqualParameters(ArrowType that, boolean tolerateUnknowns) {
+com/google/javascript/rhino/jstype/ArrowType.java#187#                otherParamType, tolerateUnknowns)) {
+com/google/javascript/rhino/jstype/ArrowType.java#204#      ArrowType that, boolean tolerateUnknowns) {
+com/google/javascript/rhino/jstype/ArrowType.java#206#    if (!returnType.checkEquivalenceHelper(that.returnType, tolerateUnknowns)) {
+com/google/javascript/rhino/jstype/ArrowType.java#209#    return hasEqualParameters(that, tolerateUnknowns);
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#25# *   Bob Jervis
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#42#import static com.google.javascript.rhino.jstype.JSTypeNative.UNKNOWN_TYPE;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#43#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#44#import com.google.javascript.rhino.ErrorReporter;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#45#import com.google.javascript.rhino.Node;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#46#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#48# * The arrow type is an internal type that models the functional arrow type
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#49# * seen in typical functional programming languages.  It is used solely for
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#50# * separating the management of the arrow type from the complex
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#51# * {@link FunctionType} that models JavaScript's notion of functions.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#53#final class ArrowType extends JSType {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#54#  private static final long serialVersionUID = 1L;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#55#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#56#  final Node parameters;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#57#  JSType returnType;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#58#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#59#  // Whether the return type is inferred.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#60#  final boolean returnTypeInferred;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#61#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#62#  ArrowType(JSTypeRegistry registry, Node parameters,
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#63#      JSType returnType) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#64#    this(registry, parameters, returnType, false);
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#65#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#66#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#67#  ArrowType(JSTypeRegistry registry, Node parameters,
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#68#      JSType returnType, boolean returnTypeInferred) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#69#    super(registry);
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#70#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#71#    this.parameters = parameters == null ?
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#72#        registry.createParametersWithVarArgs(getNativeType(UNKNOWN_TYPE)) :
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#73#        parameters;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#74#    this.returnType = returnType == null ?
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#75#        getNativeType(UNKNOWN_TYPE) : returnType;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#76#    this.returnTypeInferred = returnTypeInferred;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#77#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#78#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#79#  @Override
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#80#  public boolean isSubtype(JSType other) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#81#    if (!(other instanceof ArrowType)) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#82#      return false;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#83#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#84#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#85#    ArrowType that = (ArrowType) other;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#86#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#87#    // This is described in Draft 2 of the ES4 spec,
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#88#    // Section 3.4.7: Subtyping Function Types.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#89#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#90#    // this.returnType <: that.returnType (covariant)
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#91#    if (!this.returnType.isSubtype(that.returnType)) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#92#      return false;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#93#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#94#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#95#    // that.paramType[i] <: this.paramType[i] (contravariant)
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#96#    //
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#97#    // If this.paramType[i] is required,
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#98#    // then that.paramType[i] is required.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#99#    //
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#100#    // In theory, the "required-ness" should work in the other direction as
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#101#    // well. In other words, if we have
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#102#    //
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#103#    // function f(number, number) {}
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#104#    // function g(number) {}
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#105#    //
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#106#    // Then f *should* not be a subtype of g, and g *should* not be
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#107#    // a subtype of f. But in practice, we do not implement it this way.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#108#    // We want to support the use case where you can pass g where f is
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#109#    // expected, and pretend that g ignores the second argument.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#110#    // That way, you can have a single "no-op" function, and you don't have
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#111#    // to create a new no-op function for every possible type signature.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#112#    //
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#113#    // So, in this case, g < f, but f !< g
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#114#    Node thisParam = parameters.getFirstChild();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#115#    Node thatParam = that.parameters.getFirstChild();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#116#    while (thisParam != null && thatParam != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#117#      JSType thisParamType = thisParam.getJSType();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#118#      JSType thatParamType = thatParam.getJSType();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#119#      if (thisParamType != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#120#        if (thatParamType == null ||
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#121#            !thatParamType.isSubtype(thisParamType)) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#122#          return false;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#123#        }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#124#      }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#125#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#126#      boolean thisIsVarArgs = thisParam.isVarArgs();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#127#      boolean thatIsVarArgs = thatParam.isVarArgs();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#128#      boolean thisIsOptional = thisIsVarArgs || thisParam.isOptionalArg();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#129#      boolean thatIsOptional = thatIsVarArgs || thatParam.isOptionalArg();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#130#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#131#      // "that" can't be a supertype, because it's missing a required argument.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#132#      if (!thisIsOptional && thatIsOptional) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#133#        // NOTE(nicksantos): In our type system, we use {function(...?)} and
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#134#        // {function(...NoType)} to to indicate that arity should not be
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#135#        // checked. Strictly speaking, this is not a correct formulation,
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#136#        // because now a sub-function can required arguments that are var_args
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#137#        // in the super-function. So we special-case this.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#138#        boolean isTopFunction =
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#139#            thatIsVarArgs &&
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#140#            (thatParamType == null ||
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#141#             thatParamType.isUnknownType() ||
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#142#             thatParamType.isNoType());
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#143#        if (!isTopFunction) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#144#          return false;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#145#        }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#146#      }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#147#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#148#      // don't advance if we have variable arguments
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#149#      if (!thisIsVarArgs) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#150#        thisParam = thisParam.getNext();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#151#      }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#152#      if (!thatIsVarArgs) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#153#        thatParam = thatParam.getNext();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#154#      }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#155#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#156#      // both var_args indicates the end
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#157#      if (thisIsVarArgs && thatIsVarArgs) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#158#        thisParam = null;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#159#        thatParam = null;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#160#      }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#161#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#162#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#163#    // "that" can't be a supertype, because it's missing a required argument.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#164#    if (thisParam != null
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#165#        && !thisParam.isOptionalArg() && !thisParam.isVarArgs()
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#166#        && thatParam == null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#167#      return false;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#168#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#169#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#170#    return true;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#171#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#172#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#174#   * @return True if our parameter spec is equal to {@code that}'s parameter
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#175#   *     spec.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#177#  boolean hasEqualParameters(ArrowType that, boolean tolerateUnknowns) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#178#    Node thisParam = parameters.getFirstChild();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#179#    Node otherParam = that.parameters.getFirstChild();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#180#    while (thisParam != null && otherParam != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#181#      JSType thisParamType = thisParam.getJSType();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#182#      JSType otherParamType = otherParam.getJSType();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#183#      if (thisParamType != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#184#        // Both parameter lists give a type for this param, it should be equal
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#185#        if (otherParamType != null &&
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#186#            !thisParamType.checkEquivalenceHelper(
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#187#                otherParamType, tolerateUnknowns)) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#188#          return false;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#189#        }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#190#      } else {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#191#        if (otherParamType != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#192#          return false;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#193#        }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#194#      }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#195#      thisParam = thisParam.getNext();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#196#      otherParam = otherParam.getNext();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#197#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#198#    // One of the parameters is null, so the types are only equal if both
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#199#    // parameter lists are null (they are equal).
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#200#    return thisParam == otherParam;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#201#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#202#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#203#  boolean checkArrowEquivalenceHelper(
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#204#      ArrowType that, boolean tolerateUnknowns) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#205#    // Please keep this method in sync with the hashCode() method below.
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#206#    if (!returnType.checkEquivalenceHelper(that.returnType, tolerateUnknowns)) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#207#      return false;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#208#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#209#    return hasEqualParameters(that, tolerateUnknowns);
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#210#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#211#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#212#  @Override
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#213#  public int hashCode() {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#214#    int hashCode = 0;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#215#    if (returnType != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#216#      hashCode += returnType.hashCode();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#217#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#218#    if (returnTypeInferred) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#219#      hashCode += 1;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#220#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#221#    if (parameters != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#222#      Node param = parameters.getFirstChild();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#223#      while (param != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#224#        JSType paramType = param.getJSType();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#225#        if (paramType != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#226#          hashCode += paramType.hashCode();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#227#        }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#228#        param = param.getNext();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#229#      }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#230#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#231#    return hashCode;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#232#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#233#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#234#  @Override
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#235#  public JSType getLeastSupertype(JSType that) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#236#    throw new UnsupportedOperationException();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#237#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#238#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#239#  @Override
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#240#  public JSType getGreatestSubtype(JSType that) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#241#    throw new UnsupportedOperationException();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#242#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#243#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#244#  @Override
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#245#  public TernaryValue testForEquality(JSType that) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#246#    throw new UnsupportedOperationException();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#247#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#248#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#249#  @Override
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#250#  public <T> T visit(Visitor<T> visitor) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#251#    throw new UnsupportedOperationException();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#252#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#254#  @Override
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#255#  public BooleanLiteralSet getPossibleToBooleanOutcomes() {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#256#    return BooleanLiteralSet.TRUE;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#257#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#258#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#259#  @Override
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#260#  JSType resolveInternal(ErrorReporter t, StaticScope<JSType> scope) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#261#    returnType = safeResolve(returnType, t, scope);
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#262#    if (parameters != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#263#      for (Node paramNode = parameters.getFirstChild();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#264#           paramNode != null; paramNode = paramNode.getNext()) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#265#        paramNode.setJSType(paramNode.getJSType().resolve(t, scope));
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#266#      }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#267#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#268#    return this;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#269#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#270#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#271#  boolean hasUnknownParamsOrReturn() {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#272#    if (parameters != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#273#      for (Node paramNode = parameters.getFirstChild();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#274#           paramNode != null; paramNode = paramNode.getNext()) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#275#        JSType type = paramNode.getJSType();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#276#        if (type == null || type.isUnknownType()) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#277#          return true;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#278#        }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#279#      }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#280#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#281#    return returnType == null || returnType.isUnknownType();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#282#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#283#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#284#  @Override
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#285#  String toStringHelper(boolean forAnnotations) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#286#    return "[ArrowType]";
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#287#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#288#
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#289#  @Override
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#290#  public boolean hasAnyTemplateInternal() {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#291#    return returnType.hasAnyTemplate()
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#292#        || hasTemplatedParameterType();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#293#  }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#295#  private boolean hasTemplatedParameterType() {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#296#    if (parameters != null) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#297#      for (Node paramNode = parameters.getFirstChild();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#298#           paramNode != null; paramNode = paramNode.getNext()) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#299#        JSType type = paramNode.getJSType();
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#300#        if (type != null && type.hasAnyTemplate()) {
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#301#          return true;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#302#        }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#303#      }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#304#    }
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#305#    return false;
+com/google/javascript/rhino/jstype/EquivalenceMethod.java#306#  }
+com/google/javascript/rhino/jstype/FunctionType.java#792#    if (call.hasEqualParameters(other.call, false)) {
+com/google/javascript/rhino/jstype/FunctionType.java#890#      FunctionType that, boolean tolerateUnknowns) {
+com/google/javascript/rhino/jstype/FunctionType.java#908#        that.typeOfThis, tolerateUnknowns) &&
+com/google/javascript/rhino/jstype/FunctionType.java#909#        call.checkArrowEquivalenceHelper(that.call, tolerateUnknowns);
+com/google/javascript/rhino/jstype/FunctionType.java#918#    return this.call.checkArrowEquivalenceHelper(otherType.call, false);
+com/google/javascript/rhino/jstype/JSType.java#492#    return checkEquivalenceHelper(that, false);
+com/google/javascript/rhino/jstype/JSType.java#500#    return checkEquivalenceHelper(that, false);
+com/google/javascript/rhino/jstype/JSType.java#514#    return !checkEquivalenceHelper(that, true);
+com/google/javascript/rhino/jstype/JSType.java#520#  boolean checkEquivalenceHelper(JSType that, boolean tolerateUnknowns) {
+com/google/javascript/rhino/jstype/JSType.java#528#      if (tolerateUnknowns) {
+com/google/javascript/rhino/jstype/JSType.java#545#          that.toMaybeUnionType(), tolerateUnknowns);
+com/google/javascript/rhino/jstype/JSType.java#550#          that.toMaybeFunctionType(), tolerateUnknowns);
+com/google/javascript/rhino/jstype/JSType.java#555#          that.toMaybeRecordType(), tolerateUnknowns);
+com/google/javascript/rhino/jstype/JSType.java#565#            thatParamType.getParameterType(), tolerateUnknowns);
+com/google/javascript/rhino/jstype/JSType.java#566#      } else if (tolerateUnknowns) {
+com/google/javascript/rhino/jstype/JSType.java#571#      } else {
+com/google/javascript/rhino/jstype/JSType.java#572#        paramsMatch = false;
+com/google/javascript/rhino/jstype/JSType.java#580#          thisRootType.checkEquivalenceHelper(thatRootType, tolerateUnknowns);
+com/google/javascript/rhino/jstype/JSType.java#592#              that, tolerateUnknowns);
+com/google/javascript/rhino/jstype/JSType.java#598#          tolerateUnknowns);
+com/google/javascript/rhino/jstype/RecordType.java#118#      RecordType otherRecord, boolean tolerateUnknowns) {
+com/google/javascript/rhino/jstype/RecordType.java#126#              properties.get(key), tolerateUnknowns)) {
+com/google/javascript/rhino/jstype/RecordType.java#204#              (propType.isUnknownType() || altPropType.isUnknownType() ||
+com/google/javascript/rhino/jstype/RecordType.java#205#                  altPropType.isEquivalentTo(propType))) {
+com/google/javascript/rhino/jstype/RecordType.java#268#      if (!propA.isUnknownType() && !propB.isUnknownType()) {
+com/google/javascript/rhino/jstype/RecordType.java#280#          }
+com/google/javascript/rhino/jstype/UnionType.java#334#      UnionType that, boolean tolerateUnknowns) {
+com/google/javascript/rhino/jstype/UnionType.java#335#    if (!tolerateUnknowns
+com/google/javascript/rhino/jstype/UnionType.java#340#      if (!hasAlternate(alternate, tolerateUnknowns)) {
+com/google/javascript/rhino/jstype/UnionType.java#347#  private boolean hasAlternate(JSType type, boolean tolerateUnknowns) {
+com/google/javascript/rhino/jstype/UnionType.java#349#      if (alternate.checkEquivalenceHelper(type, tolerateUnknowns)) {
+com/google/javascript/rhino/jstype/JSType.java#531#FAULT_OF_OMISSION

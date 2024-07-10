@@ -1,0 +1,154 @@
+com/google/javascript/jscomp/PeepholeFoldConstants.java#182#      case Token.VOID:
+com/google/javascript/jscomp/PeepholeFoldConstants.java#183#        typeNameString = "undefined";
+com/google/javascript/jscomp/PeepholeFoldConstants.java#184#        break;
+com/google/javascript/jscomp/SourceMap.java#41#  private final static int UNMAPPED = -1;
+com/google/javascript/jscomp/SourceMap.java#51#    int id = UNMAPPED;
+com/google/javascript/jscomp/SourceMap.java#86#    boolean used = false;
+com/google/javascript/jscomp/SourceMap.java#87#  }
+com/google/javascript/jscomp/SourceMap.java#89#  private class MappingWriter {
+com/google/javascript/jscomp/SourceMap.java#93#    private String lastSourceFile = null;
+com/google/javascript/jscomp/SourceMap.java#94#    private String lastSourceFileEscaped = null;
+com/google/javascript/jscomp/SourceMap.java#95#    private int lastLine = 0;
+com/google/javascript/jscomp/SourceMap.java#96#    private String lastLineString = String.valueOf(0);
+com/google/javascript/jscomp/SourceMap.java#101#    private void appendMappingTo(
+com/google/javascript/jscomp/SourceMap.java#102#        Mapping m, Appendable out) throws IOException {
+com/google/javascript/jscomp/SourceMap.java#105#      String sourceFile = m.sourceFile;
+com/google/javascript/jscomp/SourceMap.java#107#      String escapedSourceFile;
+com/google/javascript/jscomp/SourceMap.java#108#      if (lastSourceFile != sourceFile) { // yes, s1 != s2, not !s1.equals(s2)
+com/google/javascript/jscomp/SourceMap.java#109#        lastSourceFile = sourceFile;
+com/google/javascript/jscomp/SourceMap.java#110#        lastSourceFileEscaped = escapeString(sourceFile);
+com/google/javascript/jscomp/SourceMap.java#111#      }
+com/google/javascript/jscomp/SourceMap.java#112#      escapedSourceFile = lastSourceFileEscaped;
+com/google/javascript/jscomp/SourceMap.java#114#      out.append(escapedSourceFile);
+com/google/javascript/jscomp/SourceMap.java#117#      int line = m.originalPosition.getLineNumber();
+com/google/javascript/jscomp/SourceMap.java#118#      if (line != lastLine) {
+com/google/javascript/jscomp/SourceMap.java#119#        lastLineString = String.valueOf(line);
+com/google/javascript/jscomp/SourceMap.java#120#      }
+com/google/javascript/jscomp/SourceMap.java#121#      String lineValue = lastLineString;
+com/google/javascript/jscomp/SourceMap.java#123#      out.append(lineValue);
+com/google/javascript/jscomp/SourceMap.java#126#      out.append(String.valueOf(
+com/google/javascript/jscomp/SourceMap.java#127#          m.originalPosition.getCharacterIndex()));
+com/google/javascript/jscomp/SourceMap.java#129#      if (m.originalName != null) {
+com/google/javascript/jscomp/SourceMap.java#131#        out.append(escapeString(m.originalName));
+com/google/javascript/jscomp/SourceMap.java#134#      out.append("]\n");
+com/google/javascript/jscomp/SourceMap.java#136#
+com/google/javascript/jscomp/SourceMap.java#140#    void appendMappings(Appendable out) throws IOException {
+com/google/javascript/jscomp/SourceMap.java#141#      for (Mapping m : mappings) {
+com/google/javascript/jscomp/SourceMap.java#142#        if (m.used) {
+com/google/javascript/jscomp/SourceMap.java#143#          appendMappingTo(m, out);
+com/google/javascript/jscomp/SourceMap.java#144#        }
+com/google/javascript/jscomp/SourceMap.java#145#      }
+com/google/javascript/jscomp/SourceMap.java#146#    }
+com/google/javascript/jscomp/SourceMap.java#193#    mapping.sourceFile = sourceFile;
+com/google/javascript/jscomp/SourceMap.java#198#      mapping.originalName = originalName;
+com/google/javascript/jscomp/SourceMap.java#201#    if (offsetPosition.getLineNumber() == 0
+com/google/javascript/jscomp/SourceMap.java#202#        && offsetPosition.getCharacterIndex() == 0) {
+com/google/javascript/jscomp/SourceMap.java#203#      mapping.startPosition = startPosition;
+com/google/javascript/jscomp/SourceMap.java#204#      mapping.endPosition = endPosition;
+com/google/javascript/jscomp/SourceMap.java#205#    } else {
+com/google/javascript/jscomp/SourceMap.java#229#    }
+com/google/javascript/jscomp/SourceMap.java#323#    int maxLine = prepMappings();
+com/google/javascript/jscomp/SourceMap.java#345#    (new MappingWriter()).appendMappings(out);
+com/google/javascript/jscomp/SourceMap.java#351#  private int prepMappings() throws IOException {
+com/google/javascript/jscomp/SourceMap.java#353#    (new MappingTraversal()).traverse(new UsedMappingCheck());
+com/google/javascript/jscomp/SourceMap.java#356#    int id = 0;
+com/google/javascript/jscomp/SourceMap.java#357#    int maxLine = 0;
+com/google/javascript/jscomp/SourceMap.java#358#    for (Mapping m : mappings) {
+com/google/javascript/jscomp/SourceMap.java#359#      if (m.used) {
+com/google/javascript/jscomp/SourceMap.java#360#        m.id = id++;
+com/google/javascript/jscomp/SourceMap.java#361#        int endPositionLine = m.endPosition.getLineNumber();
+com/google/javascript/jscomp/SourceMap.java#362#        maxLine = Math.max(maxLine, endPositionLine);
+com/google/javascript/jscomp/SourceMap.java#363#      }
+com/google/javascript/jscomp/SourceMap.java#364#    }
+com/google/javascript/jscomp/SourceMap.java#367#    return maxLine + prefixPosition.getLineNumber();
+com/google/javascript/jscomp/SourceMap.java#368#  }
+com/google/javascript/jscomp/SourceMap.java#370#  private class LineMapper implements MappingVisitor {
+com/google/javascript/jscomp/SourceMap.java#373#
+com/google/javascript/jscomp/SourceMap.java#379#    private int lastId = UNMAPPED;
+com/google/javascript/jscomp/SourceMap.java#380#    private String lastIdString = UNMAPPED_STRING;
+com/google/javascript/jscomp/SourceMap.java#389#    public void visit(Mapping m, int line, int col, int nextLine, int nextCol)
+com/google/javascript/jscomp/SourceMap.java#390#      throws IOException {
+com/google/javascript/jscomp/SourceMap.java#392#      int id = (m != null) ? m.id : UNMAPPED;
+com/google/javascript/jscomp/SourceMap.java#393#      if (lastId != id) {
+com/google/javascript/jscomp/SourceMap.java#396#        lastIdString = (id == UNMAPPED) ? UNMAPPED_STRING : String.valueOf(id);
+com/google/javascript/jscomp/SourceMap.java#397#        lastId = id;
+com/google/javascript/jscomp/SourceMap.java#398#      }
+com/google/javascript/jscomp/SourceMap.java#399#      String idString = lastIdString;
+com/google/javascript/jscomp/SourceMap.java#401#      for (int i = line; i <= nextLine; i++) {
+com/google/javascript/jscomp/SourceMap.java#402#        if (i == nextLine) {
+com/google/javascript/jscomp/SourceMap.java#403#          for (int j = col; j < nextCol; j++) {
+com/google/javascript/jscomp/SourceMap.java#404#            addCharEntry(idString);
+com/google/javascript/jscomp/SourceMap.java#405#          }
+com/google/javascript/jscomp/SourceMap.java#406#          break;
+com/google/javascript/jscomp/SourceMap.java#407#        }
+com/google/javascript/jscomp/SourceMap.java#409#        closeLine();
+com/google/javascript/jscomp/SourceMap.java#410#        openLine();
+com/google/javascript/jscomp/SourceMap.java#411#      }
+com/google/javascript/jscomp/SourceMap.java#412#    }
+com/google/javascript/jscomp/SourceMap.java#421#      (new MappingTraversal()).traverse(this);
+com/google/javascript/jscomp/SourceMap.java#424#      closeLine();
+com/google/javascript/jscomp/SourceMap.java#425#    }
+com/google/javascript/jscomp/SourceMap.java#430#    private void openLine() throws IOException {
+com/google/javascript/jscomp/SourceMap.java#431#      if (out != null) {
+com/google/javascript/jscomp/SourceMap.java#432#        out.append("[");
+com/google/javascript/jscomp/SourceMap.java#433#        this.firstChar = true;
+com/google/javascript/jscomp/SourceMap.java#434#      }
+com/google/javascript/jscomp/SourceMap.java#435#    }
+com/google/javascript/jscomp/SourceMap.java#440#    private void closeLine() throws IOException {
+com/google/javascript/jscomp/SourceMap.java#441#      if (out != null) {
+com/google/javascript/jscomp/SourceMap.java#442#        out.append("]\n");
+com/google/javascript/jscomp/SourceMap.java#443#      }
+com/google/javascript/jscomp/SourceMap.java#444#    }
+com/google/javascript/jscomp/SourceMap.java#450#    private void addCharEntry(String id) throws IOException {
+com/google/javascript/jscomp/SourceMap.java#451#      if (out != null) {
+com/google/javascript/jscomp/SourceMap.java#452#        if (firstChar) {
+com/google/javascript/jscomp/SourceMap.java#453#          firstChar = false;
+com/google/javascript/jscomp/SourceMap.java#454#        } else {
+com/google/javascript/jscomp/SourceMap.java#455#          out.append(",");
+com/google/javascript/jscomp/SourceMap.java#456#        }
+com/google/javascript/jscomp/SourceMap.java#457#        out.append(id);
+com/google/javascript/jscomp/SourceMap.java#458#      }
+com/google/javascript/jscomp/SourceMap.java#459#    }
+com/google/javascript/jscomp/SourceMap.java#460#  }
+com/google/javascript/jscomp/SourceMap.java#465#  private class UsedMappingCheck implements MappingVisitor {
+com/google/javascript/jscomp/SourceMap.java#469#    @Override
+com/google/javascript/jscomp/SourceMap.java#470#    public void visit(Mapping m, int line, int col, int nextLine, int nextCol)
+com/google/javascript/jscomp/SourceMap.java#471#        throws IOException {
+com/google/javascript/jscomp/SourceMap.java#472#      if (m != null) {
+com/google/javascript/jscomp/SourceMap.java#473#        m.used = true;
+com/google/javascript/jscomp/SourceMap.java#474#      }
+com/google/javascript/jscomp/SourceMap.java#475#    }
+com/google/javascript/jscomp/SourceMap.java#476#  }
+com/google/javascript/jscomp/SourceMap.java#478#  private interface MappingVisitor {
+com/google/javascript/jscomp/SourceMap.java#488#    void visit(Mapping m, int line, int col, int endLine, int endCol)
+com/google/javascript/jscomp/SourceMap.java#489#        throws IOException;
+com/google/javascript/jscomp/SourceMap.java#490#  }
+com/google/javascript/jscomp/SourceMap.java#496#  private class MappingTraversal {
+com/google/javascript/jscomp/SourceMap.java#498#    private int line;
+com/google/javascript/jscomp/SourceMap.java#499#    private int col;
+com/google/javascript/jscomp/SourceMap.java#501#    MappingTraversal() {
+com/google/javascript/jscomp/SourceMap.java#502#    }
+com/google/javascript/jscomp/SourceMap.java#505#    void traverse(MappingVisitor v) throws IOException {
+com/google/javascript/jscomp/SourceMap.java#506#      Preconditions.checkState(!mappings.isEmpty());
+com/google/javascript/jscomp/SourceMap.java#519#          maybeVisit(v, previous);
+com/google/javascript/jscomp/SourceMap.java#525#        maybeVisitParent(v, parent, m);
+com/google/javascript/jscomp/SourceMap.java#534#        maybeVisit(v, m);
+com/google/javascript/jscomp/SourceMap.java#573#    private void maybeVisit(MappingVisitor v, Mapping m) throws IOException {
+com/google/javascript/jscomp/SourceMap.java#579#        visit(v, m, nextLine, nextCol);
+com/google/javascript/jscomp/SourceMap.java#586#    private void maybeVisitParent(MappingVisitor v, Mapping parent, Mapping m)
+com/google/javascript/jscomp/SourceMap.java#588#      int nextLine = getAdjustedLine(m.startPosition);
+com/google/javascript/jscomp/SourceMap.java#589#      int nextCol = getAdjustedCol(m.startPosition);
+com/google/javascript/jscomp/SourceMap.java#591#      Preconditions.checkState(line < nextLine || col <= nextCol);
+com/google/javascript/jscomp/SourceMap.java#592#      if (line < nextLine || (line == nextLine && col < nextCol)) {
+com/google/javascript/jscomp/SourceMap.java#593#        visit(v, parent, nextLine, nextCol);
+com/google/javascript/jscomp/SourceMap.java#594#      }
+com/google/javascript/jscomp/SourceMap.java#601#    private void visit(MappingVisitor v, Mapping m,
+com/google/javascript/jscomp/SourceMap.java#602#        int nextLine, int nextCol)
+com/google/javascript/jscomp/SourceMap.java#604#      Preconditions.checkState(line <= nextLine);
+com/google/javascript/jscomp/SourceMap.java#605#      Preconditions.checkState(line < nextLine || col < nextCol);
+com/google/javascript/jscomp/SourceMap.java#609#        Preconditions.checkState(false);
+com/google/javascript/jscomp/SourceMap.java#613#      v.visit(m, line, col, nextLine, nextCol);
+com/google/javascript/jscomp/SourceMap.java#173#FIX_OF_OMISSION
+com/google/javascript/jscomp/SourceMap.java#191#FIX_OF_OMISSION
+com/google/javascript/jscomp/SourceMap.java#284#FIX_OF_OMISSION
+com/google/javascript/jscomp/SourceMap.java#536#FIX_OF_OMISSION
