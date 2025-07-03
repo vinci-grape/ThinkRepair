@@ -17,7 +17,7 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 ```
 
 ```
-Download RWB datasets from https://figshare.com/s/b8fa6587bfcb9908b0da
+Download RWB datasets from https://figshare.com/s/8d98b0eb441120fd78f9
 ```
 
 ### Plausible patches generation
